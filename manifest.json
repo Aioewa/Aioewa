@@ -1,0 +1,10 @@
+{
+    "name": "aioewa",
+    "description": "All in one extension with addons",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": "160x160.png"
+    }
+  }
