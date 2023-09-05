@@ -1,10 +1,38 @@
 {
-    "name": "aioewa",
-    "description": "All in one extension with addons",
-    "version": "1.0",
-    "manifest_version": 3,
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": "160x160.png"
+  "name": "Aioewa",
+  "short_name": "Aioewa",
+  "manifest_version": 3,
+  "version": "0.1",
+  "version_name": "0.1-beta",
+  "default_locale": "en",
+  "description": "All in one extension with addons",
+  "author": "dev@stio.studio",
+  "background": {
+    "service_worker": "/background.js"
+  },
+  "permissions": [
+    "scripting",
+    "storage"
+  ],
+  "action": {
+    "default_icon": "/icon.png",
+    "default_popup": "/popup.html",
+    "default_title": "Aioewa"
+  },
+  "icons": {
+    "16": "/asset/icon/icon16.png",
+    "48": "/asset/icon/icon48.png",
+    "128": "/asset/icon/icon128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "info@stio.studio",
+      "strict_min_version": "42.0"
     }
-  }
+  },
+  "options_ui": {
+    "page": "asset/index.html",
+    "open_in_tab": true
+  },
+  "homepage_url": "https://aioewa.stio.studio/"
+}

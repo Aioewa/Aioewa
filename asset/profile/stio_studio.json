@@ -1,5 +1,6 @@
 {
     "display name": "stio",
+    "profile picture": "",
     "description": "Hello there 😺\nI'm a dev that loves technical stuff!",
     "link": [
         {
@@ -43,13 +44,28 @@
     ],
     "credit counter": [
         {
-            "art": 10
+            "Addons": 34
         },
         {
-            "code": 25
+            "Code": 25
         },
         {
-            "bug": 50
+            "Code rework": 3
+        },
+        {
+            "Art": 10
+        },
+        {
+            "Art rework": 2
+        },
+        {
+            "Bug fixes": 52
+        },
+        {
+            "Bug reports": 23
+        },
+        {
+            "Suggestions": 121
         }
     ]
 }
