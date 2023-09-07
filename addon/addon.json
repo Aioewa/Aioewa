@@ -1,5 +1,7 @@
-[
-    "ad blocker",
-    "chat",
-    "test"
-]
+{
+    "addons": [
+        "ad blocker",
+        "chat",
+        "test"
+    ]
+}
