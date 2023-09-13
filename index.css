@@ -1,0 +1,216 @@
+@import "./asset/var.css";
+
+@font-face {
+    font-family: "Recursive";
+    src: local("Recursive"), url("https://asset.stio.studio/font.ttf");
+}
+
+html {
+    height: 450px;
+    width: 300px;
+}
+
+.full-page {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 80px;
+    height: 80px;
+    background-color: #ff0000;
+    border-radius: 20px;
+}
+
+* {
+    font-family: var(--main-font);
+    color: var(--main-text-color);
+}
+.loaded * {
+    transition: var(--main-transition);
+}
+body {
+    background-color: var(--main-background-color);
+    margin: 0;
+}
+h1 {
+    margin: 0;
+}
+.header {
+    text-align: center;
+}
+.box {
+    font-size: 30px;
+    width: calc(var(--header-info-width) - 30);
+    background-color: var(--orange-background-color);
+    border-radius: var(--main-border-radius);
+    padding: 10px 30px;
+}
+.bigBox {
+    font-size: 30px;
+    width: calc(var(--header-info-width) - 30);
+    background-color: var(--orange-background-color);
+    margin: var(--header-info-margin);
+    border-radius: var(--main-border-radius);
+    padding: 10px 30px;
+}
+.redBox {
+    background-color: var(--main-red);
+}
+.box-shadow {
+    filter: var(--main-box-shadow);
+}
+.box-shadow:hover {
+    filter: var(--main-box-shadow-hover);
+}
+.header-heading h1 {
+    margin: 20px 0px;
+    font-size: 80px;
+}
+.header-image {
+    position: relative;
+    margin: 0px calc(50% - (var(--header-image-width)/2));
+    width: var(--header-image-width);
+    height: calc(var(--header-image-width) - 40px);
+    border-radius: 50% 50% 0 0;
+    background-color: var(--orange-background-color);
+}
+.header-image img {
+    width: calc(var(--header-image-width) - 40px);
+    margin-top: 10px;
+}
+@media screen and (max-width: 300px) {
+    .header-image img {
+        width: calc(var(--header-image-width) - 100px);
+        margin-top: 10px;
+    }
+    .header-image {
+        margin: 0px calc(50% - ((var(--header-image-width) - 100px) / 2));
+        width: calc(var(--header-image-width) - 100px);
+        height: calc(var(--header-image-width) - 100px);
+        border-radius: 50% 50% 0 0;
+        background-color: var(--orange-background-color);
+    }
+}
+.footer {
+    background-color: var(--footer-background-color);
+    text-align: center;
+}
+.links {
+    display: contents;
+}
+.links svg {
+    width: 80px;
+    height: 80px;
+    margin: 15px;
+    fill: var(--main-link-color);
+}
+.links svg:hover {
+    fill: var(--main-link-hover-color);
+}
+
+.font-size.px40 {
+    font-size: 40px;
+}
+.display-flex {
+    display: flex;
+}
+.overflow-overlay {
+    overflow: overlay;
+}
+.overflow-overlay::-webkit-scrollbar {
+    display: none;
+}
+.red {
+    color: red;
+}
+.centerText {
+    text-align: center;
+}
+.xCenter {
+    margin: 0 auto;
+}
+.red-glow {
+    filter: drop-shadow(0px 0px 5px red);
+}
+.width100per {
+    width: 100%;
+}
+.noMargin {
+    margin: 0;
+}
+.text-decoration-none {
+    text-decoration: none;
+}
+
+.projectButton {
+    background-color: var(--orange-background-color);
+    border: 0;
+    border-radius: var(--main-border-radius);
+    width: 30px;
+}
+.projectButton-left {
+    margin: 0 10px 0 -10px;
+}
+.projectButton-right {
+    margin: 0 -10px 0 10px;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+.slideBox-list {
+    border-radius: var(--main-border-radius);
+}
+.slideBox-track {
+    width: 2100px;
+    height: 100px;
+    display: flex;
+    left: 0px;
+    position: relative;
+}
+
+.projectType-A .project {
+    margin: 0 10px 0 0;
+    width: 160px;
+    min-width: 160px;
+    font-size: 30px;
+    background-color: var(--orange-background-color);
+    border-radius: var(--main-border-radius);
+}
+.projectType-A .project-header {
+    margin: 5px 0;
+    height: 20px;
+}
+.projectType-A .project-content {
+    height: 70px;
+    width: 160px;
+}
+.projectType-A .project-content img {
+    object-fit: cover;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: var(--main-border-radius);
+}
+
+.projectType-B .project {
+    display: flex;
+    margin: 0 10px 0 0;
+    height: 100%;
+    width: 160px;
+    min-width: 160px;
+    font-size: 30px;
+    background-color: var(--orange-background-color);
+    border-radius: var(--main-border-radius);
+}
+.projectType-B .project-header {
+    margin: auto 0;
+}
+.projectType-B .project-content {
+    margin: auto 0;
+    height: 70px;
+    width: 160px;
+}
+.projectType-B .project-content img {
+    object-fit: cover;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: var(--main-border-radius);
+}

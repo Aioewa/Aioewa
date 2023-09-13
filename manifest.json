@@ -8,7 +8,8 @@
   "description": "All in one extension with addons",
   "author": "dev@stio.studio",
   "background": {
-    "service_worker": "/background.js"
+    "service_worker": "/background/background.js",
+    "type": "module"
   },
   "permissions": [
     "scripting",
@@ -16,7 +17,7 @@
   ],
   "action": {
     "default_icon": "/icon.png",
-    "default_popup": "/popup.html",
+    "default_popup": "/index.html",
     "default_title": "Aioewa"
   },
   "icons": {
@@ -31,7 +32,7 @@
     }
   },
   "options_ui": {
-    "page": "asset/index.html",
+    "page": "/index.html",
     "open_in_tab": true
   },
   "homepage_url": "https://aioewa.stio.studio/"
