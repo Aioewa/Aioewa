@@ -1,8 +1,8 @@
 {
-    "HelloThere": {
-        "message": "Hello there"
+    "extName": {
+        "message": "Aioewa is everything"
     },
-    "__MSG_extName_": {
-        "message": "Aioewa"
+    "extDescription": {
+        "message": "Aioewa is fully customizable with tons of features, all for making websites better and easier to use!"
     }
 }

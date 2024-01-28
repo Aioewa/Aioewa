@@ -1,0 +1,74 @@
+[
+    {
+        "user ID": 1,
+        "user name": "stio_studio",
+        "display name": "stio",
+        "profile picture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
+        "about": [
+            ["text",
+             "Hello there 😺"],
+            ["image",
+             "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif"],
+            ["text",
+             "I am STIO. The founder and developers of Aioewa."]
+        ],
+        "links": [
+            {
+                "display": ["img"],
+                "link": "https://stio.studio",
+                "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
+                "img alt": "stio.studio"
+            },
+            {
+                "display": ["text"],
+                "link": "hello@stio.studio",
+                "text": "E-mail"
+            },
+            {
+                "display": ["text"],
+                "link": "https://discord.gg/cTvvmszQH",
+                "text": "Discord"
+            },
+            {
+                "display": ["text"],
+                "link": "https://youtube.com/@stio_studio",
+                "text": "YouTube"
+            },
+            {
+                "display": ["img", "text"],
+                "link": "https://github.com/StioStudio/",
+                "text": "GitHub",
+                "img": "asset/icons/github.png",
+                "img alt": "github icon"
+            },
+            {
+                "display": ["text"],
+                "link": "https://scratch.mit.edu/users/stio_studio",
+                "text": "Scratch"
+            }
+        ]
+    },
+    {
+        "user ID": 2,
+        "user name": "template",
+        "display name": "Hello there",
+        "profile picture": "asset/icons/template.png",
+        "about": [
+            ["text",
+             "Why are you reading this?"],
+            ["br"],
+            ["text",
+             "Because you are reading this. Click this: "],
+            ["link",
+             "https://www.youtube.com/watch?v=dQw4w9WgXcQ"]
+        ],
+        "links": [
+            {
+                "display": ["img"],
+                "link": "https://stio.studio",
+                "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
+                "img alt": "stio.studio"
+            }
+        ]
+    }
+]

@@ -1,0 +1,96 @@
+/*
+[data-theme="?"] {
+    --text: ${text.hex};
+    --text-ops-50: ${text.hex}80;
+    --text-10: ${text.hex.10};
+    --text-20: ${text.hex.20};
+    --text-30: ${text.hex.30};
+    --text-40: ${text.hex.40};
+    --text-50: ${text.hex.50};
+    --text-60: ${text.hex.60};
+    --text-70: ${text.hex.70};
+    --text-80: ${text.hex.80};
+    --text-90: ${text.hex.90};
+    --background: ${bg.hex};
+    --background-ops-50: ${bg.hex}80;
+    --background-10: ${bg.hex.10};
+    --background-20: ${bg.hex.20};
+    --background-30: ${bg.hex.30};
+    --background-40: ${bg.hex.40};
+    --background-50: ${bg.hex.50};
+    --background-60: ${bg.hex.60};
+    --background-70: ${bg.hex.70};
+    --background-80: ${bg.hex.80};
+    --background-90: ${bg.hex.90};
+    --primary: ${primary.hex};
+    --primary-ops-50: ${primary.hex}80;
+    --secondary: ${secondary.hex};
+    --secondary-ops-50: ${secondary.hex}80;
+    --accent: ${accent.hex};
+    --accent-ops-50: ${accent.hex}80;
+}
+*/
+:root {
+    --text: #000000;
+    --text-ops-50: #00000080;
+    --background: #cceeee;
+    --background-ops-50: #eeeeaa80;
+    --primary: #4285F4;
+    --primary-ops-50: #4285F480;
+    --secondary: #34A853;
+    --secondary-ops-50: #34A85380;
+    --accent: #FBBC05;
+    --accent-ops-50: #FBBC0580;
+}
+@media (prefers-color-scheme: dark) {
+    [data-theme="default"] {
+        --text: #edffdb;
+        --text-ops-50: #edffdb80;
+        --background: #120024;
+        --background-ops-50: #12002480;
+        --primary: #ffab1a;
+        --primary-ops-50: #ffab1a80;
+        --secondary: #4d97ff;
+        --secondary-ops-50: #4d97ff80;
+        --accent: #91d84b;
+        --accent-ops-50: #91d84b80;
+    }
+}
+@media (prefers-color-scheme: light) {
+    [data-theme="default"] {
+        --text: #222222;
+        --text-ops-50: #22222280;
+        --background: #F5F5F5;
+        --background-ops-50: #F5F5F580;
+        --primary: #FFA500;
+        --primary-ops-50: #FFA50080;
+        --secondary: #0066cc;
+        --secondary-ops-50: #0066cc80;
+        --accent: #4CAF50;
+        --accent-ops-50: #4CAF5080;
+    }
+}
+[data-theme="dark"] {
+    --text: #edffdb;
+    --text-ops-50: #edffdb80;
+    --background: #120024;
+    --background-ops-50: #12002480;
+    --primary: #ffab1a;
+    --primary-ops-50: #ffab1a80;
+    --secondary: #4d97ff;
+    --secondary-ops-50: #4d97ff80;
+    --accent: #91d84b;
+    --accent-ops-50: #91d84b80;
+}
+[data-theme="light"] {
+    --text: #222222;
+    --text-ops-50: #22222280;
+    --background: #F5F5F5;
+    --background-ops-50: #F5F5F580;
+    --primary: #FFA500;
+    --primary-ops-50: #FFA50080;
+    --secondary: #0066cc;
+    --secondary-ops-50: #0066cc80;
+    --accent: #4CAF50;
+    --accent-ops-50: #4CAF5080;
+}

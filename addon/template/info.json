@@ -1,0 +1,19 @@
+{
+    "AV": "1",
+    "name": "template",
+    "description": "Template script",
+    "credits": [
+        {
+            "userID": 1,
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "addon.js",
+        "background": "background.js"
+    }
+}

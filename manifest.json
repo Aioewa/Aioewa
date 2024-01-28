@@ -1,23 +1,21 @@
 {
-  "name": "Aioewa",
+  "name": "__MSG_extName__",
   "short_name": "Aioewa",
   "manifest_version": 3,
-  "version": "0.1",
-  "version_name": "0.1-beta",
+  "version": "1.0.0",
+  "version_name": "1-beta",
   "default_locale": "en",
-  "description": "All in one extension with addons",
-  "author": "dev@stio.studio",
+  "description": "__MSG_extDescription__",
+  "author": "STIO",
   "background": {
-    "service_worker": "/background/background.js",
-    "type": "module"
+    "service_worker": "/file/background/main.js"
   },
   "permissions": [
-    "scripting",
     "storage"
   ],
   "action": {
-    "default_icon": "/icon.png",
-    "default_popup": "/index.html",
+    "default_icon": "/asset/icon/icon48.png",
+    "default_popup": "/file/popup/popup.html",
     "default_title": "Aioewa"
   },
   "icons": {
@@ -25,15 +23,48 @@
     "48": "/asset/icon/icon48.png",
     "128": "/asset/icon/icon128.png"
   },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*"
+      ],
+      "run_at": "document_start",
+      "js": [
+        "file/inject/style.js",
+        "file/inject/script.js"
+      ],
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "/addon/*",
+        "/api/*",
+        "/asset/*"
+      ],
+      "matches": [
+        "https://*/*"
+      ]
+    }
+  ],
+  "host_permissions": [
+    "https://*/"
+  ],
   "browser_specific_settings": {
     "gecko": {
       "id": "info@stio.studio",
       "strict_min_version": "42.0"
     }
   },
+  "externally_connectable": {
+    "matches": [
+      "https://*/*"
+    ]
+  },
   "options_ui": {
-    "page": "/index.html",
+    "page": "file/settings/index.html",
     "open_in_tab": true
   },
-  "homepage_url": "https://aioewa.stio.studio/"
+  "homepage_url": "https://aioewa.stio.studio"
 }
