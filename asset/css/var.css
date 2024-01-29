@@ -41,6 +41,14 @@
     --secondary-ops-50: #34A85380;
     --accent: #FBBC05;
     --accent-ops-50: #FBBC0580;
+
+
+    --font: "Recursive";
+    --height: 600px;
+    --width: 400px;
+    --nav: 60px;
+    --footer: 30px;
+    --transition: 0.8s;
 }
 @media (prefers-color-scheme: dark) {
     [data-theme="default"] {

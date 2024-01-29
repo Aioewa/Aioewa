@@ -1,0 +1,160 @@
+@import url(./var.css);
+
+@font-face {
+    font-family: "Recursive";
+    src: local("Recursive"), url("https://asset.stio.studio/font.ttf");
+}
+* {
+    font-family: var(--font);
+}
+
+[type="popup"] html {
+    width: fit-content;
+    height: fit-content;
+    /* width: var(--width);
+    height: var(--height); */
+}
+body {
+    margin: 0;
+}
+[type="popup"] body {
+    height: var(--height);
+    width: var(--width);
+    display: grid;
+    grid-template-areas:
+    "nav"
+    "main"
+    "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: var(--nav) calc(100% - var(--nav) - var(--footer)) var(--footer);
+}
+nav {
+    grid-area: nav;
+    background-color: red;
+}
+nav * {
+    font-size: 18px;
+}
+button {
+    border: none;
+    padding: 0;
+}
+nav .slider button {
+    height: 100%;
+    width: fit-content;
+    border-radius: 10px;
+    margin-right: 10px;
+    padding: 5px;
+}
+nav .slider {
+    height: calc(100% - 20px);
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px;
+    padding-right: 60px;
+    -webkit-user-drag: none;
+}
+nav .slider::-webkit-scrollbar {
+    display: none;
+}
+nav .slider::after {
+    content: "";
+    right: 0;
+    top: 0;
+    position: absolute;
+    height: 60px;
+    width: 100px;
+    background: linear-gradient(to left, #000000e0, transparent);
+}
+nav .slider::before {
+    -webkit-user-drag: none;
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    background: linear-gradient(to right, #000000bb, transparent);
+}
+nav .settings {
+    right: 0;
+    top: 0;
+    position: absolute;
+    height: 60px;
+    aspect-ratio: 1 / 1;
+    background-color: transparent;
+    border-radius: 100vw;
+    background-image: url(../icons/setting.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+main {
+    grid-area: main;
+    background-color: green;
+}
+main iframe {
+    height: 100%;
+    width: 100%;
+}
+footer {
+    grid-area: footer;
+    background-color: blue;
+}
+.addon {
+    padding: 5px;
+    width: calc(100% - 20px - 10px);
+    margin: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
+
+    display: grid;
+    grid-template-areas:
+    "arrow type h3 switch"
+    "content content content content";
+    grid-template-columns: 40px 20px auto 30px;
+    grid-template-rows: 40px 0px 0px;
+    column-gap: 5px;
+    row-gap: 0px;
+}
+.addon.active {
+    row-gap: 5px;
+    grid-template-rows: 40px auto;
+}
+.addon.active .content {
+}
+.addon.active .content {
+    display: block;
+}
+.addon .content {
+    display: none;
+    grid-area: content;
+    background-color: darkgray;
+    padding: 5px;
+    border-radius: 10px;
+    transition: var(--transition);
+}
+.addon .arrow {
+    height: 40px;
+    width: 40px;
+    background-color: darkgray;
+    border-radius: 10px;
+    grid-area: arrow;
+}
+.addon .arrow::before {
+    display: block;
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-image: url(../icons/arrow.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;    
+    transition: var(--transition);
+}
+.addon.active .arrow::before {
+    transform: rotate(-180deg);
+    transition: var(--transition);
+}
+.addon h3 {
+    grid-area: h3;
+}

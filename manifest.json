@@ -15,7 +15,7 @@
   ],
   "action": {
     "default_icon": "/asset/icon/icon48.png",
-    "default_popup": "/file/popup/popup.html",
+    "default_popup": "/asset/html/popup.html",
     "default_title": "Aioewa"
   },
   "icons": {
