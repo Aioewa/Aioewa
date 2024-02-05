@@ -29,7 +29,6 @@ body {
     grid-template-rows: var(--nav) calc(100% - var(--nav) - var(--footer)) var(--footer);
 }
 nav {
-    grid-area: nav;
     background-color: red;
 }
 nav * {
@@ -47,7 +46,8 @@ nav .slider button {
     padding: 5px;
 }
 nav .slider {
-    height: calc(100% - 20px);
+    height: calc(var(--slider) - 20px);
+    width: calc(100% - 60px);
     overflow: auto;
     white-space: nowrap;
     padding: 10px;
@@ -57,7 +57,7 @@ nav .slider {
 nav .slider::-webkit-scrollbar {
     display: none;
 }
-nav .slider::after {
+nav::after {
     content: "";
     right: 0;
     top: 0;
@@ -66,7 +66,7 @@ nav .slider::after {
     width: 100px;
     background: linear-gradient(to left, #000000e0, transparent);
 }
-nav .slider::before {
+nav::before {
     -webkit-user-drag: none;
     content: "";
     left: 0;
@@ -77,6 +77,7 @@ nav .slider::before {
     background: linear-gradient(to right, #000000bb, transparent);
 }
 nav .settings {
+    z-index: 1;
     right: 0;
     top: 0;
     position: absolute;
@@ -87,6 +88,22 @@ nav .settings {
     background-image: url(../icons/setting.svg);
     background-repeat: no-repeat;
     background-size: cover;
+}
+nav .search {
+    width: 100%;
+    height: var(--search);
+    background-color: lightgreen;
+}
+nav .search input {
+    border: none;
+    border-radius: 10px;
+    width: calc(100% - 32px);
+    height: calc(100% - 12px);
+    padding: 2px 10px;
+    margin: 4px;
+    left: 4px;
+    position: relative;
+    background-color: white;
 }
 main {
     grid-area: main;
@@ -101,6 +118,7 @@ footer {
     background-color: blue;
 }
 .addon {
+    border: none;
     padding: 5px;
     width: calc(100% - 20px - 10px);
     margin: 10px;
@@ -111,18 +129,16 @@ footer {
     grid-template-areas:
     "arrow type h3 switch"
     "content content content content";
-    grid-template-columns: 40px 20px auto 30px;
+    grid-template-columns: 40px 20px auto 40px;
     grid-template-rows: 40px 0px 0px;
     column-gap: 5px;
     row-gap: 0px;
 }
-.addon.active {
+.addon:has(.arrow input:checked) {
     row-gap: 5px;
     grid-template-rows: 40px auto;
 }
-.addon.active .content {
-}
-.addon.active .content {
+.addon:has(.arrow input:checked) .content {
     display: block;
 }
 .addon .content {
@@ -140,6 +156,11 @@ footer {
     border-radius: 10px;
     grid-area: arrow;
 }
+.addon .arrow input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
 .addon .arrow::before {
     display: block;
     height: 100%;
@@ -151,10 +172,45 @@ footer {
     background-position: center;    
     transition: var(--transition);
 }
-.addon.active .arrow::before {
+.addon:has(.arrow input:checked) .arrow::before {
     transform: rotate(-180deg);
     transition: var(--transition);
 }
 .addon h3 {
     grid-area: h3;
+}
+.addon .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.addon .switch {
+    grid-area: switch;
+    background-color: gray;
+    height: 25px;
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    border-radius: 100vh;
+    transition: var(--transition);
+}
+.addon:has(.switch input:checked) .switch {
+    background-color: blue;
+    transition: var(--transition);
+}
+.addon .switch::before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    top: 2.5px;
+    left: 2.5px;
+    position: relative;
+    border-radius: 100vh;
+    transition: var(--transition);
+}
+.addon:has(.switch input:checked) .switch::before {
+    left: calc(100% - 2.5px - 20px);
+    transition: var(--transition);
 }

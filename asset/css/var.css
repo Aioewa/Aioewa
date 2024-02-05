@@ -46,9 +46,11 @@
     --font: "Recursive";
     --height: 600px;
     --width: 400px;
-    --nav: 60px;
+    --nav: 100px;
     --footer: 30px;
-    --transition: 0.8s;
+    --slider: 60px;
+    --search: 40px;
+    --transition: 0.6s;
 }
 @media (prefers-color-scheme: dark) {
     [data-theme="default"] {

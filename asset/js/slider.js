@@ -24,7 +24,7 @@ const move = (e) => {
     if (!isDown) return;
 
     e.preventDefault();
-    const x = e.pageX || e.touches[0].pageX - slider.offsetLeft;
+    const x = e.pageX || slider.offsetLeft;
     const dist = (x - startX);
     slider.scrollLeft = scrollLeft - dist;
 }
