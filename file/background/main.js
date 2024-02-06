@@ -1,0 +1,1 @@
+console.log("Background is up and running!")
