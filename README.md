@@ -15,20 +15,20 @@
 `Aioewa` aka `All in one extension with addons` is an extension that gives you tons of different addons/features that is made by the public. 
 
 ## How to install Aioewa
-### Get the folder
+### Getting the repository
 #### Git
-```powershell
+```
 git clone https://github.com/StioStudio/Aioewa.git
 ```
 #### Manual download
 
 * Go to https://github.com/StioStudio/Aioewa.
 
-* Click the blue button `code`.
+* Click on the blue "Code" button.
 
 ![Image of blue button](./asset/images/README/blue-button.png)
 
-* Click `Download ZIP` to download Aioewa as a zip file.
+* Click `Download ZIP` to download Aioewa repository as a zip file.
 
 ![Download ZIP button](./asset/images/README/zip.png)
 
@@ -44,10 +44,10 @@ git clone https://github.com/StioStudio/Aioewa.git
 
 ![Extract button](./asset/images/README/Extract.png)
 
-### Load Aioewa in to your browser
+### Load Aioewa into your browser
 #### Manual load
 
-* Go to/past in [chrome://extensions/](chrome://extensions/) in your browser.
+* Go to/paste in [chrome://extensions/](chrome://extensions/) in your browser.
 
 * Enable `Developer mode`.
 
@@ -63,4 +63,4 @@ git clone https://github.com/StioStudio/Aioewa.git
 
 ![Select Folder](./asset/images/README/Select-Folder.png)
 
-* You have now Aioewa on your browser 😺
+* You now have Aioewa on your browser 😺
