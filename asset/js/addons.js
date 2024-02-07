@@ -30,21 +30,27 @@ await new Promise(async (resolve, reject) => {
     })
 })
 console.log(info)
+let elements = {}
 info.forEach(async (e)=>{
     const rem = addon(e.name, e.description, e.id)
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")
     const input = label.querySelector("input")
-
-    if (await(await chrome.storage.sync.get(null))[e.id] == undefined) {
-        chrome.storage.sync.set({[e.id]: {name: e.name, enabled: false}})
+    elements[e.id] = {elm: rem, label: label, input: input}
+    if (await(await chrome.storage.sync.get(null))[`${e.id}`] == undefined) {
+        chrome.storage.sync.set({[`${e.id}`]: {name: e.name, enabled: false}})
     }
-    input.checked = await(await chrome.storage.sync.get(null))[e.id].enabled
+    input.checked = await(await chrome.storage.sync.get(null))[`${e.id}`].enabled
     
     label.addEventListener("change", (a)=>{
-        chrome.storage.sync.set({[e.id]: {name: e.name, enabled: input.checked}})
+        console.log(a)
+        chrome.storage.sync.set({[`${e.id}`]: {name: e.name, enabled: input.checked}})
     })
+})
+chrome.storage.sync.onChanged.addListener((e)=>{
+    console.log(e)
+    // input.checked = e.newValue
 })
 
 
