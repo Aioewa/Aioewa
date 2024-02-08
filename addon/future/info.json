@@ -1,0 +1,16 @@
+{
+    "AV": "1",
+    "id": "a",
+    "name": "__DAOE_name__",
+    "description": "__DAOE_description__",
+    "credits": "__DAOE_credits-list__",
+    "tags": "__DAOE_tags-list__",
+    "versionAdded": "1.0.0",
+    "versionLastUpdated": "__DAOE_version-last-updated",
+    "code": {
+        "DAO": "DAO.js",
+        "DAOE": "DAO.js",
+        "onTab": "__DAO_onTab__",
+        "background": "__DAO_background__"
+    }
+}
