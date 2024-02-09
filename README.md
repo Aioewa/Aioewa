@@ -10,6 +10,12 @@
         * [Manual download](#manual-download)
     * [Load aioewa in to your browser](#load-aioewa-in-to-your-browser)
         * [Manual load](#manual-load)
+* [Contribute to Aioewa](#contribute-to-aioewa)
+    * [Create/change the code](#createchange-the-code)
+    * [Send in bug reports](#send-in-bug-reports)
+    * [Send in suggestions](#send-in-suggestions)
+    * [Join the community](#join-the-community)
+    * [Fund Aioewa (not available at this time)](#fund-aioewa-not-available-at-this-time)
 
 ## What is Aioewa?
 `Aioewa` aka `All in one extension with addons` is an extension that gives you tons of different addons/features that is made by the public. 
@@ -64,3 +70,23 @@ git clone https://github.com/StioStudio/Aioewa.git
 ![Select Folder](./asset/images/README/Select-Folder.png)
 
 * You now have Aioewa on your browser 😺
+
+## Contribute to Aioewa
+There is many ways to contribute to Aioewa. You can: 
+* [Create/change the code](#createchange-the-code)
+* [Send in bug reports](#send-in-bug-reports)
+* [Send in suggestions](#send-in-suggestions)
+* [Join the community](#join-the-community)
+* [Fund Aioewa (not available at this time)](#fund-aioewa-not-available-at-this-time)
+
+### Create/change the code
+Create a new fork of Aioewa and make your changes. Then create a new pull request. 
+
+### Send in bug reports or suggestions
+You can either send a issue on GitHub or send a message/post to our community sites. More info: [Join the community](#join-the-community)
+
+### Join the community
+[Discord](https://aioewa.stio.studio/discord)
+
+### Fund Aioewa (not available at this time)
+We currently do not have any way to collect donations 😾

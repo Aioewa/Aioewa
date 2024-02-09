@@ -1,6 +1,7 @@
 {
     "AV": "1",
-    "name": "test7",
+    "id": "i",
+    "name": "test",
     "description": "The test addon. Not recommended to use.",
     "credits": [
         {
