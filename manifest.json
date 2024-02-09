@@ -26,7 +26,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*/*"
+        "https://*/*",
+        "http://*/*"
       ],
       "run_at": "document_start",
       "js": [
@@ -44,7 +45,8 @@
         "/asset/*"
       ],
       "matches": [
-        "https://*/*"
+        "https://*/*",
+        "http://*/*"
       ]
     }
   ],
