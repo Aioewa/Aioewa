@@ -9,6 +9,7 @@
 
 ## DevTools
 - [ ] Website that gives you the json file for `info.json` files and `user.json` files. Just like in [stio.studio meta](https://project.stio.studio/meta/)
+- [ ] error and warn on costume console 
 
 ## Addons
 - [ ] [`Future addons`](../addon/future/)
