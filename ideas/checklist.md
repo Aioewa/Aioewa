@@ -18,3 +18,6 @@
 ## Community
 - [ ] More community platforms
 - [x] [Organize the discord server better](https://aioewa.stio.studio/discord)
+
+## Extra
+- [ ] user.json display
