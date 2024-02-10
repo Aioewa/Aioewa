@@ -1,6 +1,5 @@
 {
     "AV": "1",
-    "id": "f",
     "name": "test",
     "description": "The test addon. Not recommended to use.",
     "credits": [
@@ -14,7 +13,5 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "onTab": "addon.js",
-        "background": "background.js"
     }
 }

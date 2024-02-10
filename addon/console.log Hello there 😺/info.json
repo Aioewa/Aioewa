@@ -1,6 +1,6 @@
 {
     "AV": "1",
-    "id": "a",
+    "id": "console.log Hello there 😺",
     "name": "Hello there 😺",
     "description": "Log a 'Hello there 😺' in the console!",
     "credits": [
@@ -14,7 +14,7 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "onTab": "addon.js",
+        "onTab": "a.js",
         "background": "background.js"
     }
 }

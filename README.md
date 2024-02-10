@@ -15,7 +15,7 @@
     * [Send in bug reports](#send-in-bug-reports)
     * [Send in suggestions](#send-in-suggestions)
     * [Join the community](#join-the-community)
-    * [Fund Aioewa (not available at this time)](#fund-aioewa-not-available-at-this-time)
+    * [Fund Aioewa (not available at this time)](#fund-aioewa)
 
 ## What is Aioewa?
 `Aioewa` aka `All in one extension with addons` is an extension that gives you tons of different addons/features that is made by the public. 
@@ -77,7 +77,7 @@ There is many ways to contribute to Aioewa. You can:
 * [Send in bug reports](#send-in-bug-reports)
 * [Send in suggestions](#send-in-suggestions)
 * [Join the community](#join-the-community)
-* [Fund Aioewa (not available at this time)](#fund-aioewa-not-available-at-this-time)
+* [Fund Aioewa (not available at this time)](#fund-aioewa)
 
 ### Create/change the code
 Create a new fork of Aioewa and make your changes. Then create a new pull request. 
@@ -88,5 +88,5 @@ You can either send a issue on GitHub or send a message/post to our community si
 ### Join the community
 [Discord](https://aioewa.stio.studio/discord)
 
-### Fund Aioewa (not available at this time)
-We currently do not have any way to collect donations 😾
+### Fund Aioewa
+* [buymeacoffee](https://www.buymeacoffee.com/aioewa)

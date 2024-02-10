@@ -8,6 +8,32 @@
 //     })
 // } 
 
+
+export async function infoCodeRunner(_type, _info, _path, output = {self: true, console: true}) {
+    const rem = Array.isArray(_info) ? _info : [_info]
+    const rem_a = {}
+    rem.forEach(async (b)=>{
+        const rem_b = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
+        rem_a[b] = rem_b
+        output.self == true ? delete output.self : output.self = rem_b
+        output.console == true ? delete output.console : output.console = {..._realConsole, ...easyCreateConsole(_path, b)}
+        // console.log(output)
+        rem_b[_type](output)
+    })
+    await new Promise((resolve, reject) => {
+        const update = ()=>{
+            // console.log(rem, Object.keys(rem_a))
+            if (rem.length == Object.keys(rem_a).length) {
+                resolve(addons)
+            }
+            else {
+                requestAnimationFrame(update)
+            }
+        }
+        update()
+    })
+    return rem_a
+}
 export async function getScript(_url) {
     return (await Promise.all([
         import(_url)
@@ -30,6 +56,7 @@ export const consoleOutput = (logAuthor = "[page]") => {
 export const createConsole = {
     log: (e) => _realConsole.log.bind(_realConsole, ...consoleOutput(e)),
     error: (e) => _realConsole.error.bind(_realConsole, ...consoleOutput(e)),
+    _realConsole,
 }
 export function easyCreateConsole(..._name) {
     let rem = `${_name[0]}`;
@@ -40,6 +67,7 @@ export function easyCreateConsole(..._name) {
     return {
         log: createConsole.log(rem),
         error: createConsole.error(rem),
+        _realConsole,
     }
 }
 const localConsole = {
@@ -47,28 +75,22 @@ const localConsole = {
     error: createConsole.error(`api module`),
 }
 
-if(await(await chrome.storage.sync.get(null)).settings == undefined) {
-    chrome.storage.sync.set({settings: {}})
-}
+// if(await(await chrome.storage.sync.get(null)).settings == undefined) {
+//     chrome.storage.sync.set({settings: {}})
+// }
 
 export const storage = {
-    get(_get) {
-        return new Promise(async (resolve, reject) => {
-            resolve(await(await chrome.storage.sync.get(null))[_get])
-        })
+    async getAddonsEnabled(_get = null) {
+        if (_get == null) {
+            return (await chrome.storage.sync.get("addonsEnabled")).addonsEnabled
+        }
+        else {
+            return (await chrome.storage.sync.get("addonsEnabled")).addonsEnabled[_get]
+        }
     },
-    set(_set) {
-        chrome.storage.sync.set(_set)
+    setAddonsEnabled(set) {
+        chrome.storage.sync.set({addonsEnabled: set})
     },
-    raw: new Proxy(await(await chrome.storage.sync.get(null)), {
-        set: (_target, _string, _receiver)=>{
-            storage.set({[_string]: _receiver})
-            return true
-        },
-        deleteProperty: (_target, _string)=>{
-            console.log(_target, _string)
-        },
-    }),
 }
 
 // storage.raw.hello = "aosfjoaihh"

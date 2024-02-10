@@ -1,7 +1,3 @@
-export function tab() {
-    return [
-        {
-            path: "hello.js"
-        }
-    ]
+export function onTab({addon, tab, console}) {
+    // Code
 }

@@ -46,6 +46,9 @@ await new Promise(async (resolve, reject) => {
 })
 
 let elements = {}
+const enabled = await aw.storage.getAddonsEnabled()
+// console.log(aw)
+// console.log(enabled)
 info.forEach(async (e)=>{
     const rem = addon.createElement(e.name, e.description, e.id)
     document.body.append(rem)
@@ -53,19 +56,24 @@ info.forEach(async (e)=>{
     const label = rem.querySelector(".switch")
     const input = label.querySelector("input")
     elements[e.id] = {elm: rem, label: label, input: input}
-    if (await(await chrome.storage.sync.get(null))[`${e.id}`] == undefined) {
-        chrome.storage.sync.set({[`${e.id}`]: addon.createSettings(e.id, {_name: e.name})})
+
+    try {
+        input.checked = enabled[e.id]
     }
-    input.checked = await(await chrome.storage.sync.get(null))[`${e.id}`].enabled
+    catch {
+        input.checked = false
+    }
     
-    label.addEventListener("change", (a)=>{
-        // console.log(a)
-        chrome.storage.sync.set({[`${e.id}`]: addon.createSettings(e.id, {_name: e.name, _enabled: input.checked})})
+    label.addEventListener("change", async (a)=>{
+        const rem = await aw.storage.getAddonsEnabled() || {}
+        rem[e.id] = input.checked
+        rem._addonChanged = [e.id, rem[e.id]]
+        aw.storage.setAddonsEnabled(rem)
     })
 })
 chrome.storage.sync.onChanged.addListener((e)=>{
     const rem = Object.values(e)[0]
-    elements[Object.keys(e)[0]] != undefined ? elements[rem.newValue.id].input.checked = rem.newValue.enabled : undefined
+    elements[rem.newValue._addonChanged[0]] != undefined ? elements[rem.newValue._addonChanged[0]].input.checked = rem.newValue._addonChanged[1] : undefined
 })
 
 // const label = document.querySelectorAll(".addon label")
