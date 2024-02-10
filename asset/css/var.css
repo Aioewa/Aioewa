@@ -30,21 +30,22 @@
     --accent-ops-50: ${accent.hex}80;
 }
 */
+/* New colors! */
 :root {
     --text: #000000;
     --text-ops-50: #00000080;
     --background: #cceeee;
     --background-ops-50: #eeeeaa80;
-    --primary: #4285F4;
-    --primary-ops-50: #4285F480;
-    --secondary: #34A853;
-    --secondary-ops-50: #34A85380;
-    --accent: #FBBC05;
-    --accent-ops-50: #FBBC0580;
+    --primary: #4ea2e3;
+    --primary-ops-50: #4ea2e380;
+    --secondary: #42c1b6;
+    --secondary-ops-50: #42c1b680;
+    --accent: #ffcc3f;
+    --accent-ops-50: #ffcc3f80;
 
 
     --font: "Recursive";
-    --height: 600px;
+    --height: 590px; /* This didn't fit my screen, changed it 10px */
     --width: 400px;
     --nav: 100px;
     --footer: 30px;
@@ -52,6 +53,7 @@
     --search: 40px;
     --transition: 0.6s;
 }
+/* ! Colors below aren't updates ! */
 @media (prefers-color-scheme: dark) {
     [data-theme="default"] {
         --text: #edffdb;
