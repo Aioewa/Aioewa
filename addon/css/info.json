@@ -1,0 +1,20 @@
+{
+    "AV": "1",
+    "id": "css",
+    "name": "CSS injector example",
+    "description": "Basic CSS injection",
+    "credits": [
+        {
+            "userID": -1,
+            "contributed": {
+                "code": -1
+            }
+        }
+    ],
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "a.js",
+        "background": "background.js"
+    }
+}
