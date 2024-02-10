@@ -9,14 +9,11 @@
 
 ## DevTools
 - [ ] Website that gives you the json file for `info.json` files and `user.json` files. Just like in [stio.studio meta](https://project.stio.studio/meta/)
-- [ ] 
 
 ## Addons
 - [ ] [`Future addons`](../addon/future/)
-- [ ] 
+- [ ] enable and disable
 
 ## Community
 - [ ] More community platforms
 - [ ] [Organize the discord server better](https://aioewa.stio.studio/discord)
-- [ ] 
-
