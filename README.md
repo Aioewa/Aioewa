@@ -15,7 +15,7 @@
     * [Send in bug reports](#send-in-bug-reports)
     * [Send in suggestions](#send-in-suggestions)
     * [Join the community](#join-the-community)
-    * [Fund Aioewa (not available at this time)](#fund-aioewa)
+    * [Fund Aioewa](#fund-aioewa)
 
 ## What is Aioewa?
 `Aioewa` aka `All in one extension with addons` is an extension that gives you tons of different addons/features that is made by the public. 
