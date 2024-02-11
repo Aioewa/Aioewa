@@ -4,7 +4,7 @@
     "description": [
         ["text", "A FPS monitor that displays the speed of all websites with awesome effect and simple dragging."],
         ["br"],
-        ["text", "Made by <a href=\"https://pod.stio.studio/\">programORdie</a>"]
+        ["text", "Made by <a href=\"https://pod.stio.studio/\" target=\"_blank\">programORdie</a>"]
       ],
     "credits": [
         {
