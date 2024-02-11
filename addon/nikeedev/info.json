@@ -10,6 +10,19 @@
             }
         }
     ],
+    "matches": [
+        "https://nikeedev.stio.studio"
+    ],
+    "settings": [
+        ["text", "Choose a theme:"],
+        ["options-dropdown", {
+            "name":"Themes",
+            "options": [
+                "Refresh",
+                "Old"
+            ]
+        }]
+    ],
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
