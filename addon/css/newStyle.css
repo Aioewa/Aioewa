@@ -1,0 +1,8 @@
+/* Basic restyling */
+
+body, html, main {
+    background-color: rgb(115, 0, 255) !important;
+}
+* {
+    font-family: 'Courier New', Courier, monospace !important;
+}
