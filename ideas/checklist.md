@@ -21,3 +21,4 @@
 
 ## Extra
 - [ ] user.json display
+- [ ] credit system and balancing 
