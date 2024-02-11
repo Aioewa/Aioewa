@@ -4,7 +4,7 @@
     "description": "The test addon. Not recommended to use. - #nikeedev. Changes theme on nikeedev.stio.studio",
     "credits": [
         {
-            "userID": 1,
+            "userID": 4,
             "contributed": {
                 "code": 20
             }
@@ -13,7 +13,6 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "onTab": "addon.js",
-        "background": "background.js"
+        "onTab": "code.js"
     }
 }
