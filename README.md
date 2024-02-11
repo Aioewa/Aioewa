@@ -8,7 +8,7 @@
     * [Get the folder](#get-the-folder)
         * [Git](#git)
         * [Manual download](#manual-download)
-    * [Load aioewa in to your browser](#load-aioewa-in-to-your-browser)
+    * [Load Aioewa into your browser](#load-aioewa-into-your-browser)
         * [Manual load](#manual-load)
 * [Contribute to Aioewa](#contribute-to-aioewa)
     * [Create/change the code](#createchange-the-code)

@@ -1,0 +1,31 @@
+{
+    "AV": "1",
+    "name": "Change theme on nikeedev.stio.studio",
+    "description": "The test addon. Not recommended to use. - #nikeedev. Changes theme on nikeedev.stio.studio",
+    "credits": [
+        {
+            "userID": 4,
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "matches": [
+        "https://nikeedev.stio.studio"
+    ],
+    "settings": [
+        ["text", "Choose a theme:"],
+        ["options-dropdown", {
+            "name":"Themes",
+            "options": [
+                "Refresh",
+                "Old"
+            ]
+        }]
+    ],
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "code.js"
+    }
+}
