@@ -1,0 +1,22 @@
+{
+    "AV": "1",
+    "name": "FPS Monitor",
+    "description": [
+        ["text", "A FPS monitor that displays the speed of all websites with awesome effect and simple dragging."],
+        ["br"],
+        ["text", "Made by <a href=\"https://pod.stio.studio/\">programORdie</a>"]
+      ],
+    "credits": [
+        {
+            "userID": 3,
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "tags": ["community", "FPS", "stats"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "index.js"
+    }
+}
