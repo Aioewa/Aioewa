@@ -82,6 +82,7 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = {self
         }
         update()
     })
+    
     return rem_a
 }
 export async function getScript(_url) {
@@ -140,6 +141,19 @@ export const storage = {
     },
     setAddonsEnabled(set) {
         chrome.storage.sync.set({addonsEnabled: set})
+    },
+
+
+    async getAddonSettings(_get = null) {
+        if (_get == null) {
+            return (await chrome.storage.sync.get("addonSettings")).addonSettings
+        }
+        else {
+            return (await chrome.storage.sync.get("addonSettings")).addonSettings[_get]
+        }
+    },
+    setAddonSettings(set) {
+        chrome.storage.sync.set({addonSettings: set})
     },
 }
 
