@@ -26,8 +26,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://*/*",
-        "http://*/*"
+        "*://*/*"
       ],
       "run_at": "document_start",
       "js": [
@@ -45,13 +44,12 @@
         "/asset/*"
       ],
       "matches": [
-        "https://*/*",
-        "http://*/*"
+        "*://*/*"
       ]
     }
   ],
   "host_permissions": [
-    "https://*/"
+    "*://*/"
   ],
   "browser_specific_settings": {
     "gecko": {
@@ -61,7 +59,7 @@
   },
   "externally_connectable": {
     "matches": [
-      "https://*/*"
+      "*://*/*"
     ]
   },
   "options_ui": {

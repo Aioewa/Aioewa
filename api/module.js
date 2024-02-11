@@ -40,7 +40,12 @@ export async function infoCodeRunner(_type, _info, _path, output = {self: true, 
         output.self == true ? delete output.self : output.self = rem_b
         output.console == true ? delete output.console : output.console = {..._realConsole, ...easyCreateConsole(_path, b)}
         // console.log(output)
-        rem_b[_type](output)
+        try {
+            rem_b[_type](output)
+        }
+        catch (error) {
+            console.error(`Function ${_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${b}`)}`)
+        }
     })
     await new Promise((resolve, reject) => {
         const update = ()=>{

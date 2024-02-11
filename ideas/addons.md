@@ -3,6 +3,8 @@
 * Number
 * Text
 * Color
+* Dropdown
+* Slider
 
 # Inject
 ```js

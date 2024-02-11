@@ -6,32 +6,18 @@
 //     })
 
 // })
-
-const addon = {
-    createElement(_name, _description, _id) {
-        let rem = document.createElement("div");
-        rem.insertAdjacentHTML("beforeend", `
-    <div class="addon addon-${_id}">
-        <label tabindex="0"  class="arrow"><input tabindex="-1" type="checkbox"></label>
-        <h3>${_name}</h3>
-        <div class="content">${_description}</div>
-        <label tabindex="0"  class="switch"><input tabindex="-1" type="checkbox"></label>
-    </div>
-        `)
-        rem = rem.querySelector(".addon")
-        return rem
-    },
-    createSettings(_id, {_enabled = false, _name} = {}) {
-        let rem = {
-            id: _id
-        }
-        rem.enabled = _enabled
-        _name != undefined ? rem.name = _name : undefined
-        return rem
-    },
-    createFullDefaultSettings(_addons) {
-
-    }
+function createElement(_name, _description, _id) {
+    let rem = document.createElement("div");
+    rem.insertAdjacentHTML("beforeend", `
+<div class="addon addon-${_id}">
+    <label tabindex="0"  class="arrow"><input tabindex="-1" type="checkbox"></label>
+    <h3>${_name}</h3>
+    <div class="content">${_description}</div>
+    <label tabindex="0"  class="switch"><input tabindex="-1" type="checkbox"></label>
+</div>
+    `)
+    rem = rem.querySelector(".addon")
+    return rem
 }
 // console.log(createAddonSettings("a", {_name: "hello there"}))
 const info = await aw.getInfo()
@@ -40,7 +26,7 @@ const enabled = await aw.storage.getAddonsEnabled()
 // console.log(aw)
 // console.log(enabled)
 info.forEach(async (e)=>{
-    const rem = addon.createElement(e.name, e.description, e.id)
+    const rem = createElement(e.name, e.description, e.id)
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")

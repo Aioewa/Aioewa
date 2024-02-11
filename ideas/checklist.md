@@ -22,3 +22,4 @@
 ## Extra
 - [ ] user.json display
 - [ ] credit system and balancing 
+- [ ] box shadow instead of :before and :after in `<nav>`

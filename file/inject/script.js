@@ -23,7 +23,6 @@ let addons = [];
                     return
                 }
                 const addon = {
-                    storage: chrome.storage,
                     chrome,
                     aw,
                     info,
