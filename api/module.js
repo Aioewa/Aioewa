@@ -8,6 +8,28 @@
 //     })
 // } 
 
+export async function getInfo(_url = null) {
+    const addons = await(await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
+    let rem = []
+    addons.forEach(async (e)=>{
+        const rem_a = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+        rem_a.id = e
+        rem.push(rem_a)
+    })
+    await new Promise(async (resolve, reject) => {  
+        const update = ()=>{
+            if(rem.length == addons.length) {
+                resolve(true)
+            }
+            else {
+                requestAnimationFrame(update)
+            }
+        }
+        update()
+
+    })
+    return rem
+}
 
 export async function infoCodeRunner(_type, _info, _path, output = {self: true, console: true}) {
     const rem = Array.isArray(_info) ? _info : [_info]

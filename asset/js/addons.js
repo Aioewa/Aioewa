@@ -34,17 +34,7 @@ const addon = {
     }
 }
 // console.log(createAddonSettings("a", {_name: "hello there"}))
-const info = []
-await new Promise(async (resolve, reject) => {  
-    const addons = await(await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
-    addons.forEach(async (e)=>{
-        info.push(await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`)))
-        if(e == addons[addons.length-1]) {
-            resolve(true)
-        }
-    })
-})
-
+const info = await aw.getInfo()
 let elements = {}
 const enabled = await aw.storage.getAddonsEnabled()
 // console.log(aw)
@@ -57,6 +47,7 @@ info.forEach(async (e)=>{
     const input = label.querySelector("input")
     elements[e.id] = {elm: rem, label: label, input: input}
 
+    console.log(e.id)
     try {
         input.checked = enabled[e.id]
     }

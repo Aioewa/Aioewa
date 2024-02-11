@@ -15,6 +15,7 @@ let addons = [];
         try {
             i++
             const info = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+            info.id = e
             if (info.AV == undefined) throw new Error("Missing AV property")
             if (info.AV == 1) {
                 if (enabled[e] != true) {
