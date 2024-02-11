@@ -27,9 +27,7 @@ let addons = [];
                     aw,
                     info,
                 };
-                if (info.code?.onTab != undefined) (async ()=>{const onTab = await aw.infoCodeRunner("onTab", info.code.onTab, e, {addon})})()
-                console.log("hi")
-
+                let onTab = await aw.infoCodeRunner(info, "onTab", info.code?.onTab, e, {addon})
             }
             addonsDoneLoading++
         } catch (error) {

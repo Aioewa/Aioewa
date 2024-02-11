@@ -14,6 +14,7 @@
 ## Addons
 - [ ] [`Future addons`](../addon/future/)
 - [x] enable and disable
+- [x] [`IF_`](../api/module.js)
 
 ## Community
 - [ ] More community platforms
@@ -23,3 +24,4 @@
 - [ ] user.json display
 - [ ] credit system and balancing 
 - [ ] box shadow instead of :before and :after in `<nav>`
+- [ ] Send in bug reports or suggestions {fix}

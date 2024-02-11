@@ -8,9 +8,12 @@
     "versionLastUpdated": "__DAOE_version-last-updated",
     "code": {
         "DAO": "DAO.js",
+        "IF_DAO": "__DAO_IF_DAO__",
         "DAOE": "DAO.js",
+        "IF_DAOE": "__DAO_IF_DAOE__",
         "onTab": "__DAO_onTab__",
         "IF_onTab": "__DAO_IF_onTab__",
-        "background": "__DAO_background__"
+        "background": "__DAO_background__",
+        "IF_background": "__DAO_IF_background__"
     }
 }

@@ -12,7 +12,8 @@
     ],
     "tags": ["community"],
     "code": {
-        "onTab": "code.js"
+        "onTab": ["code.js", "test.js"],
+        "IF_onTab": "addon.js"
     },
     "versionAdded": "1.0.0"
 }

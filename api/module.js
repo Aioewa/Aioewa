@@ -31,20 +31,43 @@ export async function getInfo(_url = null) {
     return rem
 }
 
-export async function infoCodeRunner(_type, _info, _path, output = {self: true, console: true}) {
-    const rem = Array.isArray(_info) ? _info : [_info]
+export async function infoCodeRunner(_info, _type, _input, _path, output = {self: true, console: true}) {
+    if(_input == undefined) return
+    // console.log(_info, _type, _input, _info.code["IF_"+_type])
+
+    const rem = Array.isArray(_input) ? _input : [_input]
     const rem_a = {}
     rem.forEach(async (b)=>{
-        const rem_b = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
-        rem_a[b] = rem_b
-        output.self == true ? delete output.self : output.self = rem_b
-        output.console == true ? delete output.console : output.console = {..._realConsole, ...easyCreateConsole(_path, b)}
-        // console.log(output)
-        try {
-            rem_b[_type](output)
+        let _output = output
+        let IF_;
+        let run = true
+        if (_info.code["IF_"+_type] != undefined) {
+            IF_ = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_"+_type]}`))
+            try {
+                run = await IF_["IF_"+_type]({output: _output, console, call: {path: b}})
+            }
+            catch (error) {
+                localConsole.error(`Function ${"IF_"+_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_"+_type]}`)}`)
+            }
         }
-        catch (error) {
-            console.error(`Function ${_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${b}`)}`)
+        // console.log(run)
+
+        if (run) {
+            const rem_b = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
+            rem_a[b] = rem_b
+            _output.self === true ? delete _output.self : _output.self = rem_b
+            _output.console == true ? delete _output.console : _output.console = {..._realConsole, ...easyCreateConsole(_path, b)}
+            // console.log(output)
+            
+            try {
+                rem_b[_type](_output)
+            }
+            catch (error) {
+                localConsole.error(`Function ${_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${b}`)}`)
+            }
+        }
+        else {
+            rem_a[b] = undefined
         }
     })
     await new Promise((resolve, reject) => {
@@ -98,8 +121,8 @@ export function easyCreateConsole(..._name) {
     }
 }
 const localConsole = {
-    log: createConsole.log(`api module`),
-    error: createConsole.error(`api module`),
+    log: createConsole.log(`api : module.js`),
+    error: createConsole.error(`api : module.js`),
 }
 
 // if(await(await chrome.storage.sync.get(null)).settings == undefined) {

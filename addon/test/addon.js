@@ -1,8 +1,4 @@
-export function tab({addon, tab, console}) {
-    return [
-        {
-            path: "code.js",
-            type: "js",
-        }
-    ]
+export async function IF_onTab({output, console, call}) {
+    return true
+    // return Math.round(Math.random())
 }
