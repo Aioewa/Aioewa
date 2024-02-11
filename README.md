@@ -89,4 +89,4 @@ You can either send a issue on GitHub or send a message/post to our community si
 [Discord](https://aioewa.stio.studio/discord)
 
 ### Fund Aioewa
-<a href="https://www.buymeacoffee.com/Aioewa" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-green.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+<a href="https://www.buymeacoffee.com/Aioewa" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
