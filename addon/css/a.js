@@ -1,4 +1,4 @@
-export function onTab({ addon, tab, console }) {
+export function onTab({ addon, tab, console}) {
     const url = chrome.runtime.getURL('addon/' + addon.info.id + '/newStyle.css'); // Load the style URL
 
     // v Add the style to the site

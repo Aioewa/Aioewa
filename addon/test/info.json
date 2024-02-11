@@ -11,5 +11,8 @@
         }
     ],
     "tags": ["community"],
+    "code": {
+        "onTab": "code.js"
+    },
     "versionAdded": "1.0.0"
 }

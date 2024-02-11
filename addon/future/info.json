@@ -10,6 +10,7 @@
         "DAO": "DAO.js",
         "DAOE": "DAO.js",
         "onTab": "__DAO_onTab__",
+        "IF_onTab": "__DAO_IF_onTab__",
         "background": "__DAO_background__"
     }
 }
