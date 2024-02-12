@@ -26,13 +26,15 @@ let addons = [];
                     chrome,
                     aw,
                     info,
-                    settings: new Proxy(await aw.storage.getAddonsSettings(e),{
-                        get: (target, string, receiver)=>{
-                            console.log(target, string, receiver)
+                };
+                const rem = await aw.storage.getAddonsSettings(e) || {}
+                if (rem != {}) {
+                    addon.settings = new Proxy(rem,{
+                        get: (target, string)=>{
                             return target[string]
                         }
-                    }),
-                };
+                    })
+                }
                 let onTab = await aw.infoCodeRunner(info, "onTab", info.code?.onTab, e, {addon})
             }
             addonsDoneLoading++

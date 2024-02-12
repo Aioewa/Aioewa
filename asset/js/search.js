@@ -3,8 +3,7 @@ let addons = null;
 function listAddons() {
     if (addons === null) {
         let _addons = []
-        addons = document.querySelector('iframe').contentWindow.document.body.querySelectorAll('.addon');
-        console.log(addons);
+        addons = document.querySelector('#addons-iframe').contentWindow.document.body.querySelectorAll('.addon');
         addons.forEach(e => {
             let content = e.querySelector('.content').querySelectorAll('span')
             content = Array.from(content)//.join(' ');
@@ -43,15 +42,12 @@ function search() {
     results.forEach(key => {
         data.push(key[1])
     });
-    console.log(data);
 
     addons.forEach(e => {
-        console.log(e.element);
         e.element.style.display = "none";
     });
     
     data.forEach(e => {
-        console.log(e.element);
         e.element.style.display = "grid";
     });
 }

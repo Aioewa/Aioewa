@@ -149,7 +149,7 @@ export const storage = {
             return (await chrome.storage.sync.get("addonSettings")).addonSettings
         }
         else {
-            return (await chrome.storage.sync.get("addonSettings")).addonSettings[_get]
+            return (await chrome.storage.sync.get("addonSettings")).addonSettings?.[_get]
         }
     },
     setAddonsSettings(set) {

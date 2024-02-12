@@ -26,7 +26,7 @@ async function changeOrAddSetting(insideOf, setting, value) {
 }
 const settingElements = {}
 async function createElement(_name, _description, _id, _storage) {
-    console.log(_storage)
+    // console.log(_storage)
     let _elements = document.createElement("div");
 
     if (!Array.isArray(_description)) {
@@ -168,14 +168,14 @@ info.forEach(async (e) => {
 })
 chrome.storage.sync.onChanged.addListener((e) => {
     const rem = Object.values(e)[0]
-    console.log(rem.newValue._addonChanged.type)
+    // console.log(rem.newValue._addonChanged.type)
     switch (rem.newValue._addonChanged.type) {
         case "addonsEnabled":
             // console.log(elements[rem.newValue._addonChanged.change[0]])
             elements[rem.newValue._addonChanged.change[0]] != undefined ? elements[rem.newValue._addonChanged.change[0]].input.checked = rem.newValue._addonChanged.change[1] : undefined
             break;
         case "addonsSettings":
-            console.log(settingElements[rem.newValue._addonChanged.change.value[0]].value, rem.newValue._addonChanged.change.value[1])
+            // console.log(settingElements[rem.newValue._addonChanged.change.value[0]].value, rem.newValue._addonChanged.change.value[1])
             if (settingElements[rem.newValue._addonChanged.change.value[0]] != undefined) {
                 settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
             }
