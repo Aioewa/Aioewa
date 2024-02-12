@@ -28,83 +28,12 @@ const settingElements = {}
 async function createElement(_name, _description, _id, _storage) {
     // console.log(_storage)
     let _elements = document.createElement("div");
-
     if (!Array.isArray(_description)) {
         const element = document.createElement("span");
         element.innerText = _description;
         _elements.append(element);
     } else {
-        _description.forEach((array) => {
-            let data = array[1];
-            // console.log(data);
-            let element;
-            switch (array[0]) {
-                case "text":
-                    element = document.createElement("span");
-                    element.innerText = data;
-                    _elements.append(element);
-                    break;
-                case "link":
-                    element = document.createElement("a");
-                    element.innerText = data.text;
-                    element.href = data.url;
-                    element.target = "_blank"
-                    _elements.append(element);
-                    break;
-                case "number":
-                    element = document.createElement("input");
-                    element.type = "number";
-                    element.id = data;
-                    element.addEventListener("input", async (e) => {
-                        await changeOrAddSetting(_id, data, element.value)
-                    })
-                    if(_storage?.[data] != undefined) {
-                        element.value = _storage[data]
-                    }
-                    _elements.append(element);
-                    settingElements[data] = element
-                    break;
-
-                case "field":
-                    element = document.createElement("input");
-                    element.type = "text";
-                    element.id = data;
-                    element.addEventListener("input", async (e) => {
-                        await changeOrAddSetting(_id, data, element.value)
-                    })
-                    if(_storage?.[data] != undefined) {
-                        element.value = _storage[data]
-                    }
-                    _elements.append(element);
-                    settingElements[data] = element
-                    break;
-
-                case "br":
-                    _elements.append(document.createElement("br"));
-                    break;
-
-                case "dropdown":                    
-                    element = document.createElement("select");
-                    element.id = data.name;
-                    element.addEventListener("input", async (e) => {
-                        await changeOrAddSetting(_id, data.name, element.value)
-                    })
-                    data.options.forEach((option) => {
-                        let temp = document.createElement("option");
-                        temp.value = option;
-                        temp.text = option;
-                        element.append(temp);
-                    });
-                    if(_storage?.[data.name] != undefined) {
-                        element.value = _storage[data.name]
-                    }
-                    _elements.append(element);
-                    settingElements[data.name] = element
-
-                default:
-                    // console.error("Description element unknown: %s", array[0]);
-                    break;
-            }
+ll            }
         });
     }
 

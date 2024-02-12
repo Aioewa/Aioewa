@@ -5,12 +5,15 @@
         "display name": "stio",
         "profile picture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
         "about": [
-            ["text",
-             "Hello there 😺"],
-            ["image",
-             "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif"],
-            ["text",
-             "I am STIO. The founder and developers of Aioewa."]
+            ["text", "Hello there 😺"],
+            ["br"],
+            ["image", {
+                "src": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
+                "height": 100,
+                "width": 100
+                }],
+            ["br"],
+            ["text", "I am STIO. The founder and developers of Aioewa."]
         ],
         "links": [
             {
