@@ -15,6 +15,7 @@
 - [ ] [`Future addons`](../addon/future/)
 - [x] enable and disable
 - [x] [`IF_`](../api/module.js)
+- [ ] default value on settings [reference](../addon/console.log/info.json)
 
 ## Community
 - [ ] More community platforms
