@@ -13,7 +13,8 @@
     "tags": ["community"],
     "code": {
         "onTab": ["code.js", "test.js"],
-        "IF_onTab": "addon.js"
+        "IF_onTab": "addon.js",
+        "css": "style.css"
     },
     "versionAdded": "1.0.0"
 }

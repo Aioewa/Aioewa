@@ -27,3 +27,4 @@
 - [ ] credit system and balancing 
 - [ ] box shadow instead of :before and :after in `<nav>`
 - [ ] Send in bug reports or suggestions {fix}
+- [ ] [docs](../docs/)
