@@ -44,6 +44,13 @@ async function createElement(_name, _description, _id, _storage) {
                     element.innerText = data;
                     _elements.append(element);
                     break;
+                case "link":
+                    element = document.createElement("a");
+                    element.innerText = data.text;
+                    element.href = data.url;
+                    element.target = "_blank"
+                    _elements.append(element);
+                    break;
                 case "number":
                     element = document.createElement("input");
                     element.type = "number";
