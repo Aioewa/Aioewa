@@ -72,7 +72,7 @@ function createElement(_name, _description, _id) {
     rem.insertAdjacentHTML("beforeend", `
 <div class="addon addon-${_id}">
     <label tabindex="0"  class="arrow"><input tabindex="-1" type="checkbox"></label>
-    <h3>${_name}</h3>
+    <h3 class="title">${_name}</h3>
     <div class="content">
     ${_elements.innerHTML
         }
