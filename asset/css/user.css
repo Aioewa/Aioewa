@@ -1,10 +1,23 @@
-body {
-    margin: 0;
-} 
-.content {
-    border-radius: 20px;
+module {
+    display: none;
+}
+html {
     height: 100%;
     width: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+} 
+.content {
+    --padding: 20px;
+    --gap: 10px;
+    gap: var(--gap);
+    padding: var(--padding);
+    border-radius: 30px;
+    height: calc(100% - var(--padding)*2);
+    width: calc(100% - var(--padding)*2);
     background-color: black;
     display: grid;
     grid-template-areas: 
@@ -12,21 +25,43 @@ body {
         "username profilePicture"
         "about about"
     ;
-    grid-template-rows: 10% 10% 80%;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: calc(100% - 100px - var(--padding) - var(--gap)) 100px;
+    grid-template-rows: 50px 40px calc(100% - 50px - 40px - var(--padding) - var(--gap));
+}
+@media screen and (max-width: 350px) {
+    .content {
+        grid-template-columns: calc(70% - var(--padding)) 30%;
+    }
+}
+.container-type-size {
+    container-type: size;
 }
 * {
     color: white;
 }
 .displayName {
     grid-area: displayName;
+    font-size: 35px;
 }
 .username {
     grid-area: username;
+    font-size: 25px;
+}
+.username * {
+    color: gray;
 }
 .profilePicture {
     grid-area: profilePicture;
+    max-height: 100%;
+    max-width: 100%;
+    right: 1/1;
+    background-color: gray;
+    border-radius: 20px;
 }
 .about {
+    background-color: gray;
     grid-area: about;
+    border-radius: 20px;
+    padding: var(--padding);
+    font-size: 3em;
 }

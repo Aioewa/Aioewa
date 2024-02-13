@@ -164,19 +164,21 @@ export const storage = {
         rem._addonChanged = {
             type: "addonsSettings",
             change: {
-                name: [insideOf], 
+                name: [insideOf],
                 value: [setting, value]
             }
         }
         aw.storage.setAddonsSettings(rem)
     }
-    
+
 }
 
 export const settingElements = {}
 
 export function fullParserCreator(input, _storage, _id) {
     let _elements = document.createElement("span");
+    _elements.style.display = "contents";
+    console.log(_elements)
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
         element.innerText = input;
@@ -184,11 +186,10 @@ export function fullParserCreator(input, _storage, _id) {
     } else {
         input.forEach((array) => {
             const rem_a = parserCreator(array, _storage, _id)
-            // console.log(rem_a)
             _elements.append(rem_a.element)
             if (rem_a.data != undefined) {
                 settingElements[rem_a.data] = rem_a.element
-            }        
+            }
         });
     }
     return _elements
@@ -197,99 +198,107 @@ export function fullParserCreator(input, _storage, _id) {
 export function parserCreator(part, _storage, _id) {
     let data = part[1];
     let element;
-    const output = (()=>{
-    switch (part[0]) {
-        case "text":
-            element = document.createElement("span");
-            element.innerText = data;
-            return ({
-                element,
-            });
-            break;
-        case "link":
-            element = document.createElement("a");
-            element.innerText = data.text;
-            element.href = data.url;
-            element.target = "_blank"
-            return ({
-                element,
-            });
-            break;
-        case "number":
-            element = document.createElement("input");
-            element.type = "number";
-            element.id = data;
-            element.addEventListener("input", async (e) => {
-                await storage.changeOrAddSetting(_id, data, element.value)
-            })
-            if (_storage?.[data] != undefined) {
-                element.value = _storage[data]
-            }
-            return ({
-                element,
-                data
-            });
-            break;
+    const output = (() => {
+        switch (part[0]) {
+            case "text":
+                element = document.createElement("span");
+                element.innerText = data;
+                return ({
+                    element,
+                });
+                break;
+            case "link":
+                element = document.createElement("a");
+                element.innerText = data.text;
+                element.href = data.url;
+                element.target = "_blank"
+                return ({
+                    element,
+                });
+                break;
+            case "number":
+                element = document.createElement("input");
+                element.type = "number";
+                element.id = data;
+                element.addEventListener("input", async (e) => {
+                    await storage.changeOrAddSetting(_id, data, element.value)
+                })
+                if (_storage?.[data] != undefined) {
+                    element.value = _storage[data]
+                }
+                return ({
+                    element,
+                    data
+                });
+                break;
 
-        case "field":
-            element = document.createElement("input");
-            element.type = "text";
-            element.id = data;
-            element.addEventListener("input", async (e) => {
-                await storage.changeOrAddSetting(_id, data, element.value)
-            })
-            if (_storage?.[data] != undefined) {
-                element.value = _storage[data]
-            }
-            return ({
-                element,
-                data
-            });
-            break;
+            case "field":
+                element = document.createElement("input");
+                element.type = "text";
+                element.id = data;
+                element.addEventListener("input", async (e) => {
+                    await storage.changeOrAddSetting(_id, data, element.value)
+                })
+                if (_storage?.[data] != undefined) {
+                    element.value = _storage[data]
+                }
+                return ({
+                    element,
+                    data
+                });
+                break;
 
-        case "br":
-            return ({
-                element: document.createElement("br"),
-            });
-            break;
+            case "br":
+                return ({
+                    element: document.createElement("br"),
+                });
+                break;
 
-        case "dropdown":
-            element = document.createElement("select");
-            element.id = data.name;
-            element.addEventListener("input", async (e) => {
-                await storage.changeOrAddSetting(_id, data.name, element.value)
-            })
-            data.options.forEach((option) => {
-                let temp = document.createElement("option");
-                temp.value = option;
-                temp.text = option;
-                element.append(temp);
-            });
-            if (_storage?.[data.name] != undefined) {
-                element.value = _storage[data.name]
-            }
-            return ({
-                element,
-                data: data.name
-            });
-        case "image":
-            element = document.createElement("img");
-            element.src = data.src
-            element.height = data.height
-            element.width = data.width
-            return ({
-                element,
-            });
-            break;
+            case "dropdown":
+                element = document.createElement("select");
+                element.id = data.name;
+                element.addEventListener("input", async (e) => {
+                    await storage.changeOrAddSetting(_id, data.name, element.value)
+                })
+                data.options.forEach((option) => {
+                    let temp = document.createElement("option");
+                    temp.value = option;
+                    temp.text = option;
+                    element.append(temp);
+                });
+                if (_storage?.[data.name] != undefined) {
+                    element.value = _storage[data.name]
+                }
+                return ({
+                    element,
+                    data: data.name
+                });
+            case "img":
+                element = document.createElement("img");
+                element.src = data.src
+                console.log(data.height)
+                if(data.height != undefined) element.style.height = typeof data.height === "number" ? data.height+"px" : data.height
+                if(data.width != undefined) element.style.width = typeof data.width === "number" ? data.width+"px" : data.width
+                if(data.ratio != undefined) element.style.aspectRatio = data.ratio
+                return ({
+                    element,
+                });
+                break;
+            case "span":
+                return ({
+                    element: document.createElement("span"),
+                });
+                break;
 
-        default:
-            element = document.createElement("span");
-            element.innerText = " ERROR ";
-            return ({
-                element,
-            });
-            break;
-    }
+
+            default:
+                element = document.createElement("span");
+                element.innerText = " ERROR ";
+                return ({
+                    element,
+                });
+                break;
+        }
     })()
     if (data?.id != undefined) {
         output.element.id = data.id;

@@ -20,6 +20,7 @@ function listAddons() {
 
 function search() {
     listAddons();
+    // console.log(addons)
     let query = document.getElementById('search').value;
     query = query.replace('.', '');
     query = query.replace(',', '');
@@ -52,4 +53,4 @@ function search() {
     });
 }
 
-document.getElementById('search').addEventListener('keyup', search, false);
+document.getElementById('search').addEventListener('input', search, false);

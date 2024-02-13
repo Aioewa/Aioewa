@@ -12,51 +12,68 @@
                 "text": ""
                 },
                 [
-                    ["image", {
+                    ["img", {
                             "src": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
-                            "height": 100,
-                            "width": 100
+                            "height": "2em",
+                            "ratio": "1/1"
                         }
                     ]
                 ]
             ],
             ["br"],
-            ["text", "I am STIO. The founder and developer of Aioewa."]
-        ],
-        "links": [
-            {
-                "display": ["img"],
-                "link": "https://stio.studio",
-                "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
-                "img alt": "stio.studio"
-            },
-            {
-                "display": ["text"],
-                "link": "hello@stio.studio",
+            ["text", "I am STIO. The founder and developer of Aioewa."],
+            ["br"],
+            ["br"],
+            ["br"],
+            ["text", "Links:"],
+            ["br"],
+            ["link", {
+                "url": "https://stio.studio",
+                "text": ""
+                },
+                [
+                    ["img", {
+                        "src": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
+                        "height": "1em",
+                        "ratio": "1/1"
+                    }],
+                    ["text", "stio.studio"]
+                ]
+            ],
+            ["text", " - "],
+            ["link", {
+                "url": "mailto:hello@stio.studio",
                 "text": "E-mail"
-            },
-            {
-                "display": ["text"],
-                "link": "https://discord.gg/cTvvmszQH",
+            }],
+            ["text", " - "],
+            ["link", {
+                "url": "https://discord.gg/cTvvmszQH",
                 "text": "Discord"
-            },
-            {
-                "display": ["text"],
-                "link": "https://youtube.com/@stio_studio",
+            }],
+            ["text", " - "],
+            ["link", {
+                "url": "https://youtube.com/@stio_studio",
                 "text": "YouTube"
-            },
-            {
-                "display": ["img", "text"],
-                "link": "https://github.com/StioStudio/",
-                "text": "GitHub",
-                "img": "asset/icons/github.png",
-                "img alt": "github icon"
-            },
-            {
-                "display": ["text"],
-                "link": "https://scratch.mit.edu/users/stio_studio",
+            }],
+            ["text", " - "],
+            ["link", {
+                "url": "https://github.com/StioStudio/",
+                "text": ""
+                },
+                [
+                    ["img", {
+                        "src": "/asset/icons/github.png",
+                        "height": 20,
+                        "ratio": "1/1"
+                    }],
+                    ["text", "GitHub"]
+                ]
+            ],
+            ["text", " - "],
+            ["link", {
+                "url": "https://scratch.mit.edu/users/stio_studio",
                 "text": "Scratch"
-            }
+            }]
         ]
     },
     {

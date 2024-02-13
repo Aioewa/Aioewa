@@ -26,7 +26,7 @@ async function createElement(_name, _description, _id, _storage) {
     `)
     rem = rem.querySelector(".addon")
     _elements.className = "content"
-    rem.querySelector(".content").replaceWith(_elements)
+    rem.querySelector(".content").append(_elements)
     return rem
 }
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
