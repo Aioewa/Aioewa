@@ -3,18 +3,32 @@
   "name": "Change theme on nikeedev's website",
   "description": [
     ["text", "Changes the theme on the "],
-    ["link", {
-      "text": "nikeedev.stio.studio",
-      "url": "https://nikeedev.stio.studio"
-    }],
-    ["text", " website, to a new, more refreshed style. Used also for testing purposes, so if you see that it isnt changing the theme"],
+    [
+      "link",
+      {
+        "text": "nikeedev.stio.studio",
+        "url": "https://nikeedev.stio.studio"
+      }
+    ],
+    [
+      "text",
+      " website, to their previous styles. Used also for testing purposes, so if you see that it isnt changing the theme"
+    ],
     ["br"],
     ["text", "Choose a theme:"],
     [
       "dropdown",
       {
         "name": "themes",
-        "options": ["Refresh", "Old"]
+        "options": [
+          "None",
+          "\"IDK, but it looks nice\" theme",
+          "The new old (Gruvbox)",
+          "Old",
+          "Vintage",
+          "Purple",
+          "Sunset"
+        ]
       }
     ]
   ],
