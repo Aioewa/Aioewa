@@ -1,7 +1,7 @@
 {
     "AV": "1",
     "name": "CSS injector example",
-    "description": "Basic CSS injection",
+    "description": ["Basic CSS injection"],
     "credits": [
         {
             "userID": 3,

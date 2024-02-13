@@ -1,12 +1,13 @@
 {
   "AV": "1",
-  "name": "Change theme on nikeedev.stio.studio",
+  "name": "Change theme on nikeedev's website",
   "description": [
-    ["text", "The test addon. Not recommended to use. - #nikeedev. Changes theme on "],
+    ["text", "Changes the theme on the "],
     ["link", {
       "text": "nikeedev.stio.studio",
       "url": "https://nikeedev.stio.studio"
     }],
+    ["text", " website, to a new, more refreshed style. Used also for testing purposes, so if you see that it isnt changing the theme"],
     ["br"],
     ["text", "Choose a theme:"],
     [

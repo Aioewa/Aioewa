@@ -1,3 +1,3 @@
 export async function IF_onTab({output, console, call}) {
-    return location.hostname == "nikeedev.stio.studio"
+    return window.location.hostname == "nikeedev.stio.studio";
 }
