@@ -13,6 +13,8 @@
         "IF_DAOE": "__DAO_IF_DAOE__",
         "onTab": "__DAO_onTab__",
         "IF_onTab": "__DAO_IF_onTab__",
+        "css": "__DAO_css__",
+        "IF_css": "__DAO_IF_css__",
         "background": "__DAO_background__",
         "IF_background": "__DAO_IF_background__"
     }

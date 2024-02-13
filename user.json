@@ -1,16 +1,27 @@
 [
     {
-        "user ID": 1,
-        "user name": "stio_studio",
-        "display name": "stio",
-        "profile picture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
+        "userID": 1,
+        "username": "stio_studio",
+        "displayName": "stio",
+        "profilePicture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
         "about": [
-            ["text",
-             "Hello there 😺"],
-            ["image",
-             "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif"],
-            ["text",
-             "I am STIO. The founder and developers of Aioewa."]
+            ["text", "Hello there 😺"],
+            ["br"],
+            ["link", {
+                "url": "https://stio.studio",
+                "text": ""
+                },
+                [
+                    ["image", {
+                            "src": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
+                            "height": 100,
+                            "width": 100
+                        }
+                    ]
+                ]
+            ],
+            ["br"],
+            ["text", "I am STIO. The founder and developer of Aioewa."]
         ],
         "links": [
             {

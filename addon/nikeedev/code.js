@@ -1,4 +1,5 @@
 export async function onTab({ addon, tab, console }) {
+
     let themes = (await (await addon.chrome.storage.sync.get().valueOf()));
     console.log("running only on nikeedev.stio.studio");
 

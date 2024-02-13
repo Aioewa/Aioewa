@@ -1,7 +1,11 @@
 {
     "AV": "1",
-    "name": "Hello there 😺",
-    "description": "Log a 'Hello there 😺' in the console!",
+    "name": "log(Hello there 😺)",
+    "description": [
+        ["text", "Log a 'Hello there 😺' or something else in the console!"],
+        ["br"],
+        ["field", "log"]
+    ],
     "credits": [
         {
             "userID": 1,

@@ -18,7 +18,7 @@ let addons = [];
             info.id = e
             if (info.AV == undefined) throw new Error("Missing AV property")
             if (info.AV == 1) {
-                if (enabled[e] != true) {
+                if (enabled?.[e] != true) {
                     addonsDoneLoading++
                     return
                 }
@@ -27,6 +27,14 @@ let addons = [];
                     aw,
                     info,
                 };
+                const rem = await aw.storage.getAddonsSettings(e) || {}
+                if (rem != {}) {
+                    addon.settings = new Proxy(rem,{
+                        get: (target, string)=>{
+                            return target[string]
+                        }
+                    })
+                }
                 let onTab = await aw.infoCodeRunner(info, "onTab", info.code?.onTab, e, {addon})
             }
             addonsDoneLoading++

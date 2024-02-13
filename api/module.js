@@ -9,16 +9,16 @@
 // } 
 
 export async function getInfo(_url = null) {
-    const addons = await(await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
+    const addons = await (await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
     let rem = []
-    addons.forEach(async (e)=>{
+    addons.forEach(async (e) => {
         const rem_a = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
         rem_a.id = e
         rem.push(rem_a)
     })
-    await new Promise(async (resolve, reject) => {  
-        const update = ()=>{
-            if(rem.length == addons.length) {
+    await new Promise(async (resolve, reject) => {
+        const update = () => {
+            if (rem.length == addons.length) {
                 resolve(true)
             }
             else {
@@ -31,23 +31,23 @@ export async function getInfo(_url = null) {
     return rem
 }
 
-export async function infoCodeRunner(_info, _type, _input, _path, output = {self: true, console: true}) {
-    if(_input == undefined) return
+export async function infoCodeRunner(_info, _type, _input, _path, output = { self: true, console: true }) {
+    if (_input == undefined) return
     // console.log(_info, _type, _input, _info.code["IF_"+_type])
 
     const rem = Array.isArray(_input) ? _input : [_input]
     const rem_a = {}
-    rem.forEach(async (b)=>{
+    rem.forEach(async (b) => {
         let _output = output
         let IF_;
         let run = true
-        if (_info.code["IF_"+_type] != undefined) {
-            IF_ = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_"+_type]}`))
+        if (_info.code["IF_" + _type] != undefined) {
+            IF_ = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`))
             try {
-                run = await IF_["IF_"+_type]({output: _output, console, call: {path: b}})
+                run = await IF_["IF_" + _type]({ output: _output, console, call: { path: b } })
             }
             catch (error) {
-                localConsole.error(`Function ${"IF_"+_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_"+_type]}`)}`)
+                localConsole.error(`Function ${"IF_" + _type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`)}`)
             }
         }
         // console.log(run)
@@ -56,9 +56,9 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = {self
             const rem_b = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
             rem_a[b] = rem_b
             _output.self === true ? delete _output.self : _output.self = rem_b
-            _output.console == true ? delete _output.console : _output.console = {..._realConsole, ...easyCreateConsole(_path, b)}
+            _output.console == true ? delete _output.console : _output.console = { ..._realConsole, ...easyCreateConsole(_path, b) }
             // console.log(output)
-            
+
             try {
                 rem_b[_type](_output)
             }
@@ -71,7 +71,7 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = {self
         }
     })
     await new Promise((resolve, reject) => {
-        const update = ()=>{
+        const update = () => {
             // console.log(rem, Object.keys(rem_a))
             if (rem.length == Object.keys(rem_a).length) {
                 resolve(addons)
@@ -82,7 +82,7 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = {self
         }
         update()
     })
-    
+
     return rem_a
 }
 export async function getScript(_url) {
@@ -96,11 +96,11 @@ export async function getJSON(_url) {
 export const _realConsole = console
 export const consoleOutput = (logAuthor = "[page]") => {
     const style = {
-      // Remember to change these as well on cs.js
-      leftPrefix: "background:  #055b50; color: white; border-radius: 0.5rem 0 0 0.5rem; padding: 0 0.5rem",
-      rightPrefix:
-        "background: #222; color: white; border-radius: 0 0.5rem 0.5rem 0; padding: 0 0.5rem; font-weight: bold",
-      text: "",
+        // Remember to change these as well on cs.js
+        leftPrefix: "background:  #055b50; color: white; border-radius: 0.5rem 0 0 0.5rem; padding: 0 0.5rem",
+        rightPrefix:
+            "background: #222; color: white; border-radius: 0 0.5rem 0.5rem 0; padding: 0 0.5rem; font-weight: bold",
+        text: "",
     };
     return [`%cAioewa%c${logAuthor}%c`, style.leftPrefix, style.rightPrefix, style.text];
 }
@@ -112,7 +112,7 @@ export const createConsole = {
 export function easyCreateConsole(..._name) {
     let rem = `${_name[0]}`;
     _name.shift()
-    _name.forEach((e)=>{
+    _name.forEach((e) => {
         rem += ` : ${e}`
     })
     return {
@@ -140,21 +140,170 @@ export const storage = {
         }
     },
     setAddonsEnabled(set) {
-        chrome.storage.sync.set({addonsEnabled: set})
+        chrome.storage.sync.set({ addonsEnabled: set })
     },
 
 
-    async getAddonSettings(_get = null) {
+    async getAddonsSettings(_get = null) {
         if (_get == null) {
             return (await chrome.storage.sync.get("addonSettings")).addonSettings
         }
         else {
-            return (await chrome.storage.sync.get("addonSettings")).addonSettings[_get]
+            return (await chrome.storage.sync.get("addonSettings")).addonSettings?.[_get]
         }
     },
-    setAddonSettings(set) {
-        chrome.storage.sync.set({addonSettings: set})
+    setAddonsSettings(set) {
+        chrome.storage.sync.set({ addonSettings: set })
     },
+    async changeOrAddSetting(insideOf, setting, value) {
+        const rem = await aw.storage.getAddonsSettings() || {}
+        if (rem?.[insideOf] == undefined) {
+            rem[insideOf] = {}
+        }
+        rem[insideOf][setting] = value
+        rem._addonChanged = {
+            type: "addonsSettings",
+            change: {
+                name: [insideOf], 
+                value: [setting, value]
+            }
+        }
+        aw.storage.setAddonsSettings(rem)
+    }
+    
+}
+
+export const settingElements = {}
+
+export function fullParserCreator(input, _storage, _id) {
+    let _elements = document.createElement("span");
+    if (!Array.isArray(input)) {
+        const element = document.createElement("span");
+        element.innerText = input;
+        _elements.append(element);
+    } else {
+        input.forEach((array) => {
+            const rem_a = parserCreator(array, _storage, _id)
+            // console.log(rem_a)
+            _elements.append(rem_a.element)
+            if (rem_a.data != undefined) {
+                settingElements[rem_a.data] = rem_a.element
+            }        
+        });
+    }
+    return _elements
+}
+
+export function parserCreator(part, _storage, _id) {
+    let data = part[1];
+    let element;
+    const output = (()=>{
+    switch (part[0]) {
+        case "text":
+            element = document.createElement("span");
+            element.innerText = data;
+            return ({
+                element,
+            });
+            break;
+        case "link":
+            element = document.createElement("a");
+            element.innerText = data.text;
+            element.href = data.url;
+            element.target = "_blank"
+            return ({
+                element,
+            });
+            break;
+        case "number":
+            element = document.createElement("input");
+            element.type = "number";
+            element.id = data;
+            element.addEventListener("input", async (e) => {
+                await storage.changeOrAddSetting(_id, data, element.value)
+            })
+            if (_storage?.[data] != undefined) {
+                element.value = _storage[data]
+            }
+            return ({
+                element,
+                data
+            });
+            break;
+
+        case "field":
+            element = document.createElement("input");
+            element.type = "text";
+            element.id = data;
+            element.addEventListener("input", async (e) => {
+                await storage.changeOrAddSetting(_id, data, element.value)
+            })
+            if (_storage?.[data] != undefined) {
+                element.value = _storage[data]
+            }
+            return ({
+                element,
+                data
+            });
+            break;
+
+        case "br":
+            return ({
+                element: document.createElement("br"),
+            });
+            break;
+
+        case "dropdown":
+            element = document.createElement("select");
+            element.id = data.name;
+            element.addEventListener("input", async (e) => {
+                await storage.changeOrAddSetting(_id, data.name, element.value)
+            })
+            data.options.forEach((option) => {
+                let temp = document.createElement("option");
+                temp.value = option;
+                temp.text = option;
+                element.append(temp);
+            });
+            if (_storage?.[data.name] != undefined) {
+                element.value = _storage[data.name]
+            }
+            return ({
+                element,
+                data: data.name
+            });
+        case "image":
+            element = document.createElement("img");
+            element.src = data.src
+            element.height = data.height
+            element.width = data.width
+            return ({
+                element,
+            });
+            break;
+
+        default:
+            element = document.createElement("span");
+            element.innerText = " ERROR ";
+            return ({
+                element,
+            });
+            break;
+    }
+    })()
+    if (data?.id != undefined) {
+        output.element.id = data.id;
+    }
+    if (data?.class != undefined) {
+        output.element.className = data.class;
+    }
+    if (data?.default != undefined) {
+        output.element = data.default;
+    }
+    if (part[2] != undefined) {
+        output.element.append(fullParserCreator(part[2]))
+    }
+    return output
 }
 
 // storage.raw.hello = "aosfjoaihh"
