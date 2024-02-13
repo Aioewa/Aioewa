@@ -2,7 +2,7 @@
   "AV": "1",
   "name": "Change theme on nikeedev's website",
   "description": [
-    ["text", "Changes the theme on the"],
+    ["text", "Changes the theme on the "],
     ["link", {
       "text": "nikeedev.stio.studio",
       "url": "https://nikeedev.stio.studio"
