@@ -1,9 +1,9 @@
 export async function onTab({ addon, tab, console }) {
 
-    let themes = (await (await addon.chrome.storage.sync.get().valueOf()));
+    // console.log(addon.settings?.themes)
     console.log("running only on nikeedev.stio.studio");
 
-    switch (themes.addonSettings.themes) {
+    switch (addon.settings?.themes) {
         case 'Refresh':
             document.documentElement.style.setProperty("--main-color", "rgb(98, 113, 247)");
             document.documentElement.style.setProperty("--back-color", "#282828");
