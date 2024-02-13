@@ -9,34 +9,8 @@
 
 // let settings_id = [];
 
-async function changeOrAddSetting(insideOf, setting, value) {
-    const rem = await aw.storage.getAddonsSettings() || {}
-    if (rem?.[insideOf] == undefined) {
-        rem[insideOf] = {}
-    }
-    rem[insideOf][setting] = value
-    rem._addonChanged = {
-        type: "addonsSettings",
-        change: {
-            name: [insideOf], 
-            value: [setting, value]
-        }
-    }
-    aw.storage.setAddonsSettings(rem)
-}
-const settingElements = {}
 async function createElement(_name, _description, _id, _storage) {
-    // console.log(_storage)
-    let _elements = document.createElement("div");
-    if (!Array.isArray(_description)) {
-        const element = document.createElement("span");
-        element.innerText = _description;
-        _elements.append(element);
-    } else {
-ll            }
-        });
-    }
-
+    let _elements = aw.fullParserCreator(_description, _storage, _id)
 
     let rem = document.createElement("div");
 
@@ -112,8 +86,8 @@ chrome.storage.sync.onChanged.addListener((e) => {
             break;
         case "addonsSettings":
             // console.log(settingElements[rem.newValue._addonChanged.change.value[0]].value, rem.newValue._addonChanged.change.value[1])
-            if (settingElements[rem.newValue._addonChanged.change.value[0]] != undefined) {
-                settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
+            if (aw.settingElements[rem.newValue._addonChanged.change.value[0]] != undefined) {
+                aw.settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
             }
             break;
     

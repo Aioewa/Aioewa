@@ -155,31 +155,49 @@ export const storage = {
     setAddonsSettings(set) {
         chrome.storage.sync.set({ addonSettings: set })
     },
+    async changeOrAddSetting(insideOf, setting, value) {
+        const rem = await aw.storage.getAddonsSettings() || {}
+        if (rem?.[insideOf] == undefined) {
+            rem[insideOf] = {}
+        }
+        rem[insideOf][setting] = value
+        rem._addonChanged = {
+            type: "addonsSettings",
+            change: {
+                name: [insideOf], 
+                value: [setting, value]
+            }
+        }
+        aw.storage.setAddonsSettings(rem)
+    }
+    
 }
 
-export function fullParserCreator(input, _storage) {
-    let _elements = document.createElement("div");
+export const settingElements = {}
+
+export function fullParserCreator(input, _storage, _id) {
+    let _elements = document.createElement("span");
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
         element.innerText = input;
         _elements.append(element);
     } else {
         input.forEach((array) => {
-            const rem_a = parserCreator(array, _storage)
-            console.log(rem_a)
+            const rem_a = parserCreator(array, _storage, _id)
+            // console.log(rem_a)
             _elements.append(rem_a.element)
             if (rem_a.data != undefined) {
                 settingElements[rem_a.data] = rem_a.element
-            }
+            }        
         });
     }
     return _elements
 }
 
-export function parserCreator(part, _storage) {
+export function parserCreator(part, _storage, _id) {
     let data = part[1];
-    // console.log(data);
     let element;
+    const output = (()=>{
     switch (part[0]) {
         case "text":
             element = document.createElement("span");
@@ -202,7 +220,7 @@ export function parserCreator(part, _storage) {
             element.type = "number";
             element.id = data;
             element.addEventListener("input", async (e) => {
-                await changeOrAddSetting(_id, data, element.value)
+                await storage.changeOrAddSetting(_id, data, element.value)
             })
             if (_storage?.[data] != undefined) {
                 element.value = _storage[data]
@@ -218,7 +236,7 @@ export function parserCreator(part, _storage) {
             element.type = "text";
             element.id = data;
             element.addEventListener("input", async (e) => {
-                await changeOrAddSetting(_id, data, element.value)
+                await storage.changeOrAddSetting(_id, data, element.value)
             })
             if (_storage?.[data] != undefined) {
                 element.value = _storage[data]
@@ -239,7 +257,7 @@ export function parserCreator(part, _storage) {
             element = document.createElement("select");
             element.id = data.name;
             element.addEventListener("input", async (e) => {
-                await changeOrAddSetting(_id, data.name, element.value)
+                await storage.changeOrAddSetting(_id, data.name, element.value)
             })
             data.options.forEach((option) => {
                 let temp = document.createElement("option");
@@ -255,7 +273,6 @@ export function parserCreator(part, _storage) {
                 data: data.name
             });
         case "image":
-            console.log(data)
             element = document.createElement("img");
             element.src = data.src
             element.height = data.height
@@ -273,6 +290,14 @@ export function parserCreator(part, _storage) {
             });
             break;
     }
+    })()
+    if (data?.default !== undefined) {
+        output.element = data.default;
+    }
+    if (part[2] != undefined) {
+        output.element.append(fullParserCreator(part[2]))
+    }
+    return output
 }
 
 // storage.raw.hello = "aosfjoaihh"
