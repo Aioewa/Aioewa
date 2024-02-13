@@ -291,7 +291,13 @@ export function parserCreator(part, _storage, _id) {
             break;
     }
     })()
-    if (data?.default !== undefined) {
+    if (data?.id != undefined) {
+        output.element.id = data.id;
+    }
+    if (data?.class != undefined) {
+        output.element.className = data.class;
+    }
+    if (data?.default != undefined) {
         output.element = data.default;
     }
     if (part[2] != undefined) {

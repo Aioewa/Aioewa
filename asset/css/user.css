@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+} 
+.content {
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: grid;
+    grid-template-areas: 
+        "displayName profilePicture"
+        "username profilePicture"
+        "about about"
+    ;
+    grid-template-rows: 10% 10% 80%;
+    grid-template-columns: 80% 20%;
+}
+* {
+    color: white;
+}
+.displayName {
+    grid-area: displayName;
+}
+.username {
+    grid-area: username;
+}
+.profilePicture {
+    grid-area: profilePicture;
+}
+.about {
+    grid-area: about;
+}

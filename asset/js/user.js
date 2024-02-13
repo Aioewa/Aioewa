@@ -1,13 +1,13 @@
 const [rem] = await aw.getJSON("../../user.json")
 // console.log(rem.about);
 function br() {
-    document.documentElement.append(document.createElement("br"));
+    document.body.append(document.createElement("br"));
 }
-document.documentElement.append(aw.fullParserCreator(rem.displayName));
+document.body.append(aw.fullParserCreator(rem.displayName));
 br()
-document.documentElement.append(aw.fullParserCreator("@" + rem.username));
+document.body.append(aw.fullParserCreator("@" + rem.username));
 br()
-document.documentElement.append(aw.parserCreator(
+document.body.append(aw.parserCreator(
     ["image", {
         "src": rem.profilePicture,
         "height": 100,
@@ -15,4 +15,4 @@ document.documentElement.append(aw.parserCreator(
     }]
 ).element);
 br()
-document.documentElement.append(aw.fullParserCreator(rem.about));
+document.body.append(aw.fullParserCreator(rem.about));
