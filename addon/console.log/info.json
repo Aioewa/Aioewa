@@ -17,7 +17,6 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "onTab": "a.js",
-        "background": "background.js"
+        "onTab": "a.js"
     }
 }

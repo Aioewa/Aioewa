@@ -1,9 +1,10 @@
+// Might delete this file
+
+export async function inject() {
 let addons = [];
 (async () => {
-    const [aw] = await Promise.all([
-        import(chrome.runtime.getURL("../../api/module.js"))
-    ])
     const console = aw.easyCreateConsole("Inject script")
+    console.log(aw)
     console.log("Aioewa inject START")
     let i = -1;
     const json = await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json"))
@@ -56,3 +57,4 @@ let addons = [];
     })
     console.log("Aioewa inject END")
 })()
+}

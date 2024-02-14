@@ -31,6 +31,20 @@ export async function getInfo(_url = null) {
     return rem
 }
 
+export async function infoListenerGetter(_addonsEnabled, _func) {
+    Object.keys(_addonsEnabled).forEach(async (e) => {
+        if (!_addonsEnabled[e]) return
+        try {
+            const rem_a = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+            rem_a.id = e
+            _func(rem_a)
+        }
+        catch (error) {
+            localConsole.error(chrome.runtime.getURL(`../../addon/${e}/info.json`), "could not be loaded\nReason:", error)
+        }
+    })
+}
+
 export async function infoCodeRunner(_info, _type, _input, _path, output = { self: true, console: true }) {
     if (_input == undefined) return
     // console.log(_info, _type, _input, _info.code["IF_"+_type])
@@ -89,6 +103,11 @@ export async function getScript(_url) {
     return (await Promise.all([
         import(_url)
     ]))[0];
+}
+export async function scriptListenerGetter(_root, _urls, _func) {
+    _urls.forEach(e => {
+        getScript(`${_root}/${e}`).then(_func)
+    });
 }
 export async function getJSON(_url) {
     return (await fetch(_url)).json();
@@ -178,6 +197,7 @@ export const settingElements = {}
 export function fullParserCreator(input, _storage, _id) {
     let _elements = document.createElement("span");
     _elements.style.display = "contents";
+    
     console.log(_elements)
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
