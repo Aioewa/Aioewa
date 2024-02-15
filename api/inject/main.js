@@ -3,12 +3,11 @@
 // This is so that the json files don't have to be fetched 2 times. So it is for optimization.
 
 Promise.all([
-    import(chrome.runtime.getURL("../../api/module.js")),
-    import(chrome.runtime.getURL("../../api/inject/script.js")),
-    import(chrome.runtime.getURL("../../api/inject/style.js")),
-]).then(([aw, script, style])=>{
+    import(chrome.runtime.getURL("../../api/module.js"))
+]).then(([aw])=>{
     globalThis.aw = aw
     globalThis.addonRootUrl = chrome.runtime.getURL("/addon/")
+    // const IF_ = {}
     Promise.all([
         aw.storage.getAddonsEnabled(),
         aw.storage.getAddonsSettings(),
@@ -20,8 +19,9 @@ Promise.all([
             // console.log(typeof e?.code == "object")
             if (typeof info?.code == "object") {
                 Object.keys(info.code).forEach(async (a)=>{
+                    if(a.slice(0, 3) == "IF_") return
                     if (!Array.isArray(info.code[a])) info.code[a] = [info.code[a]]
-                    aw.scriptListenerGetter(addonRootUrl+info.id, info.code[a], (b)=>{
+                    aw.IF_scriptListenerGetter(info, addonRootUrl+info.id, a, (b)=>{
                         const addon = {
                             info,
                             settings: new Proxy(addonsSettings[info.id] || {},{
@@ -33,6 +33,9 @@ Promise.all([
                         switch (a) {
                             case "onTab":
                                 b.onTab({addon, console: localConsole})
+                                break;
+                            case "css":
+                                document.head.append(b)
                                 break;
                         
                             default:

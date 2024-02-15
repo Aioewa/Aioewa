@@ -100,14 +100,45 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
     return rem_a
 }
 export async function getScript(_url) {
-    return (await Promise.all([
-        import(_url)
-    ]))[0];
+    const rem = _url.split(".")
+    switch (rem[rem.length-1]) {
+        case "js":
+            return (await Promise.all([
+                import(_url)
+            ]))[0];        
+            break;
+        case "css":
+            const element = document.createElement("link")
+            element.rel = "stylesheet"
+            element.href = _url
+            return element        
+            break;
+    
+        default:
+            break;
+    }
 }
 export async function scriptListenerGetter(_root, _urls, _func) {
     _urls.forEach(e => {
         getScript(`${_root}/${e}`).then(_func)
     });
+}
+export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
+    if (_info.code["IF_"+_url] != undefined) {
+        if (!Array.isArray(_info.code["IF_"+_url])) _info.code["IF_"+_url] = [_info.code["IF_"+_url]]
+        aw.scriptListenerGetter(addonRootUrl+_info.id, _info.code["IF_"+_url], (b)=>{
+            _info.code[_url].forEach((e)=>{
+                b["IF_"+_url]({call: e}).then((a)=>{
+                    if(a) {
+                        getScript(`${_root}/${e}`).then(_func)
+                    }
+                })
+            })
+        })
+    }
+    else {
+        scriptListenerGetter(_root, _info.code[_url], _func)
+    }
 }
 export async function getJSON(_url) {
     return (await fetch(_url)).json();

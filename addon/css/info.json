@@ -13,6 +13,6 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "onTab": "a.js"
+        "css": "newStyle.css"
     }
 }
