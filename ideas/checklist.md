@@ -1,7 +1,7 @@
 # Checklist
 
 ## api
-- [ ] [DAO](../api/module.js)
+- [x] [DAO](../api/module.js)
 - [ ] [DAOE](../api/module.js)
 - [ ] [msg](../_locales/)
 - [x] [aw](../api/module.js)
@@ -15,8 +15,8 @@
 - [ ] [`Future addons`](../addon/future/)
 - [x] enable and disable
 - [x] [`IF_`](../api/module.js)
-- [ ] default value on settings [reference](../addon/console.log/info.json)
-- [ ] [style inject](../file/inject/style.js)
+- [x] default value on settings [reference](../addon/console.log/info.json)
+- [x] [style inject](../file/inject/style.js)
 
 ## Community
 - [ ] More community platforms

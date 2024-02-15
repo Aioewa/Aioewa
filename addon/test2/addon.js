@@ -1,8 +1,3 @@
-export function tab({addon, tab, console}) {
-    return [
-        {
-            path: "code.js",
-            type: "js",
-        }
-    ]
+export function onTab({addon, tab, console}) {
+    console.log("IT WORKS ✅")
 }

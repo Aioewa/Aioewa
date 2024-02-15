@@ -3,7 +3,7 @@
 // This is so that the json files don't have to be fetched 2 times. So it is for optimization.
 
 Promise.all([
-    import(chrome.runtime.getURL("../../api/module.js"))
+    import(chrome.runtime.getURL("/api/module.js"))
 ]).then(([aw])=>{
     globalThis.aw = aw
     globalThis.addonRootUrl = chrome.runtime.getURL("/addon/")
@@ -21,7 +21,7 @@ Promise.all([
                 Object.keys(info.code).forEach(async (a)=>{
                     if(a.slice(0, 3) == "IF_") return
                     if (!Array.isArray(info.code[a])) info.code[a] = [info.code[a]]
-                    aw.IF_scriptListenerGetter(info, addonRootUrl+info.id, a, (b)=>{
+                    aw.IF_scriptListenerGetter(info, addonRootUrl+info.id, a, async (b, c)=>{
                         const addon = {
                             info,
                             settings: new Proxy(addonsSettings[info.id] || {},{
@@ -32,6 +32,7 @@ Promise.all([
                         const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, a) }
                         switch (a) {
                             case "onTab":
+                                // console.log(await aw.DAO("onTab", info), info.id)
                                 b.onTab({addon, console: localConsole})
                                 break;
                             case "css":

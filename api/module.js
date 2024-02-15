@@ -8,6 +8,25 @@
 //     })
 // } 
 
+export async function DAO(_input, _info) {
+    // console.log(_info, _input)
+    return new Promise(async (resolve, reject) => {
+        if (_info.code?.DAO != undefined && (
+                typeof _input == "string" ? _input.slice(0, 6) == "__DAO_" : false
+            ) &&
+            (
+                typeof _input == "string" ? _input.slice(_input.length-2, _input.length) == "__" : false
+            )
+        ) {
+            const rem = await getScript(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
+            resolve(await rem.DAO({input: _input}))            
+        }
+        else {
+            resolve(_input)
+        }
+    })
+}
+
 export async function getInfo(_url = null) {
     const addons = await (await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
     let rem = []
@@ -45,6 +64,7 @@ export async function infoListenerGetter(_addonsEnabled, _func) {
     })
 }
 
+// Old
 export async function infoCodeRunner(_info, _type, _input, _path, output = { self: true, console: true }) {
     if (_input == undefined) return
     // console.log(_info, _type, _input, _info.code["IF_"+_type])
@@ -115,29 +135,43 @@ export async function getScript(_url) {
             break;
     
         default:
+            localConsole.error(`${_url} is not a valid file`)
             break;
     }
 }
-export async function scriptListenerGetter(_root, _urls, _func) {
-    _urls.forEach(e => {
-        getScript(`${_root}/${e}`).then(_func)
+export async function scriptListenerGetter(_info, _root, _urls, _func) {
+    _urls.forEach(async e => {
+        const rem = await DAO(e, _info)
+        if (rem != undefined) e = rem
+        getScript(`${_root}/${e}`).then((c)=>{
+            _func(c, e)
+        })
     });
 }
 export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
+    const rem = await DAO(_info.code["IF_"+_url], _info)
+    if (rem != undefined) _info.code["IF_"+_url] = rem
+
     if (_info.code["IF_"+_url] != undefined) {
         if (!Array.isArray(_info.code["IF_"+_url])) _info.code["IF_"+_url] = [_info.code["IF_"+_url]]
-        aw.scriptListenerGetter(addonRootUrl+_info.id, _info.code["IF_"+_url], (b)=>{
-            _info.code[_url].forEach((e)=>{
+        aw.scriptListenerGetter(_info, addonRootUrl+_info.id, _info.code["IF_"+_url], (b)=>{
+            _info.code[_url].forEach(async (e)=>{
+                const rem = await DAO(e, _info)
+                if (rem != undefined) e = rem
                 b["IF_"+_url]({call: e}).then((a)=>{
                     if(a) {
-                        getScript(`${_root}/${e}`).then(_func)
+                        getScript(_info, `${_root}/${e}`).then(
+                            (c)=>{
+                                _func(c, e)
+                            }
+                        )
                     }
                 })
             })
         })
     }
     else {
-        scriptListenerGetter(_root, _info.code[_url], _func)
+        scriptListenerGetter(_info, _root, _info.code[_url], _func)
     }
 }
 export async function getJSON(_url) {
@@ -229,7 +263,7 @@ export function fullParserCreator(input, _storage, _id) {
     let _elements = document.createElement("span");
     _elements.style.display = "contents";
     
-    console.log(_elements)
+    // console.log(_elements)
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
         element.innerText = input;
@@ -327,7 +361,7 @@ export function parserCreator(part, _storage, _id) {
             case "img":
                 element = document.createElement("img");
                 element.src = data.src
-                console.log(data.height)
+                // console.log(data.height)
                 if(data.height != undefined) element.style.height = typeof data.height === "number" ? data.height+"px" : data.height
                 if(data.width != undefined) element.style.width = typeof data.width === "number" ? data.width+"px" : data.width
                 if(data.ratio != undefined) element.style.aspectRatio = data.ratio

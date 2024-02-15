@@ -1,6 +1,6 @@
 {
     "AV": "1",
-    "name": "test",
+    "name": "DAO test",
     "description": "The test addon. Not recommended to use.",
     "credits": [
         {
@@ -11,5 +11,9 @@
         }
     ],
     "tags": ["community"],
-    "versionAdded": "1.0.0"
+    "versionAdded": "1.0.0",
+    "code": {
+        "DAO": "DAO.js",
+        "onTab": "__DAO_onTab__"
+    }
 }

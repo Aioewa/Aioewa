@@ -30,7 +30,7 @@
       ],
       "run_at": "document_start",
       "js": [
-        "api/inject/main.js"
+        "api/inject.js"
       ],
       "all_frames": true
     }
