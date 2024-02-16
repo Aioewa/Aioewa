@@ -160,7 +160,7 @@ export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
                 if (rem != undefined) e = rem
                 b["IF_"+_url]({call: e}).then((a)=>{
                     if(a) {
-                        getScript(_info, `${_root}/${e}`).then(
+                        getScript(`${_root}/${e}`).then(
                             (c)=>{
                                 _func(c, e)
                             }
