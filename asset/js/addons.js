@@ -39,7 +39,7 @@ const addonsSettings = await aw.storage.getAddonsSettings()
 // console.log(enabled)
 
 info.forEach(async (e) => {
-    const rem = await createElement(e.name, e.description, e.id, addonsSettings?.[e.id])
+    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e, e.id, addonsSettings?.[e.id])
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")

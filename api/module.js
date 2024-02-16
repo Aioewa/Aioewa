@@ -9,17 +9,35 @@
 // } 
 
 export async function DAO(_input, _info) {
-    // console.log(_info, _input)
     return new Promise(async (resolve, reject) => {
-        if (_info.code?.DAO != undefined && (
-                typeof _input == "string" ? _input.slice(0, 6) == "__DAO_" : false
-            ) &&
-            (
-                typeof _input == "string" ? _input.slice(_input.length-2, _input.length) == "__" : false
-            )
-        ) {
-            const rem = await getScript(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
-            resolve(await rem.DAO({input: _input}))            
+        if (_info?.code?.DAO != undefined) {
+            const addon = {
+                info: _info
+            }
+            switch (typeof _input) {
+                case "string":
+
+                    if (_input.slice(0, 6) == "__DAO_" && _input.slice(_input.length - 2, _input.length) == "__") {
+                        const rem = await getScript(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
+                        addon.self = rem
+                        resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon}), _info))            
+                    }
+                    if (_input.slice(0, 6) == "__MSG_" && _input.slice(_input.length - 2, _input.length) == "__") {
+                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2))))            
+                    }
+                    resolve(_input)
+                    break;
+                case "object":
+                    const results = await Promise.all(_input.map(async (e) => {
+                        return await DAO(e, _info);
+                    }));
+                    resolve(results);
+                    break;
+
+                default:
+                    resolve(_input)
+                    break;
+            }
         }
         else {
             resolve(_input)
@@ -28,10 +46,10 @@ export async function DAO(_input, _info) {
 }
 
 export async function getInfo(_url = null) {
-    const addons = await (await aw.getJSON(chrome.runtime.getURL("../../addon/addon.json")))
+    const addons = await (await getJSON(chrome.runtime.getURL("../../addon/addon.json")))
     let rem = []
     addons.forEach(async (e) => {
-        const rem_a = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+        const rem_a = await getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
         rem_a.id = e
         rem.push(rem_a)
     })
@@ -54,7 +72,7 @@ export async function infoListenerGetter(_addonsEnabled, _func) {
     Object.keys(_addonsEnabled).forEach(async (e) => {
         if (!_addonsEnabled[e]) return
         try {
-            const rem_a = await aw.getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+            const rem_a = await getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
             rem_a.id = e
             _func(rem_a)
         }
@@ -121,47 +139,52 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
 }
 export async function getScript(_url) {
     const rem = _url.split(".")
-    switch (rem[rem.length-1]) {
-        case "js":
-            return (await Promise.all([
-                import(_url)
-            ]))[0];        
-            break;
-        case "css":
-            const element = document.createElement("link")
-            element.rel = "stylesheet"
-            element.href = _url
-            return element        
-            break;
-    
-        default:
-            localConsole.error(`${_url} is not a valid file`)
-            break;
+    try {
+        switch (rem[rem.length - 1]) {
+            case "js":
+                return (await Promise.all([
+                    import(_url)
+                ]))[0];
+                break;
+            case "css":
+                const element = document.createElement("link")
+                element.rel = "stylesheet"
+                element.href = _url
+                return element
+                break;
+
+            default:
+                localConsole.error(`${_url} is not a valid file`)
+                break;
+        }
+    }
+    catch (error) {
+        localConsole.error(`Failed to get ${_url}\nReason: ${error}`)
     }
 }
 export async function scriptListenerGetter(_info, _root, _urls, _func) {
     _urls.forEach(async e => {
         const rem = await DAO(e, _info)
         if (rem != undefined) e = rem
-        getScript(`${_root}/${e}`).then((c)=>{
+        getScript(`${_root}/${e}`).then((c) => {
             _func(c, e)
         })
     });
 }
 export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
-    const rem = await DAO(_info.code["IF_"+_url], _info)
-    if (rem != undefined) _info.code["IF_"+_url] = rem
+    const rem = await DAO(_info.code["IF_" + _url], _info)
+    if (rem != undefined) _info.code["IF_" + _url] = rem
 
-    if (_info.code["IF_"+_url] != undefined) {
-        if (!Array.isArray(_info.code["IF_"+_url])) _info.code["IF_"+_url] = [_info.code["IF_"+_url]]
-        aw.scriptListenerGetter(_info, addonRootUrl+_info.id, _info.code["IF_"+_url], (b)=>{
-            _info.code[_url].forEach(async (e)=>{
+    if (_info.code["IF_" + _url] != undefined) {
+        if (!Array.isArray(_info.code["IF_" + _url])) _info.code["IF_" + _url] = [_info.code["IF_" + _url]]
+        scriptListenerGetter(_info, addonRootUrl + _info.id, _info.code["IF_" + _url], (b) => {
+            _info.code[_url].forEach(async (e) => {
                 const rem = await DAO(e, _info)
                 if (rem != undefined) e = rem
-                b["IF_"+_url]({call: e}).then((a)=>{
-                    if(a) {
+                b["IF_" + _url]({ call: e }).then((a) => {
+                    if (a) {
                         getScript(`${_root}/${e}`).then(
-                            (c)=>{
+                            (c) => {
                                 _func(c, e)
                             }
                         )
@@ -240,7 +263,7 @@ export const storage = {
         chrome.storage.sync.set({ addonSettings: set })
     },
     async changeOrAddSetting(insideOf, setting, value) {
-        const rem = await aw.storage.getAddonsSettings() || {}
+        const rem = await storage.getAddonsSettings() || {}
         if (rem?.[insideOf] == undefined) {
             rem[insideOf] = {}
         }
@@ -252,7 +275,7 @@ export const storage = {
                 value: [setting, value]
             }
         }
-        aw.storage.setAddonsSettings(rem)
+        storage.setAddonsSettings(rem)
     }
 
 }
@@ -262,7 +285,7 @@ export const settingElements = {}
 export function fullParserCreator(input, _storage, _id) {
     let _elements = document.createElement("span");
     _elements.style.display = "contents";
-    
+
     // console.log(_elements)
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
@@ -362,9 +385,9 @@ export function parserCreator(part, _storage, _id) {
                 element = document.createElement("img");
                 element.src = data.src
                 // console.log(data.height)
-                if(data.height != undefined) element.style.height = typeof data.height === "number" ? data.height+"px" : data.height
-                if(data.width != undefined) element.style.width = typeof data.width === "number" ? data.width+"px" : data.width
-                if(data.ratio != undefined) element.style.aspectRatio = data.ratio
+                if (data.height != undefined) element.style.height = typeof data.height === "number" ? data.height + "px" : data.height
+                if (data.width != undefined) element.style.width = typeof data.width === "number" ? data.width + "px" : data.width
+                if (data.ratio != undefined) element.style.aspectRatio = data.ratio
                 return ({
                     element,
                 });

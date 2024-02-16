@@ -1,3 +1,3 @@
-export default async function({addon, console}) {
-    console.log(addon.chrome);
+export function onTab({addon, console}) {
+    console.log("Something 2");
 }

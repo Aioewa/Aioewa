@@ -1,7 +1,9 @@
 {
     "AV": "1",
-    "name": "DAO test",
-    "description": "The test addon. Not recommended to use.",
+    "name": "__DAO_name__",
+    "description": [
+        ["text", "__DAO_description__"]
+    ],
     "credits": [
         {
             "userID": 1,

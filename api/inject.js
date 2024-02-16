@@ -19,6 +19,8 @@ Promise.all([
             // console.log(typeof e?.code == "object")
             if (typeof info?.code == "object") {
                 Object.keys(info.code).forEach(async (a)=>{
+                    info.code[a] = await aw.DAO(info.code[a], info)
+
                     if(a.slice(0, 3) == "IF_") return
                     if (!Array.isArray(info.code[a])) info.code[a] = [info.code[a]]
                     aw.IF_scriptListenerGetter(info, addonRootUrl+info.id, a, async (b, c)=>{
@@ -32,7 +34,6 @@ Promise.all([
                         const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, a) }
                         switch (a) {
                             case "onTab":
-                                // console.log(await aw.DAO("onTab", info), info.id)
                                 b.onTab({addon, console: localConsole})
                                 break;
                             case "css":
