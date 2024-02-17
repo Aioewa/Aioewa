@@ -4,42 +4,43 @@
 
 Promise.all([
     import(chrome.runtime.getURL("/api/module.js"))
-]).then(([aw])=>{
+]).then(([aw]) => {
     globalThis.aw = aw
     globalThis.addonRootUrl = chrome.runtime.getURL("/addon/")
     // const IF_ = {}
     Promise.all([
         aw.storage.getAddonsEnabled(),
         aw.storage.getAddonsSettings(),
-    ]).then(([addonsEnabled, addonsSettings])=>{
-        if(addonsEnabled?._addonChanged != undefined) delete addonsEnabled._addonChanged;
+    ]).then(([addonsEnabled, addonsSettings]) => {
+        if (addonsEnabled?._addonChanged != undefined) delete addonsEnabled._addonChanged;
         globalThis.addonsEnabled = addonsEnabled
 
-        aw.infoListenerGetter(addonsEnabled, (info)=>{
+        aw.infoListenerGetter(addonsEnabled, (info) => {
             // console.log(typeof e?.code == "object")
             if (typeof info?.code == "object") {
-                Object.keys(info.code).forEach(async (a)=>{
+                Object.keys(info.code).forEach(async (a) => {
                     info.code[a] = await aw.DAO(info.code[a], info)
 
-                    if(a.slice(0, 3) == "IF_") return
+                    if (a.slice(0, 3) == "IF_") return
                     if (!Array.isArray(info.code[a])) info.code[a] = [info.code[a]]
-                    aw.IF_scriptListenerGetter(info, addonRootUrl+info.id, a, async (b, c)=>{
+                    aw.IF_scriptListenerGetter(info, addonRootUrl + info.id, a, async (b, c) => {
                         const addon = {
                             info,
-                            settings: new Proxy(addonsSettings[info.id] || {},{
-                                get: (target, string)=>{
+                            settings: new Proxy(addonsSettings[info.id] || {}, {
+                                get: (target, string) => {
                                     return target[string]
-                            }})
+                                }
+                            })
                         };
                         const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, a) }
                         switch (a) {
                             case "onTab":
-                                b.onTab({addon, console: localConsole})
+                                b.onTab({ addon, console: localConsole })
                                 break;
                             case "css":
                                 document.head.append(b)
                                 break;
-                        
+
                             default:
                                 break;
                         }

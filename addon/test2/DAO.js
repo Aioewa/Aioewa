@@ -1,4 +1,4 @@
-export async function DAO({input, addon}) {
+export async function DAO({ input, addon }) {
     console.log(await aw.DAO("__MSG_extName__", addon.info))
     const rem = {
         "onTab": ["addon.js", "code.js"],
