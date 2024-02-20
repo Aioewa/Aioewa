@@ -1,0 +1,39 @@
+{
+    "AV": "1",
+    "name": "No scroll bar",
+    "description": [
+        [
+            "text",
+            "Hides the scroll bar everywhere."
+        ],
+        [
+            "br"
+        ],
+        [
+            "dropdown",
+            {
+                "name": "how important?",
+                "options": [
+                    "If it is not defined",
+                    "Always"
+                ]
+            }
+        ]
+    ],
+    "credits": [
+        {
+            "userID": 1,
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "tags": [
+        "community"
+    ],
+    "versionAdded": "1.0.0",
+    "code": {
+        "DAO": "DAO.js",
+        "css": "__DAO_css__"
+    }
+}

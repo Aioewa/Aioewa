@@ -9,13 +9,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             break;
 
         case "fetch":
-            (async ()=>{
+            (async () => {
                 switch (request.outputAs) {
                     case "json":
-                        const e = await(await fetch(request.input, request.init)).json()
+                        const e = await (await fetch(request.input, request.init)).json()
                         sendResponse(e)
                         break;
-                
+
                     default:
                         break;
                 }
@@ -27,3 +27,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             break;
     }
 });
+
+// console.log(chrome)
+// function injectCSS(tabId, cssFile) {
+//     chrome.scripting.insertCSS({
+//         target: { tabId: tabId },
+//         files: [cssFile]
+//     });
+// }
+
+// // Example usage:
+// chrome.action.onClicked.addListener((tab) => {
+//     injectCSS(tab.id, { file: "extension/addon/test6/a.css" }); // Replace "styles.css" with your CSS file path
+// });

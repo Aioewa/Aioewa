@@ -20,6 +20,7 @@ export async function DAO(_input, _info) {
                     if (_input.slice(0, 6) == "__DAO_" && _input.slice(_input.length - 2, _input.length) == "__") {
                         const rem = await getScript(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
                         addon.self = rem
+                        addon.settings = await storage.getAddonsSettings(_info.id)
                         resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon}), _info))            
                     }
                     if (_input.slice(0, 6) == "__MSG_" && _input.slice(_input.length - 2, _input.length) == "__") {
@@ -28,10 +29,23 @@ export async function DAO(_input, _info) {
                     resolve(_input)
                     break;
                 case "object":
-                    const results = await Promise.all(_input.map(async (e) => {
-                        return await DAO(e, _info);
-                    }));
-                    resolve(results);
+                    if (Array.isArray(_input)) {
+                        const results = await Promise.all(_input.map(async (e) => {
+                            return await DAO(e, _info);
+                        }));
+                        resolve(results);
+                    }
+                    else {
+                        const results = await Promise.all(Object.keys(_input).map(async (e) => {
+                            return await {[e]: await DAO(_input[e], _info)};
+                        }));
+                        resolve(results.reduce((acc, obj) => {
+                            Object.keys(obj).forEach(key => {
+                                acc[key] = obj[key];
+                            });
+                            return acc;
+                        }, {}));
+                    }
                     break;
 
                 default:

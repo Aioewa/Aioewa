@@ -11,7 +11,8 @@
     "service_worker": "/file/background/main.js"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "activeTab"
   ],
   "action": {
     "default_icon": "/asset/icon/icon48.png",
