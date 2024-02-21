@@ -31,3 +31,4 @@
 - [ ] Send in bug reports or suggestions {fix}
 - [ ] [docs](../docs/)
 - [ ] [cache for css (add "css cache": false)](cache.md)
+- [ ] Change `user.json` to folder `user`. The folder will contain `user.json` that contains a list of all the ids. It will too have `stio.json`, `nikeedev.json`, `programORdie`..ect... with has the content of the user 
