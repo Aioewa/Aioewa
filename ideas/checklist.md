@@ -19,6 +19,7 @@
 - [x] [style inject](../file/inject/style.js)
 - [ ] Shortcuts lets you add your own custom shortcuts.
 - [ ] Addon that adds a option to right click on webpages (or makes a new options popup) where you can use many different options. 
+- [ ] Let's you add places where you can shift+7 to go to the search
 
 ## Community
 - [ ] More community platforms
@@ -27,7 +28,7 @@
 ## Extra
 - [ ] user.json display
 - [ ] [credit system and balancing](https://github.com/StioStudio/Aioewa/graphs/contributors) 
-- [ ] box shadow instead of :before and :after in `<nav>`
+- [x] box shadow instead of :before and :after in `<nav>`
 - [ ] Send in bug reports or suggestions {fix}
 - [ ] [docs](../docs/)
 - [ ] [cache for css (add "css cache": false)](cache.md)

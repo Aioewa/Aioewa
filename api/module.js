@@ -276,6 +276,17 @@ export const storage = {
     setAddonsSettings(set) {
         chrome.storage.sync.set({ addonSettings: set })
     },
+    async getCache(_get = null) {
+        if (_get == null) {
+            return (await chrome.storage.sync.get("cache")).cache
+        }
+        else {
+            return (await chrome.storage.sync.get("cache")).cache?.[_get]
+        }
+    },
+    setCache(set) {
+        chrome.storage.sync.set({ cache: set })
+    },
     async changeOrAddSetting(insideOf, setting, value) {
         const rem = await storage.getAddonsSettings() || {}
         if (rem?.[insideOf] == undefined) {
@@ -436,10 +447,3 @@ export function parserCreator(part, _storage, _id) {
     }
     return output
 }
-
-// storage.raw.hello = "aosfjoaihh"
-// console.log(await storage.raw.hello)
-// console.log(await storage.raw)
-// storage.set({"hello": "wow", "asjofh": "ajjf", "1208": "oisaf"})
-// console.log(await settings.get("hello"))
-// console.log(await chrome.storage.sync.get(null))

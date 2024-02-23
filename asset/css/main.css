@@ -100,6 +100,7 @@ nav::after {
     height: 60px;
     width: 100px;
     background: linear-gradient(to left, #000000e0, #0000008c, transparent);
+    pointer-events: none;
 }
 
 [type="settings"] nav::after {
@@ -115,6 +116,7 @@ nav::before {
     height: 60px;
     width: 40px;
     background: linear-gradient(to right, #000000bb, transparent);
+    pointer-events: none;
 }
 
 nav .settings {
