@@ -5,7 +5,7 @@
         "displayName": "stio",
         "profilePicture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
         "about": "Hello there 😺 <br> I am STIO. The founder and developer of Aioewa.",
-        "link": [
+        "links": [
                 {
                     "url": "https://stio.studio",
                     "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
@@ -35,7 +35,7 @@
                 }]
     },
     {
-        "user ID": 2,
+        "userID": 2,
         "username": "template",
         "displayName": "Hello there",
         "profilePicture": "asset/icons/template.png",
@@ -48,16 +48,16 @@
         ]
     },
     {
-        "user ID": 3,
+        "userID": 3,
         "username": "programORdie2",
         "displayName": "programORdie",
         "profilePicture": "https://pod.stio.studio/static/img/pod.png",
-        "about": "Hi!<br>I'm programORdie, a weird alien who's submitting random PR's to this cool extension."],
+        "about": "Hi!<br>I'm programORdie, a weird alien who's submitting random PR's to this cool extension.",
         "links": [
             {
-                "display": ["img"],
                 "url": "https://pod.stio.studio",
                 "img": "https://pod.stio.studio/static/img/pod.png",
+                "text": "My website!"
             },
             {
                 "url": "https://discord.gg/UZTbYWqJ2Y",
@@ -79,7 +79,7 @@
         ]
     },
     {
-        "user ID": 4,
+        "userID": 4,
         "username": "nikeedev",
         "displayName": "nikeedev",
         "profilePicture": "https://raw.githubusercontent.com/nikeedev/nikeedev.github.io/main/assets/nikee_256.png",
