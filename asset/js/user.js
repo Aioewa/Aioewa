@@ -12,7 +12,7 @@ function displayUser(userID) {
         doc.getElementById('userlogo').src = user.profilePicture;
         doc.getElementById('about').innerHTML = user.about;
         let links = "";
-        user.link.forEach(l => {
+        user.links.forEach(l => {
             if (l.url) {
                 if (!l.text) {
                     l.text = '';
