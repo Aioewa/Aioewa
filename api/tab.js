@@ -20,7 +20,10 @@ export const tab = {
     waitForElement(selector) {
         const foundElement = document.documentElement.querySelector(selector)
         if (foundElement) {
-            return foundElement
+            return new Promise((resolve, reject) => {
+                resolve(foundElement)
+                
+            })
         }
         return new Promise((resolve, reject) => {
             mutationObserver.observe(document.documentElement, { childList: true, subtree: true })

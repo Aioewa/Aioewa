@@ -1,0 +1,15 @@
+{
+    "AV": 1,
+    "name": "Input Focus",
+    "description": [
+        ["text", "When you click shift + / you will get focused to the input. Add the selector for the input. Use enter to add multiple selectors."],
+        ["br"],
+        ["textarea", {
+            "id": "inputs",
+            "height": 100
+        }]
+    ],
+    "code": {
+        "onTab": "code.js"
+    }
+}

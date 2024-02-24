@@ -27,11 +27,12 @@ Promise.all([
                     aw.IF_scriptListenerGetter(info, addonRootUrl + info.id, a, async (b, c) => {
                         const addon = {
                             info,
-                            settings: new Proxy(addonsSettings[info.id] || {}, {
+                            settings: new Proxy(await(await aw.storage.getAddonsSettings())?.[info.id] || {}, {
                                 get: (target, string) => {
                                     return target[string]
                                 }
-                            })
+                            }),
+                            tab: aw.tab,
                         };
                         const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, c, a) }
                         switch (a) {

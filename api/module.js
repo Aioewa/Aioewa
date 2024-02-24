@@ -369,16 +369,36 @@ export function parserCreator(part, _storage, _id) {
             case "field":
                 element = document.createElement("input");
                 element.type = "text";
-                element.id = data;
+                element.id = data.id;
                 element.addEventListener("input", async (e) => {
-                    await storage.changeOrAddSetting(_id, data, element.value)
+                    await storage.changeOrAddSetting(_id, data.id, element.value)
                 })
-                if (_storage?.[data] != undefined) {
-                    element.value = _storage[data]
+                if (_storage?.[data.id] != undefined) {
+                    element.value = _storage[data.id]
                 }
                 return ({
                     element,
-                    data
+                    data: data.id
+                });
+                break;
+            
+            case "textarea":
+                element = document.createElement("textarea");
+                element.style.resize = "none"
+                element.id = data.id;
+                element.addEventListener("input", async (e) => {
+                    await storage.changeOrAddSetting(_id, data.id, element.value)
+                })
+                if (_storage?.[data.id] != undefined) {
+                    element.value = _storage[data.id]
+                }
+                if (data.height != undefined) element.style.height = typeof data.height === "number" ? data.height + "px" : data.height
+                if (data.width != undefined) {element.style.width = typeof data.width === "number" ? data.width + "px" : data.width}
+                else {element.style.width = "-webkit-fill-available"}
+                
+                return ({
+                    element,
+                    data: data.id
                 });
                 break;
 

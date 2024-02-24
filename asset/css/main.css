@@ -209,7 +209,7 @@ footer {
     /**********************************************/
     /* Added a nice height and opacity transition */
     /**********************************************/
-    max-height: 10em;
+    max-height: 50em;
     transition: 0.6s ease-in;
     opacity: 1;
 }

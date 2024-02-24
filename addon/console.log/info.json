@@ -4,11 +4,13 @@
     "description": [
         ["text", "Log a 'Hello there 😺' or something else in the console!"],
         ["br"],
-        ["field", "log"]
+        ["field", {
+            "id": "log"
+        }]
     ],
     "credits": [
         {
-            "userID": 1,
+            "userID": "stio_studio",
             "contributed": {
                 "code": 20
             }
