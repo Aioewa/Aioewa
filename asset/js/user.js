@@ -1,9 +1,9 @@
-const [rem] = await aw.getJSON("../../user.json")
+const users = await aw.getJSON("../../users/user.json")
 // console.log(rem.about);
 
-function displayUser(userID) {
+async function displayUser(userID) {
         userID = users.map(function(o) { return o.userID; }).indexOf(userID);
-        let user = users[userID]
+        let user = await aw.getJSON("../../users/"+users[userID].path+"/info.json")
         let html = '<section class="userDisplay"><div class="user"><div class="text"><span class="displayname" id="displayname">programordie</span><span class="username" id="username">@programordie</span></div><img class="userlogo" id="userlogo" src="https://pod.stio.studio/static/img/pod.png"></div><p class="about" id="about"></p><h3>Links:</h3><div class="links" id="links"><a href="#" title="Github">Github</a><span> - </span><a href="#" title="Email">Email</a></div></section>'
         var parser = new DOMParser();
         var doc = parser.parseFromString(html, "text/html");
@@ -27,6 +27,19 @@ function displayUser(userID) {
         });
         doc.getElementById('links').innerHTML = links.replace('<span> - </span>', '', 1);
 
-    return doc.querySelector('section'));
+    return doc.querySelector('section');
+}
 
-document.querySelector(".content").appendChild(displayUser(3));
+
+//I put myself on top becouse I'm selfish xD
+let loadedUser = await displayUser(3);
+document.querySelector(".content").appendChild(loadedUser);
+
+loadedUser = await displayUser(1);
+document.querySelector(".content").appendChild(loadedUser);
+
+loadedUser = await displayUser(4);
+document.querySelector(".content").appendChild(loadedUser);
+
+//loadedUser = await displayUser(2);
+//document.querySelector(".content").appendChild(loadedUser);

@@ -9,59 +9,74 @@ body {
     margin: 0;
     height: 100%;
     width: 100%;
-} 
-.content {
-    --padding: 20px;
-    --gap: 10px;
-    gap: var(--gap);
-    padding: var(--padding);
-    border-radius: 30px;
-    height: calc(100% - var(--padding)*2);
-    width: calc(100% - var(--padding)*2);
-    background-color: black;
-    display: grid;
-    grid-template-areas: 
-        "displayName profilePicture"
-        "username profilePicture"
-        "about about"
-    ;
-    grid-template-columns: calc(100% - 100px - var(--padding) - var(--gap)) 100px;
-    grid-template-rows: 50px 40px calc(100% - 50px - 40px - var(--padding) - var(--gap));
 }
-@media screen and (max-width: 350px) {
-    .content {
-        grid-template-columns: calc(70% - var(--padding)) 30%;
-    }
+.userDisplay {
+    margin: 1em;
+    height: fit-content;
+    padding: 0.75em 1em 1.5em 1.25em;
+    border-radius: 2em;
+    background-color: rgba(86, 94, 116, 0.75);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-.container-type-size {
-    container-type: size;
+
+.userDisplay .user {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-* {
-    color: white;
+
+.userDisplay .user .text {
+    display: flex;
+    flex-direction: column;
 }
-.displayName {
-    grid-area: displayName;
-    font-size: 35px;
+
+.userDisplay .displayname {
+    font-size: 1.5em;
+    color: #f3f3f3;
 }
-.username {
-    grid-area: username;
-    font-size: 25px;
+
+.userDisplay .username {
+    font-size: 0.95em;
+    color: #f3f3f380;
 }
-.username * {
-    color: gray;
+
+.userDisplay .userlogo {
+    height: 3em;
+    width: auto;
+    border-radius: 0.75em;
+    float: right;
 }
-.profilePicture {
-    grid-area: profilePicture;
-    max-height: 100%;
-    max-width: 100%;
-    right: 1/1;
-    background-color: gray;
-    border-radius: 20px;
+
+.userDisplay .about {
+    color: #f3f3f3;
+    letter-spacing: 0.05em;
 }
-.about {
-    background-color: gray;
-    grid-area: about;
-    border-radius: 20px;
-    padding: var(--padding);
-    font-size: 3em;
+
+.userDisplay h3 {
+    color: #f3f3f3;
+    font-size: 1.7em;
+    margin-bottom: 0.5em;
+}
+
+.userDisplay .links {
+    color: #f3f3f3;
+}
+
+.userDisplay .links a {
+    text-decoration: underline;
+    text-decoration-color: #00000000;
+    color: #f3f3f3;
+    transition: all .3s ease;
+}
+
+.userDisplay .links img {
+    height: 1.25em;
+    width: auto;
+    margin-right: 5px;
+}
+
+.userDisplay .links a:hover {
+    text-decoration: underline;
+    text-decoration-color: #ffa406;
+    text-shadow: 0px 0px 5px #f3f3f380;
 }

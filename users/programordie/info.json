@@ -1,0 +1,30 @@
+{
+    "username": "programordie",
+    "displayName": "programORdie",
+    "profilePicture": "https://pod.stio.studio/static/img/pod.png",
+    "about": "Hi!<br>I'm programORdie, a weird alien who's submitting random PR's to this cool extension.",
+    "links": [
+        {
+            "url": "https://pod.stio.studio",
+            "img": "https://pod.stio.studio/static/img/pod.png",
+            "text": "My website!"
+        },
+        {
+            "url": "https://discord.gg/UZTbYWqJ2Y",
+            "text": "Discord"
+        },
+        {
+            "url": "https://youtube.com/@programORdie",
+            "text": "YouTube"
+        },
+        {
+            "url": "https://github.com/programORdie2/",
+            "text": "GitHub",
+            "img": "/asset/icons/github.png"
+        },
+        {
+            "url": "https://scratch.mit.edu/users/programORdie",
+            "text": "Scratch"
+        }
+    ]
+}
