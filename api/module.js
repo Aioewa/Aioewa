@@ -1,3 +1,4 @@
+export { tab } from "./tab.js"
 // class scripts {
 //     #scripts
 //     scripts = new Proxy(this.#scripts, {

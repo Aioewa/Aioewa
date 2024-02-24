@@ -260,6 +260,7 @@ footer {
 
 .addon h3 {
     grid-area: h3;
+    margin: auto 0;
 }
 
 .addon .switch input {

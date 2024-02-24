@@ -1,18 +1,6 @@
 [
-    {
-        "userID": 1,
-        "path": "stio_studio"
-    },
-    {
-        "userID": 2,
-        "path": "example"
-    },
-    {
-        "userID": 3,
-        "path": "programordie"
-    },
-    {
-        "userID": 4,
-        "path": "nikeedev"
-    }
+    "stio_studio",
+    "programordie",
+    "nikeedev",
+    "example"
 ]
