@@ -27,9 +27,10 @@
 
 ## Extra
 <!-- - [x] box shadow instead of :before and :after in `<nav>` -->
+<!-- - [x] Change `user.json` to folder `user`. The folder will contain `user.json` that contains a list of all the ids. It will too have `stio.json`, `nikeedev.json`, `programORdie`..ect... with has the content of the user  -->
 - [ ] user.json display
 - [ ] [credit system and balancing](https://github.com/StioStudio/Aioewa/graphs/contributors) 
 - [ ] Send in bug reports or suggestions {fix}
 - [ ] [docs](../docs/)
 - [ ] [cache for css (add "css cache": false)](cache.md)
-- [ ] Change `user.json` to folder `user`. The folder will contain `user.json` that contains a list of all the ids. It will too have `stio.json`, `nikeedev.json`, `programORdie`..ect... with has the content of the user 
+- [ ] chat (using my raspberry pi. [tutorial](https://www.youtube.com/watch?v=7GBlCinu9yg&list=WL&index=1))
