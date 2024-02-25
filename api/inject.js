@@ -34,7 +34,7 @@ Promise.all([
                             }),
                             tab: aw.tab,
                         };
-                        const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, c, a) }
+                        const localConsole = { ...aw.console._realConsole, ...aw.console.easyCreate(info.id, a) }
                         switch (a) {
                             case "onTab":
                                 b.onTab({ addon, console: localConsole })

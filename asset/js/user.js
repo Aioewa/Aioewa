@@ -1,7 +1,7 @@
-const users = await aw.getJSON("../../users/user.json")
+const users = await aw.get.JSON("../../users/user.json")
 
 async function displayUser(userID) {
-    let user = await aw.getJSON("../../users/" + userID + "/info.json")
+    let user = await aw.get.JSON("../../users/" + userID + "/info.json")
     let html = '<section class="userDisplay"><div class="user"><div class="text"><span class="displayname" id="displayname">programordie</span><span class="username" id="username">@programordie</span></div><img class="userlogo" id="userlogo" src="https://pod.stio.studio/static/img/pod.png"></div><p class="about" id="about"></p><h3>Links:</h3><div class="links" id="links"><a href="#" title="Github">Github</a><span> - </span><a href="#" title="Email">Email</a></div></section>'
     var parser = new DOMParser();
     var doc = parser.parseFromString(html, "text/html");

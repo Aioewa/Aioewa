@@ -30,7 +30,7 @@ async function createElement(_name, _description, _id, _storage) {
     return rem
 }
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
-const info = await aw.getInfo()
+const info = await aw.get.info()
 let elements = {}
 const enabled = await aw.storage.getAddonsEnabled()
 const addonsSettings = await aw.storage.getAddonsSettings()

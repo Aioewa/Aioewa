@@ -19,7 +19,7 @@
 - [ ] [`Future addons`](../addon/future/)
 - [ ] Shortcuts lets you add your own custom shortcuts.
 - [ ] Addon that adds a option to right click on webpages (or makes a new options popup) where you can use many different options. 
-- [ ] Let's you add places where you can shift+7 to go to the search
+- [x] Let's you add places where you can shift+7 to go to the search
 
 ## Community
 <!-- - [x] [Organize the discord server better](https://aioewa.stio.studio/discord) -->

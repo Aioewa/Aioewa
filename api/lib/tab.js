@@ -10,7 +10,6 @@ const mutationObserver = new MutationObserver((mutRecs) => {
 const _mutationCallbacks = []
 
 export const tab = {
-
     /**
      * <Describe what the function does here>
      * 
