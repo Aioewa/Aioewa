@@ -301,3 +301,7 @@ footer {
 .addon:has(.switch input:checked) .switch::before {
     left: calc(100% - 2.5px - 20px);
 }
+
+.copyleft {
+    transform: scale(-1, 1);
+}
