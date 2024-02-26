@@ -1,0 +1,24 @@
+{
+    "AV": "1",
+    "name": "Chat",
+    "description": [
+        ["text", "Adds a chat tab to the settings page."]
+    ],
+    "credits": [
+        {
+            "userID": "stio_studio",
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "versionAdded": "1.0.0",
+    "code": {
+        "tabs": [
+            {
+                "title": "Chat",
+                "html": "chat.html"
+            }
+        ]
+    }
+}

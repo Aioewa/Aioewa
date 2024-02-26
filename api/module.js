@@ -32,7 +32,7 @@ export async function DAO(_input, _info) {
                         resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon, console: localConsole}), _info))            
                     }
                     if (_input.slice(0, 6) == "__MSG_" && _input.slice(_input.length - 2, _input.length) == "__") {
-                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2))))            
+                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2)), _info))            
                     }
                     resolve(_input)
                     break;

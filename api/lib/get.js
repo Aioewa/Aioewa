@@ -1,6 +1,7 @@
 import { console } from "./console.js"
 
 export const get = {
+    URL: chrome.runtime.getURL,
     async info(_url = null) {
         const addons = await (await this.JSON(chrome.runtime.getURL("../../addon/addon.json")))
         let rem = []
@@ -15,7 +16,7 @@ export const get = {
                     resolve(true)
                 }
                 else {
-                    requestAnimationFrame(update)
+                    setTimeout(update)
                 }
             }
             update()
@@ -28,7 +29,7 @@ export const get = {
     },
     async script(_url) {
         const rem = _url.split(".")
-        try {
+        // try {
             switch (rem[rem.length - 1]) {
                 case "js":
                     return (await Promise.all([
@@ -46,9 +47,9 @@ export const get = {
                     console.error(`${_url} is not a valid file`)
                     break;
             }
-        }
-        catch (error) {
-            console.error(`Failed to get ${_url}\nReason: ${error}`)
-        }
+        // }
+        // catch (error) {
+        //     console.error(`Failed to get ${_url}\nReason: ${error}`)
+        // }
     }
 }

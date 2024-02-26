@@ -2,34 +2,26 @@
 <html lang="en" type="popup">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <script type="module" src="../../api/import.js"></script>
     <link rel="stylesheet" href="../../asset/css/main.css">
 </head>
 <body>
-    <script type="module" src="../../api/import.js"></script>
     <nav>
         <module src="../../asset/js/slider.js"></module>
-        <div class="slider">
-            <button>addons</button>
-            <button>chat</button>
-            <button>tab 1</button>
-            <button>tab 2</button>
-            <button>tab 3</button>
-            <button>tab 4</button>
-            <button>tab 5</button>
-            <button>tab 6</button>
-            <button>tab 7</button>
-            <button>tab 8</button>
+        <div class="slider tabs">
+            <module src="../js/tabs.js"></module>
         </div>
         <module src="../js/settingsButton.js"></module>
         <button class="settings"></button>
         <div class="search">
-            <module src="../js/search.js"></module>
+            <module src="../../asset/js/search.js"></module>
             <input type="text" placeholder="Search..." id="search" autofocus>
         </div>
     </nav>
     <main>
-        <iframe id="addons-iframe" src="./addons.html" frameborder="0"></iframe>
-        <!-- <iframe id="users-iframe" src="./user.html" frameborder="0"></iframe> -->
+        <iframe id="addons-iframe" frameborder="0"></iframe>
     </main>
     <footer>2024&nbsp;<div class="copyleft">©</div>&nbsp;- Aioewa</footer>
 </body>

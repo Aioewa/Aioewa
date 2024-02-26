@@ -32,8 +32,8 @@ async function createElement(_name, _description, _id, _storage) {
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
 const info = await aw.get.info()
 let elements = {}
-const enabled = await aw.storage.getAddonsEnabled()
-const addonsSettings = await aw.storage.getAddonsSettings()
+// const addonsEnabled = await aw.storage.getAddonsEnabled()
+// const addonsSettings = await aw.storage.getAddonsSettings()
 
 // console.log(aw)
 // console.log(enabled)
@@ -48,7 +48,7 @@ info.forEach(async (e) => {
 
     // console.log(e.id)
     try {
-        input.checked = enabled[e.id]
+        input.checked = addonsEnabled[e.id]
     }
     catch {
         input.checked = false
