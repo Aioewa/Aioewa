@@ -31,20 +31,29 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     }
 });
 
-Promise.all([
-    storage.getAddonsEnabled(),
-    storage.getAddonsSettings(),
-    get.info()
-]).then(async ([addonsEnabled, addonsSettings, info]) => {
-    if(addonsEnabled == undefined) addonsEnabled = {}
-    info.forEach((e) => {
-        if(addonsEnabled?.[e.id] == undefined && e?.enabledByDefault != undefined) {
-            addonsEnabled[e.id] = true
-        }
+function enabledByDefaultCheck() {
+    Promise.all([
+        storage.getAddonsEnabled(),
+        storage.getAddonsSettings(),
+        get.info()
+    ]).then(async ([addonsEnabled, addonsSettings, info]) => {
+        if(addonsEnabled == undefined) addonsEnabled = {}
+        info.forEach((e) => {
+            if(addonsEnabled?.[e.id] == undefined && e?.enabledByDefault != undefined) {
+                addonsEnabled[e.id] = true
+            }
+        })
+        storage.setAddonsEnabled(addonsEnabled)
     })
-    storage.setAddonsEnabled(addonsEnabled)
-})
+}
 
+enabledByDefaultCheck()
+
+storage.onChanged.addListener((e)=>{
+    if (e?.addonsEnabled?.newValue == undefined) {
+        enabledByDefaultCheck()
+    }
+})
 
 
 // console.log(chrome)

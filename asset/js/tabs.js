@@ -8,7 +8,7 @@ if (addonsEnabled != undefined) {
         if(!addonsEnabled[e]) return
         const rem = await aw.get.JSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
         rem.id = e
-        await(await aw.DAO(rem?.code?.tabs, rem))?.forEach(a => {
+        await(await aw.DAO(rem?.tabs, rem))?.forEach(a => {
             // console.log(a)
             const newTab = tab.cloneNode(true)
             newTab.innerText = a.title

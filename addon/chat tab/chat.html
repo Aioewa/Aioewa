@@ -1,13 +1,23 @@
+<!--index.html file-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Addons</title>
-    <link rel="stylesheet" href="/asset/css/main.css">
-    <script type="module" src="/api/import.js"></script>
+	<title>Chat</title>
+	<link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <h3>HELP</h3>
+
+<body class="content">
+
+	<div class="messageArea" id="messageArea"></div>	
+	
+	<form class="form" id="form">
+		<textarea name="send" class="input" type="text" placeholder="Message" id="message" cols="30" rows="10"></textarea>
+		<button class="button"><img src="./image.png" alt="send"></button>
+	</form>
+	
+    <script type="module" src="./chat.js"></script>
 </body>
+
 </html>

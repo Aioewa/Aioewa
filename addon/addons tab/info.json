@@ -13,13 +13,11 @@
         }
     ],
     "versionAdded": "1.0.0",
-    "code": {
-        "tabs": [
-            {
-                "title": "Addons",
-                "html": "addons.html"
-            }
-        ]
-    },
+    "tabs": [
+        {
+            "title": "Addons",
+            "html": "addons.html"
+        }
+    ],
     "enabledByDefault": true
 }

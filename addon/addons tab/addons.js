@@ -78,21 +78,29 @@ info.forEach(async (e) => {
 })
 chrome.storage.sync.onChanged.addListener((e) => {
     const rem = Object.values(e)[0]
-    // console.log(rem.newValue._addonChanged.type)
-    switch (rem.newValue._addonChanged.type) {
-        case "addonsEnabled":
-            // console.log(elements[rem.newValue._addonChanged.change[0]])
-            elements[rem.newValue._addonChanged.change[0]] != undefined ? elements[rem.newValue._addonChanged.change[0]].input.checked = rem.newValue._addonChanged.change[1] : undefined
-            break;
-        case "addonsSettings":
-            // console.log(settingElements[rem.newValue._addonChanged.change.value[0]].value, rem.newValue._addonChanged.change.value[1])
-            if (aw.settingElements[rem.newValue._addonChanged.change.value[0]] != undefined) {
-                aw.settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
-            }
-            break;
-    
-        default:
-            break;
+    console.log(e)
+    if(rem.newValue == undefined) {
+        Object.keys(elements).forEach((a)=>{
+            elements[a].input.checked = false
+        })
+    }
+    else {
+        // console.log(rem.newValue._addonChanged.type)
+        switch (rem.newValue?._addonChanged?.type) {
+            case "addonsEnabled":
+                // console.log(elements[rem.newValue._addonChanged.change[0]])
+                elements[rem.newValue._addonChanged.change[0]] != undefined ? elements[rem.newValue._addonChanged.change[0]].input.checked = rem.newValue._addonChanged.change[1] : undefined
+                break;
+            case "addonsSettings":
+                // console.log(settingElements[rem.newValue._addonChanged.change.value[0]].value, rem.newValue._addonChanged.change.value[1])
+                if (aw.settingElements[rem.newValue._addonChanged.change.value[0]] != undefined) {
+                    aw.settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
+                }
+                break;
+            
+            default:
+                break;
+        }
     }
 })
 

@@ -1,0 +1,80 @@
+/* style.css */
+
+@font-face {
+    font-family: "Recursive";
+    src: local("Recursive"), url("https://asset.stio.studio/font.ttf");
+}
+
+body {
+	background-color: #90EE90;
+	margin: 0;
+	padding: 0;
+	font-family: "Recursive";
+}
+
+.content {
+	height: calc(100vh - 20px);
+    width: calc(100vw - 20px);
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: calc(100% - 50px - 10px) 50px;
+	grid-template-areas: 
+		"messages"
+		"inputs";
+	margin: 10px;
+	gap: 10px;
+}
+
+.form {
+	grid-area: inputs;
+	display: grid;
+	grid-template-columns: calc(100% - 50px - 10px) 50px;
+	grid-template-rows: 50px;
+	gap: 10px;
+	grid-template-areas: "text" "send";
+}
+
+.input {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	grid-area: "text";
+	resize: none;
+}
+
+.button {
+	background-color: #008000;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+	grid-area: "send";
+}
+
+.button img {
+	height: 100%;
+	width: 100%;
+}
+
+.messageArea {
+	grid-area: messages;
+	overflow-y: scroll;
+}
+
+.message {
+	margin: 10px;
+	border-radius: 10px;
+	background-color: #00000050;
+	padding: 5px;
+}
+
+.message .username {
+	font-weight: bold;
+	color: #006000;
+}
+
+.message .text {
+	border-radius: 10px;
+	background-color: #00000050;
+	padding: 5px;
+}

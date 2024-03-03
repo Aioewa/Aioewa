@@ -48,6 +48,6 @@ export const storage = {
             }
         }
         storage.setAddonsSettings(rem)
-    }
-
+    },
+    onChanged: chrome.storage.sync.onChanged
 }

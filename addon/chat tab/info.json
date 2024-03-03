@@ -13,12 +13,10 @@
         }
     ],
     "versionAdded": "1.0.0",
-    "code": {
-        "tabs": [
-            {
-                "title": "Chat",
-                "html": "chat.html"
-            }
-        ]
-    }
+    "tabs": [
+        {
+            "title": "Chat",
+            "html": "chat.html"
+        }
+    ]
 }

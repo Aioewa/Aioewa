@@ -34,3 +34,4 @@
 - [ ] [docs](../docs/)
 - [ ] [cache for css (add "css cache": false)](cache.md)
 - [ ] chat (using my raspberry pi. [tutorial](https://www.youtube.com/watch?v=7GBlCinu9yg&list=WL&index=1))
+- [ ] Asynchronously place elements in the right order. [module.js](../api/module.js)
