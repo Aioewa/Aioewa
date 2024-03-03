@@ -2,7 +2,11 @@
     "AV": "1",
     "name": "Chat",
     "description": [
-        ["text", "Adds a chat tab to the settings page."]
+        ["text", "Adds a chat tab to the settings page."],
+        ["br"],
+        ["field", {
+            "id": "userName"
+        }]
     ],
     "credits": [
         {

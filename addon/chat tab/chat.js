@@ -9,12 +9,10 @@
 // socket.on('send message', (chat) => {
 // });
 
-
 const socket = new WebSocket("wss://server.stio.studio/aioewa/chat-ws");
 
-
 const form = document.getElementById('form');
-const user = "stio"
+const user = addonsSettings?.["chat tab"]?.userName != undefined ? addonsSettings?.["chat tab"]?.userName : "Random User"
 const message = document.getElementById('message');
 const messageArea = document.getElementById('messageArea');
 
