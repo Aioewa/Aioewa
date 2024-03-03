@@ -4,6 +4,7 @@
     "description": [
         ["text", "Adds a chat tab to the settings page."],
         ["br"],
+        ["text", "User Name: "],
         ["field", {
             "id": "userName"
         }]
