@@ -1,11 +1,12 @@
 {
     "AV": "1",
-    "name": "log(Hello there 😺)",
+    "name": "Chat",
     "description": [
-        ["text", "Log a 'Hello there 😺' or something else in the console!"],
+        ["text", "Adds a chat tab to the settings page."],
         ["br"],
+        ["text", "User Name: "],
         ["field", {
-            "id": "log"
+            "id": "userName"
         }]
     ],
     "credits": [
@@ -16,9 +17,11 @@
             }
         }
     ],
-    "tags": ["community"],
     "versionAdded": "1.0.0",
-    "code": {
-        "onTab": "a.js"
-    }
+    "tabs": [
+        {
+            "title": "Chat",
+            "html": "chat.html"
+        }
+    ]
 }

@@ -1,3 +1,10 @@
+import { tab } from "./lib/tab.js"
+import { get } from "./lib/get.js"
+import { storage } from "./lib/storage.js"
+import { console } from "./lib/console.js"
+
+export {tab, get, storage, console}
+
 // class scripts {
 //     #scripts
 //     scripts = new Proxy(this.#scripts, {
@@ -14,17 +21,18 @@ export async function DAO(_input, _info) {
             const addon = {
                 info: _info
             }
+            const localConsole = { ...aw.console._realConsole, ...aw.console.easyCreate(_info.id, "DAO") }
             switch (typeof _input) {
                 case "string":
 
                     if (_input.slice(0, 6) == "__DAO_" && _input.slice(_input.length - 2, _input.length) == "__") {
-                        const rem = await getScript(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
+                        const rem = await get.script(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
                         addon.self = rem
                         addon.settings = await storage.getAddonsSettings(_info.id)
-                        resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon}), _info))            
+                        resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon, console: localConsole}), _info))            
                     }
                     if (_input.slice(0, 6) == "__MSG_" && _input.slice(_input.length - 2, _input.length) == "__") {
-                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2))))            
+                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2)), _info))            
                     }
                     resolve(_input)
                     break;
@@ -59,39 +67,16 @@ export async function DAO(_input, _info) {
     })
 }
 
-export async function getInfo(_url = null) {
-    const addons = await (await getJSON(chrome.runtime.getURL("../../addon/addon.json")))
-    let rem = []
-    addons.forEach(async (e) => {
-        const rem_a = await getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
-        rem_a.id = e
-        rem.push(rem_a)
-    })
-    await new Promise(async (resolve, reject) => {
-        const update = () => {
-            if (rem.length == addons.length) {
-                resolve(true)
-            }
-            else {
-                requestAnimationFrame(update)
-            }
-        }
-        update()
-
-    })
-    return rem
-}
-
 export async function infoListenerGetter(_addonsEnabled, _func) {
     Object.keys(_addonsEnabled).forEach(async (e) => {
         if (!_addonsEnabled[e]) return
         try {
-            const rem_a = await getJSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+            const rem_a = await get.JSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
             rem_a.id = e
             _func(rem_a)
         }
         catch (error) {
-            localConsole.error(chrome.runtime.getURL(`../../addon/${e}/info.json`), "could not be loaded\nReason:", error)
+            console.error(chrome.runtime.getURL(`../../addon/${e}/info.json`), "could not be loaded\nReason:", error)
         }
     })
 }
@@ -108,18 +93,18 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
         let IF_;
         let run = true
         if (_info.code["IF_" + _type] != undefined) {
-            IF_ = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`))
+            IF_ = await get.script(chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`))
             try {
-                run = await IF_["IF_" + _type]({ output: _output, console, call: { path: b } })
+                run = await IF_["IF_" + _type]({ output: _output, console: console, call: { path: b } })
             }
             catch (error) {
-                localConsole.error(`Function ${"IF_" + _type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`)}`)
+                console.error(`Function ${"IF_" + _type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${_info.code["IF_" + _type]}`)}`)
             }
         }
         // console.log(run)
 
         if (run) {
-            const rem_b = await getScript(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
+            const rem_b = await get.script(chrome.runtime.getURL(`../../addon/${_path}/${b}`))
             rem_a[b] = rem_b
             _output.self === true ? delete _output.self : _output.self = rem_b
             _output.console == true ? delete _output.console : _output.console = { ..._realConsole, ...easyCreateConsole(_path, b) }
@@ -129,7 +114,7 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
                 rem_b[_type](_output)
             }
             catch (error) {
-                localConsole.error(`Function ${_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${b}`)}`)
+                console.error(`Function ${_type} is not defined\nFile: ${chrome.runtime.getURL(`../../addon/${_path}/${b}`)}`)
             }
         }
         else {
@@ -151,36 +136,11 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
 
     return rem_a
 }
-export async function getScript(_url) {
-    const rem = _url.split(".")
-    try {
-        switch (rem[rem.length - 1]) {
-            case "js":
-                return (await Promise.all([
-                    import(_url)
-                ]))[0];
-                break;
-            case "css":
-                const element = document.createElement("link")
-                element.rel = "stylesheet"
-                element.href = _url
-                return element
-                break;
-
-            default:
-                localConsole.error(`${_url} is not a valid file`)
-                break;
-        }
-    }
-    catch (error) {
-        localConsole.error(`Failed to get ${_url}\nReason: ${error}`)
-    }
-}
 export async function scriptListenerGetter(_info, _root, _urls, _func) {
     _urls.forEach(async e => {
         const rem = await DAO(e, _info)
         if (rem != undefined) e = rem
-        getScript(`${_root}/${e}`).then((c) => {
+        get.script(`${_root}/${e}`).then((c) => {
             _func(c, e)
         })
     });
@@ -197,7 +157,7 @@ export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
                 if (rem != undefined) e = rem
                 b["IF_" + _url]({ call: e }).then((a) => {
                     if (a) {
-                        getScript(`${_root}/${e}`).then(
+                        get.script(`${_root}/${e}`).then(
                             (c) => {
                                 _func(c, e)
                             }
@@ -211,88 +171,12 @@ export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
         scriptListenerGetter(_info, _root, _info.code[_url], _func)
     }
 }
-export async function getJSON(_url) {
-    return (await fetch(_url)).json();
-}
-export const _realConsole = console
-export const consoleOutput = (logAuthor = "[page]") => {
-    const style = {
-        // Remember to change these as well on cs.js
-        leftPrefix: "background:  #055b50; color: white; border-radius: 0.5rem 0 0 0.5rem; padding: 0 0.5rem",
-        rightPrefix:
-            "background: #222; color: white; border-radius: 0 0.5rem 0.5rem 0; padding: 0 0.5rem; font-weight: bold",
-        text: "",
-    };
-    return [`%cAioewa%c${logAuthor}%c`, style.leftPrefix, style.rightPrefix, style.text];
-}
-export const createConsole = {
-    log: (e) => _realConsole.log.bind(_realConsole, ...consoleOutput(e)),
-    error: (e) => _realConsole.error.bind(_realConsole, ...consoleOutput(e)),
-    _realConsole,
-}
-export function easyCreateConsole(..._name) {
-    let rem = `${_name[0]}`;
-    _name.shift()
-    _name.forEach((e) => {
-        rem += ` : ${e}`
-    })
-    return {
-        log: createConsole.log(rem),
-        error: createConsole.error(rem),
-        _realConsole,
-    }
-}
-const localConsole = {
-    log: createConsole.log(`api : module.js`),
-    error: createConsole.error(`api : module.js`),
-}
+
 
 // if(await(await chrome.storage.sync.get(null)).settings == undefined) {
 //     chrome.storage.sync.set({settings: {}})
 // }
 
-export const storage = {
-    async getAddonsEnabled(_get = null) {
-        if (_get == null) {
-            return (await chrome.storage.sync.get("addonsEnabled")).addonsEnabled
-        }
-        else {
-            return (await chrome.storage.sync.get("addonsEnabled")).addonsEnabled[_get]
-        }
-    },
-    setAddonsEnabled(set) {
-        chrome.storage.sync.set({ addonsEnabled: set })
-    },
-
-
-    async getAddonsSettings(_get = null) {
-        if (_get == null) {
-            return (await chrome.storage.sync.get("addonSettings")).addonSettings
-        }
-        else {
-            return (await chrome.storage.sync.get("addonSettings")).addonSettings?.[_get]
-        }
-    },
-    setAddonsSettings(set) {
-        chrome.storage.sync.set({ addonSettings: set })
-    },
-    async changeOrAddSetting(insideOf, setting, value) {
-        const rem = await storage.getAddonsSettings() || {}
-        if (rem?.[insideOf] == undefined) {
-            rem[insideOf] = {}
-        }
-        rem[insideOf][setting] = value
-        rem._addonChanged = {
-            type: "addonsSettings",
-            change: {
-                name: [insideOf],
-                value: [setting, value]
-            }
-        }
-        storage.setAddonsSettings(rem)
-    }
-
-}
 
 export const settingElements = {}
 
@@ -357,16 +241,36 @@ export function parserCreator(part, _storage, _id) {
             case "field":
                 element = document.createElement("input");
                 element.type = "text";
-                element.id = data;
+                element.id = data.id;
                 element.addEventListener("input", async (e) => {
-                    await storage.changeOrAddSetting(_id, data, element.value)
+                    await storage.changeOrAddSetting(_id, data.id, element.value)
                 })
-                if (_storage?.[data] != undefined) {
-                    element.value = _storage[data]
+                if (_storage?.[data.id] != undefined) {
+                    element.value = _storage[data.id]
                 }
                 return ({
                     element,
-                    data
+                    data: data.id
+                });
+                break;
+            
+            case "textarea":
+                element = document.createElement("textarea");
+                element.style.resize = "none"
+                element.id = data.id;
+                element.addEventListener("input", async (e) => {
+                    await storage.changeOrAddSetting(_id, data.id, element.value)
+                })
+                if (_storage?.[data.id] != undefined) {
+                    element.value = _storage[data.id]
+                }
+                if (data.height != undefined) element.style.height = typeof data.height === "number" ? data.height + "px" : data.height
+                if (data.width != undefined) {element.style.width = typeof data.width === "number" ? data.width + "px" : data.width}
+                else {element.style.width = "-webkit-fill-available"}
+                
+                return ({
+                    element,
+                    data: data.id
                 });
                 break;
 
@@ -436,10 +340,3 @@ export function parserCreator(part, _storage, _id) {
     }
     return output
 }
-
-// storage.raw.hello = "aosfjoaihh"
-// console.log(await storage.raw.hello)
-// console.log(await storage.raw)
-// storage.set({"hello": "wow", "asjofh": "ajjf", "1208": "oisaf"})
-// console.log(await settings.get("hello"))
-// console.log(await chrome.storage.sync.get(null))

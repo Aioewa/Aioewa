@@ -1,15 +1,18 @@
-new Promise((resolve, reject) => {
-    // console.log(chrome.runtime.getURL(location.pathname + "/../" + "../js/settingsButton.js"))
-    (async () => {
-        const [module] = await Promise.all([
-            import(chrome.runtime.getURL("../../api/module.js"))
-        ])
-        window.aw = module
-        const imports = document.querySelectorAll("module")
-        imports.forEach((e)=>{
-            // console.log(chrome.runtime.getURL(location.pathname + "/../" + e.attributes.getNamedItem("src").textContent))
-            module.getScript(chrome.runtime.getURL(location.pathname + "a/../" + e.attributes.getNamedItem("src").textContent))
-        })
-        resolve(true)
-    })()
+import * as aw from "./module.js"
+globalThis.aw = aw
+
+globalThis.addonsEnabled = await aw.storage.getAddonsEnabled()
+globalThis.addonsSettings = await aw.storage.getAddonsSettings()
+addonsEnabled?._addonChanged == undefined || delete addonsEnabled._addonChanged
+addonsSettings?._addonChanged == undefined || delete addonsSettings._addonChanged
+
+const imports = document.querySelectorAll("module")
+imports.forEach(async (e) => {
+    if (e.getAttribute("http")) {
+        console.log(await import("http://127.0.0.1:5000/socket.io/socket.io.js"))
+        aw.get.script(e.getAttribute("src"))
+    }
+    else {
+        aw.get.script(chrome.runtime.getURL(location.pathname + "a/../" + e.getAttribute("src")))
+    }
 })

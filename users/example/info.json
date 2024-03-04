@@ -1,0 +1,11 @@
+{
+    "displayName": "Hello there",
+    "profilePicture": "asset/icons/template.png",
+    "about": "Why are you reading this?<br>Because you are reading this. <a href=\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\">Click this</a>",
+    "links": [
+        {
+            "url": "https://stio.studio",
+            "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif"
+        }
+    ]
+}

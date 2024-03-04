@@ -1,0 +1,33 @@
+{
+    "displayName": "stio",
+    "profilePicture": "https://asset.stio.studio/logo/stio/transparent/2000x2000.gif",
+    "about": "Hello there 😺 <br> I am STIO. The founder and one of the developers of Aioewa.",
+    "links": [
+        {
+            "url": "https://stio.studio",
+            "img": "https://asset.stio.studio/logo/stio/transparent/1600x1600.gif",
+            "text": "stio.studio"
+        },
+        {
+            "url": "mailto:hello@stio.studio",
+            "text": "E-mail"
+        },
+        {
+            "url": "https://discord.gg/cTvvmszQH",
+            "text": "Discord"
+        },
+        {
+            "url": "https://youtube.com/@stio_studio",
+            "text": "YouTube"
+        },
+        {
+            "url": "https://github.com/stiostudio",
+            "img": "/asset/icons/github.png",
+            "text": "GitHub"
+        },
+        {
+            "url": "https://scratch.mit.edu/users/stio_studio",
+            "text": "Scratch"
+        }
+    ]
+}

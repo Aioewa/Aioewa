@@ -1,3 +1,6 @@
+import { get } from "../api/lib/get.js";
+import { storage } from "../api/lib/storage.js";
+
 console.log("Background is up and running!")
 chrome.runtime.setUninstallURL('https://aioewa.stio.studio/uninstall');
 
@@ -27,6 +30,31 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
             break;
     }
 });
+
+function enabledByDefaultCheck() {
+    Promise.all([
+        storage.getAddonsEnabled(),
+        storage.getAddonsSettings(),
+        get.info()
+    ]).then(async ([addonsEnabled, addonsSettings, info]) => {
+        if(addonsEnabled == undefined) addonsEnabled = {}
+        info.forEach((e) => {
+            if(addonsEnabled?.[e.id] == undefined && e?.enabledByDefault != undefined) {
+                addonsEnabled[e.id] = true
+            }
+        })
+        storage.setAddonsEnabled(addonsEnabled)
+    })
+}
+
+enabledByDefaultCheck()
+
+storage.onChanged.addListener((e)=>{
+    if (e?.addonsEnabled?.newValue == undefined) {
+        enabledByDefaultCheck()
+    }
+})
+
 
 // console.log(chrome)
 // function injectCSS(tabId, cssFile) {

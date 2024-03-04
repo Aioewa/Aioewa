@@ -100,6 +100,7 @@ nav::after {
     height: 60px;
     width: 100px;
     background: linear-gradient(to left, #000000e0, #0000008c, transparent);
+    pointer-events: none;
 }
 
 [type="settings"] nav::after {
@@ -115,6 +116,7 @@ nav::before {
     height: 60px;
     width: 40px;
     background: linear-gradient(to right, #000000bb, transparent);
+    pointer-events: none;
 }
 
 nav .settings {
@@ -207,7 +209,7 @@ footer {
     /**********************************************/
     /* Added a nice height and opacity transition */
     /**********************************************/
-    max-height: 10em;
+    max-height: 50em;
     transition: 0.6s ease-in;
     opacity: 1;
 }
@@ -258,6 +260,7 @@ footer {
 
 .addon h3 {
     grid-area: h3;
+    margin: auto 0;
 }
 
 .addon .switch input {
@@ -297,4 +300,8 @@ footer {
 
 .addon:has(.switch input:checked) .switch::before {
     left: calc(100% - 2.5px - 20px);
+}
+
+.copyleft {
+    transform: scale(-1, 1);
 }

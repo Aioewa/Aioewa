@@ -7,9 +7,8 @@
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "author": "STIO",
-  "background": {
-    "service_worker": "/file/background/main.js"
-  },
+  "background": { "service_worker": "/file/background.js", "type": "module" },
+  "minimum_chrome_version": "92",
   "permissions": [
     "storage",
     "activeTab"
@@ -27,7 +26,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/*"
+        "<all_urls>"
       ],
       "run_at": "document_start",
       "js": [
@@ -44,12 +43,12 @@
         "/asset/*"
       ],
       "matches": [
-        "*://*/*"
+        "<all_urls>"
       ]
     }
   ],
   "host_permissions": [
-    "*://*/"
+    "<all_urls>"
   ],
   "browser_specific_settings": {
     "gecko": {
@@ -59,11 +58,11 @@
   },
   "externally_connectable": {
     "matches": [
-      "*://*/*"
+      "<all_urls>"
     ]
   },
   "options_ui": {
-    "page": "file/settings/index.html",
+    "page": "asset/html/settings.html",
     "open_in_tab": true
   },
   "homepage_url": "https://aioewa.stio.studio"

@@ -1,0 +1,23 @@
+{
+    "AV": "1",
+    "name": "Addons tab",
+    "description": [
+        ["text", "Adds an addons tab to the settings page. Recommended to leave on."]
+    ],
+    "credits": [
+        {
+            "userID": "stio_studio",
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "versionAdded": "1.0.0",
+    "tabs": [
+        {
+            "title": "Addons",
+            "html": "addons.html"
+        }
+    ],
+    "enabledByDefault": true
+}

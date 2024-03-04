@@ -11,7 +11,8 @@ Promise.all([
     Promise.all([
         aw.storage.getAddonsEnabled(),
         aw.storage.getAddonsSettings(),
-    ]).then(([addonsEnabled, addonsSettings]) => {
+        aw.storage.getCache(),
+    ]).then(([addonsEnabled, addonsSettings, cache]) => {
         if (addonsEnabled?._addonChanged != undefined) delete addonsEnabled._addonChanged;
         globalThis.addonsEnabled = addonsEnabled
 
@@ -26,13 +27,14 @@ Promise.all([
                     aw.IF_scriptListenerGetter(info, addonRootUrl + info.id, a, async (b, c) => {
                         const addon = {
                             info,
-                            settings: new Proxy(addonsSettings[info.id] || {}, {
+                            settings: new Proxy(await(await aw.storage.getAddonsSettings())?.[info.id] || {}, {
                                 get: (target, string) => {
                                     return target[string]
                                 }
-                            })
+                            }),
+                            tab: aw.tab,
                         };
-                        const localConsole = { ...aw._realConsole, ...aw.easyCreateConsole(info.id, a) }
+                        const localConsole = { ...aw.console._realConsole, ...aw.console.easyCreate(info.id, a) }
                         switch (a) {
                             case "onTab":
                                 b.onTab({ addon, console: localConsole })
