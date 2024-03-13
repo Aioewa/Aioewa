@@ -1,0 +1,91 @@
+*,
+.news li p,
+.thumbnail.project a,
+.thumbnail.gallery a,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+.thumbnail .thumbnail-remixes,
+.thumbnail .thumbnail-loves 
+{
+    color: #ffffff;
+}
+#navigation {
+    background-color: #4081ff;
+}
+#view {
+    background-color: #000000;
+}
+.input {
+    border-radius: 100vh;
+}
+.account-nav .user-info::after {
+    display: none;
+}
+.box .box-header {
+    background-color: #407fff;
+    border: none;
+    height: auto;
+}
+.box .box-header h4 {
+    background-color: #00000030;
+    padding: 10px;
+    border-radius: 100vh;
+    border: none;
+}
+.box .box-content {
+    background-color: #0d1933;
+    border-radius: 0 0 9px 9px;
+    flex: 1 1 auto;
+}
+.box,
+.splash .splash-header .box {
+    display: flex;
+    flex-flow: column;
+    border: none;
+    border-radius: 10px;
+}
+a:link,
+a:visited,
+a:active,
+.news li h4 {
+    color: #4081ff;
+}
+#footer,
+#donor {
+    position: fixed;
+    bottom: calc(-100% + 480px);
+    width: 100%;
+    background-color: #4081ff;
+}
+#footer .logo a {
+    display: block;
+    transition: 0.15s ease all;
+    border: 0;
+    background-image: url(https://scratch.mit.edu/images/logo_sm.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 95%;
+    width: 81px;
+    height: 50px;
+    top: -15px;
+    position: relative;
+}
+#view {
+    padding-bottom: 50px;
+}
+.thumbnail .thumbnail-image img {
+    border-radius: 10px;
+    border: none;
+}
+.thumbnail-title {
+    text-align: center;
+}
+.thumbnail .thumbnail-loves::before,
+.thumbnail .thumbnail-remixes::before
+ {
+    filter: contrast(0%) brightness(100);
+}

@@ -1,0 +1,20 @@
+{
+    "AV": "1",
+    "name": "Scratch 4.0",  
+    "description": "Changes scratch to a Scratch 4.0 theme.",
+    "credits": [
+        {
+            "userID": "stio_studio",
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "DAO": "DAO.js",
+        "css": "__DAO_css__",
+        "onTab": "__DAO_js__"
+    }
+}
