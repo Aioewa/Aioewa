@@ -7,11 +7,15 @@
   "default_locale": "en",
   "description": "__MSG_extDescription__",
   "author": "STIO",
-  "background": { "service_worker": "/file/background.js", "type": "module" },
+  "background": {
+    "service_worker": "/file/background.js",
+    "type": "module"
+  },
   "minimum_chrome_version": "92",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "scripting"
   ],
   "action": {
     "default_icon": "/asset/icon/icon48.png",
@@ -62,8 +66,17 @@
     ]
   },
   "options_ui": {
-    "page": "asset/html/settings.html",
+    "page": "/asset/html/settings.html",
     "open_in_tab": true
   },
-  "homepage_url": "https://aioewa.stio.studio"
+  "homepage_url": "https://aioewa.stio.studio",
+  "sidebar_action": {
+    "default_icon": "/asset/icon/icon128.png",
+    "default_panel": "/asset/html/settings.html",
+    "default_panel_width": 604,
+    "default_title": "",
+    "maximum_panel_width": 1000,
+    "minimum_panel_width": 400,
+    "panel_width": 604
+  }
 }

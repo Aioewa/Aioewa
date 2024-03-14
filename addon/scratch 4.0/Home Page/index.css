@@ -1,0 +1,70 @@
+.box div.box-header h4 {
+    background-position: 5px;
+    background-repeat: no-repeat;
+    background-size: 2.5em;
+    padding: 15px;
+    padding-left: 2.5em;
+}
+.box.news .box-header h4 {
+    background-image: url(./ScratchNews.svg);
+}
+.box.activity .box-header h4 {
+    background-image: url(./WhatIsNew.svg);
+}
+/* .box .box-header.Dashboard h4 {
+    background-image: url(./Dashboard.svg);
+} */
+.splash > div:nth-child(1) > div:nth-child(2) > div.box-header > h4 {
+    background-image: url(./FeaturedProjects.svg);
+}
+.splash > div:nth-child(1) > div:nth-child(3) > div.box-header > h4 {
+    background-image: url(./FeaturedStudios.svg);
+}
+.splash > div:nth-child(2) > div:nth-child(1) > div.box-header > h4 {
+    background-image: url(./ProjectCuratedByScratcher.svg);
+}
+.splash > div:nth-child(2) > div:nth-child(2) > div.box-header > h4 {
+    background-image: url(./ScratchDesignStudio.svg);
+}
+.splash > div:nth-child(2) > div:nth-child(3) > div.box-header > h4 {
+    background-image: url(./LovedByScratchersImFollowing.svg);
+}
+.splash > div:nth-child(2) > div:nth-child(4) > div.box-header > h4 {
+    background-image: url(./WhatTheCommunityIsRemixing.svg);
+}
+.splash > div:nth-child(2) > div:nth-child(5) > div.box-header > h4 {
+    background-image: url(./WhatTheCommunityIsLoving.svg);
+}
+/* .box .box-header.Dashboard h4 {
+    background-image: url(./Dashboard.svg);
+}
+.box .box-header.FeaturedProjects h4 {
+    background-image: url(./FeaturedProjects.svg);
+}
+.box .box-header.FeaturedStudios h4 {
+    background-image: url(./FeaturedStudios.svg);
+}
+.box .box-header.LastMessages h4 {
+    background-image: url(./LastMessages.svg);
+}
+.box .box-header.LovedByScratchersImFollowing h4 {
+    background-image: url(./LovedByScratchersImFollowing.svg);
+}
+.box .box-header.ProjectCuratedByScratcher h4 {
+    background-image: url(./ProjectCuratedByScratcher.svg);
+}
+.box .box-header.ScratchDesignStudio h4 {
+    background-image: url(./ScratchDesignStudio.svg);
+}
+.box.news .box-header h4 {
+    background-image: url(./ScratchNews.svg);
+}
+.box.activity .box-header h4 {
+    background-image: url(./WhatIsNew.svg);
+}
+.box .box-header.WhatTheCommunityIsLoving h4 {
+    background-image: url(./WhatTheCommunityIsLoving.svg);
+}
+.box .box-header.WhatTheCommunityIsRemixing h4 {
+    background-image: url(./WhatTheCommunityIsRemixing.svg);
+} */

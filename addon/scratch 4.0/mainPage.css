@@ -1,3 +1,6 @@
+@import url("./Nav. Bar/scratch3.css");
+@import url("./Home Page/index.css");
+
 *,
 .news li p,
 .thumbnail.project a,
@@ -18,6 +21,7 @@ p,
 }
 #view {
     background-color: #000000;
+    padding-bottom: 50px;
 }
 .input {
     border-radius: 100vh;
@@ -73,9 +77,6 @@ a:active,
     height: 50px;
     top: -15px;
     position: relative;
-}
-#view {
-    padding-bottom: 50px;
 }
 .thumbnail .thumbnail-image img {
     border-radius: 10px;

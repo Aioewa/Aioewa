@@ -1,0 +1,93 @@
+#navigation {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#navigation .link a {
+    border-radius: 100vh;
+}
+#navigation .link > a {
+    padding: 13px 10px 4px 10px;
+}
+#navigation .link.create a {
+    content: "";
+    background-image: url(./Create.svg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 33px;
+    padding-left: 33px;
+}
+#navigation .link.ideas a {
+    content: "";
+    background-image: url(./Ideas.svg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 33px;
+    padding-left: 33px;
+}
+#navigation .link.explore a {
+    content: "";
+    background-image: url(./Explore.svg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 33px;
+    padding-left: 33px;
+}
+#navigation .link.about a {
+    content: "";
+    background-image: url(./About.svg);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 33px;
+    padding-left: 33px;
+}
+#navigation .messages > a {
+    background-image: url(./Messages.svg);
+    background-position: 10px center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    padding-left: 15px;
+    background-color: #00000030;
+}
+#navigation .messages > a:has(.message-count.show) {
+    padding-left: 40px;
+}
+#navigation .mystuff > a {
+    background-image: url(./MyStuff.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+#navigation .inner > ul > li.right.messages a:hover {
+    background-position: 5px center;
+    background-size: 45px;
+    background-color: #00000050;
+}
+#navigation .mystuff > a:hover {
+    background-size: 45px;
+}
+#navigation .messages span {
+    display: none;
+}
+#navigation .messages .message-count.show {
+    display: block;
+    position: relative;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0 0.25rem;
+    text-indent: 0;
+    line-height: inherit;
+    color: #fff;
+    font-size: inherit;
+    font-weight: bold;
+}
+#navigation .inner > ul > li.search .btn-search {
+    background-image: url(./Search.svg);
+    background-size: 80%;
+}
+.dropdown,
+#navigation>div>ul>li.link.right.login-item>div>div>form>div.flex-row.submit-row>button>span,
+#navigation > div > ul > li.link.right.login-item > div::before {
+    background-color: #4081ff;
+}

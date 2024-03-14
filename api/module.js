@@ -3,7 +3,7 @@ import { get } from "./lib/get.js"
 import { storage } from "./lib/storage.js"
 import { console } from "./lib/console.js"
 
-export {tab, get, storage, console}
+export { tab, get, storage, console }
 
 // class scripts {
 //     #scripts
@@ -15,6 +15,17 @@ export {tab, get, storage, console}
 //     })
 // } 
 
+/**
+ * DAO - dynamic addon output
+ * 
+ * @param {string} _input - The input to be processed by the DAO function. Can be of type "string", "object", or "any other".
+ * @param {JSON} _info - The information about the addon. It is the info.json of the addon.
+ * 
+ * @returns {Promise} - A promise that resolves to the output of the DAO function. The output can be of any type.
+ * 
+ * @description
+ * DAO can take in `__DAO_someInput__` and calls the addon's DAO function which gives the output. It can also take in `__MSG_someInput__` and gets the message from _locales.
+ */
 export async function DAO(_input, _info) {
     return new Promise(async (resolve, reject) => {
         if (_info?.code?.DAO != undefined) {
@@ -29,10 +40,10 @@ export async function DAO(_input, _info) {
                         const rem = await get.script(chrome.runtime.getURL(`/addon/${_info.id}/${_info.code.DAO}`))
                         addon.self = rem
                         addon.settings = await storage.getAddonsSettings(_info.id)
-                        resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon, console: localConsole}), _info))            
+                        resolve(await DAO(await rem.DAO({ input: _input.slice(6, _input.length - 2), addon, console: localConsole }), _info))
                     }
                     if (_input.slice(0, 6) == "__MSG_" && _input.slice(_input.length - 2, _input.length) == "__") {
-                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2)), _info))            
+                        resolve(await DAO(chrome.i18n.getMessage(_input.slice(6, _input.length - 2)), _info))
                     }
                     resolve(_input)
                     break;
@@ -45,7 +56,7 @@ export async function DAO(_input, _info) {
                     }
                     else {
                         const results = await Promise.all(Object.keys(_input).map(async (e) => {
-                            return await {[e]: await DAO(_input[e], _info)};
+                            return await { [e]: await DAO(_input[e], _info) };
                         }));
                         resolve(results.reduce((acc, obj) => {
                             Object.keys(obj).forEach(key => {
@@ -67,6 +78,13 @@ export async function DAO(_input, _info) {
     })
 }
 
+/**
+ * Asynchronously gets information for enabled addons and calls a function with the addon information.
+ *
+ * @param {object} _addonsEnabled - Object representing the enabled addons
+ * @param {function} _func - Callback function to be called with addon information
+ * @return {void}
+ */
 export async function infoListenerGetter(_addonsEnabled, _func) {
     Object.keys(_addonsEnabled).forEach(async (e) => {
         if (!_addonsEnabled[e]) return
@@ -136,18 +154,39 @@ export async function infoCodeRunner(_info, _type, _input, _path, output = { sel
 
     return rem_a
 }
+/**
+ * Retrieves scripts from specified URLs and executes a provided function on each script.
+ *
+ * @param {JSON} _info - Information object
+ * @param {string} _root - Root path
+ * @param {Array<string>} _urls - Array of URLs
+ * @param {Function} _func - Function to be executed on each script
+ * @return {Promise<void>} 
+ */
 export async function scriptListenerGetter(_info, _root, _urls, _func) {
     _urls.forEach(async e => {
         const rem = await DAO(e, _info)
         if (rem != undefined) e = rem
+        // console.log(e)
         get.script(`${_root}/${e}`).then((c) => {
             _func(c, e)
         })
     });
 }
+/**
+ * Asynchronous function to get script listener.
+ *
+ * @param {object} _info - information object
+ * @param {string} _root - root string
+ * @param {string} _url - URL string
+ * @param {function} _func - callback function
+ * @return {void} a Promise
+ */
 export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
     const rem = await DAO(_info.code["IF_" + _url], _info)
     if (rem != undefined) _info.code["IF_" + _url] = rem
+    
+    const localConsole = console.easyCreate("IF_" + _url) //MW
 
     if (_info.code["IF_" + _url] != undefined) {
         if (!Array.isArray(_info.code["IF_" + _url])) _info.code["IF_" + _url] = [_info.code["IF_" + _url]]
@@ -155,7 +194,7 @@ export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
             _info.code[_url].forEach(async (e) => {
                 const rem = await DAO(e, _info)
                 if (rem != undefined) e = rem
-                b["IF_" + _url]({ call: e }).then((a) => {
+                b["IF_" + _url]({ call: e, console: localConsole }).then((a) => {
                     if (a) {
                         get.script(`${_root}/${e}`).then(
                             (c) => {
@@ -180,11 +219,19 @@ export async function IF_scriptListenerGetter(_info, _root, _url, _func) {
 
 export const settingElements = {}
 
+/**
+ * Creates a full parser for the input, optionally using the given storage and id.
+ *
+ * @param {any} input - the input to be parsed
+ * @param {any} _storage - the storage to be used
+ * @param {any} _id - the id to be used
+ * @return {HTMLElement} the parsed elements
+ */
 export function fullParserCreator(input, _storage, _id) {
     let _elements = document.createElement("span");
     _elements.style.display = "contents";
 
-    // console.log(_elements)
+    // console.log(input)
     if (!Array.isArray(input)) {
         const element = document.createElement("span");
         element.innerText = input;
@@ -201,6 +248,14 @@ export function fullParserCreator(input, _storage, _id) {
     return _elements
 }
 
+/**
+ * Creates a parser based on the given part, storage, and id.
+ *
+ * @param {any} part - the part to create the parser from
+ * @param {any} _storage - the storage data
+ * @param {any} _id - the id of the addon
+ * @return {Element} the created element and optional data
+ */
 export function parserCreator(part, _storage, _id) {
     let data = part[1];
     let element;
@@ -208,14 +263,21 @@ export function parserCreator(part, _storage, _id) {
         switch (part[0]) {
             case "text":
                 element = document.createElement("span");
-                element.innerText = data;
+                if (typeof data == "string") {
+                    element.innerText = data;
+                }
+                else {
+                    element.innerText = data.text;
+                }
                 return ({
                     element,
                 });
                 break;
             case "link":
                 element = document.createElement("a");
-                element.innerText = data.text;
+                if (data.text != undefined) {
+                    element.innerText = data.text;
+                }
                 element.href = data.url;
                 element.target = "_blank"
                 return ({
@@ -253,7 +315,7 @@ export function parserCreator(part, _storage, _id) {
                     data: data.id
                 });
                 break;
-            
+
             case "textarea":
                 element = document.createElement("textarea");
                 element.style.resize = "none"
@@ -265,9 +327,9 @@ export function parserCreator(part, _storage, _id) {
                     element.value = _storage[data.id]
                 }
                 if (data.height != undefined) element.style.height = typeof data.height === "number" ? data.height + "px" : data.height
-                if (data.width != undefined) {element.style.width = typeof data.width === "number" ? data.width + "px" : data.width}
-                else {element.style.width = "-webkit-fill-available"}
-                
+                if (data.width != undefined) { element.style.width = typeof data.width === "number" ? data.width + "px" : data.width }
+                else { element.style.width = "-webkit-fill-available" }
+
                 return ({
                     element,
                     data: data.id

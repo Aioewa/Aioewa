@@ -20,6 +20,7 @@
 - [ ] Shortcuts lets you add your own custom shortcuts.
 - [ ] Addon that adds a option to right click on webpages (or makes a new options popup) where you can use many different options. 
 - [x] Let's you add places where you can shift+7 to go to the search
+- [ ] Scratch 4.0
 
 ## Community
 <!-- - [x] [Organize the discord server better](https://aioewa.stio.studio/discord) -->
@@ -35,3 +36,6 @@
 - [ ] [cache for css (add "css cache": false)](cache.md)
 - [ ] chat (using my raspberry pi. [tutorial](https://www.youtube.com/watch?v=7GBlCinu9yg&list=WL&index=1))
 - [ ] Asynchronously place elements in the right order. [module.js](../api/module.js)
+- [ ] Reading mode
+- [ ] Writing/drawing board. Lets you write and draw on any website.
+- [ ] Set the search in to the addon.html. Then it will not be shown in the other sites.

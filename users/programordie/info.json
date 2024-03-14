@@ -1,7 +1,19 @@
 {
     "displayName": "programORdie",
     "profilePicture": "https://pod.stio.studio/static/img/pod.png",
-    "about": "Hi!<br>I'm programORdie, a weird alien who's submitting random PR's to this cool extension.",
+    "about": [
+        [
+            "text",
+            "Hi!"
+        ],
+        [
+            "br"
+        ],
+        [
+            "text",
+            "I'm programORdie, a weird alien who's submitting random PR's to this cool extension."
+        ]
+    ],
     "links": [
         {
             "url": "https://pod.stio.studio",
