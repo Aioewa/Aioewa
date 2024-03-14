@@ -1,0 +1,22 @@
+{
+    "AV": "1",
+    "name": "Users tab",
+    "description": [
+        ["text", "Adds a user tab to the settings page. It contains the user information about the user whom contributed to Aioewa."]
+    ],
+    "credits": [
+        {
+            "userID": "programORdie",
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "versionAdded": "1.0.0",
+    "tabs": [
+        {
+            "title": "Users",
+            "html": "user.html"
+        }
+    ]
+}

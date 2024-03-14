@@ -17,6 +17,12 @@ const rem = {
         error: (e) => _realConsole.error.bind(_realConsole, ...rem.output(e)),
         _realConsole: console,
     },
+    /**
+     * Create a new console with the given names.
+     *
+     * @param {...string} _name - the names to be included in the object
+     * @return {Console} an object with log, error, and _realConsole properties
+     */
     easyCreate(..._name) {
         let rem = `${_name[0]}`;
         _name.shift()

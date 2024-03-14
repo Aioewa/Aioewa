@@ -1,0 +1,21 @@
+{
+    "AV": "1",
+    "name": "Cookie and LocalStorage Editor",
+    "description": "An addon to edit cookies and localStorage for a specific tab in the developer tab.",
+    "credits": [
+        {
+            "userID": 1,
+            "contributed": {
+                "code": 20
+            }
+        }
+    ],
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "tabs": [
+        {
+            "title": "Storage Editor",
+            "html": "addon.html"
+        }
+    ]
+}

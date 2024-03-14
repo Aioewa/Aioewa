@@ -66,7 +66,7 @@ button {
 }
 
 nav .slider button {
-    height: 80%; /* Changed this a little bit to make it fir better */
+    height: 70%; /* Changed this a little bit to make it fir better */
     width: fit-content;
     border-radius: 10px;
     margin-right: 10px;

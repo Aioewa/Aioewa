@@ -6,9 +6,19 @@ export const get = {
         const addons = await (await this.JSON(chrome.runtime.getURL("../../addon/addon.json")))
         let rem = []
         addons.forEach(async (e) => {
-            const rem_a = await this.JSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
-            rem_a.id = e
-            rem.push(rem_a)
+            try {
+                const rem_a = await this.JSON(chrome.runtime.getURL(`../../addon/${e}/info.json`))
+                rem_a.id = e
+                rem.push(rem_a)                
+            } catch (error) {
+                rem.push({
+                    "id": e,
+                    "AV": "1",
+                    "name": "ERROR",
+                    "description": "ERROR getting addon. Please turn this addon off.",
+                    "versionAdded": "1.0.0",
+                })
+            }
         })
         await new Promise(async (resolve, reject) => {
             const update = () => {

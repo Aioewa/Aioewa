@@ -1,0 +1,71 @@
+@import url("./Nav. Bar/scratch2.css");
+
+*, .box .box-head h4, .project.thumb.item>span.owner, .slider-carousel .thumb span.owner a, #comments-enabled-box > label {
+    color: #ffffff;
+    text-shadow: none;
+}
+#pagewrapper {
+    background-color: #000000;
+}
+.box .box-head {
+    background-color: #407fff;
+    border: none;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+.box .box-head h4 {
+    background-color: #00000030;
+    padding: 10px;
+    border-radius: 100vh;
+    border: none;
+}
+.box .box-content {
+    background-color: #0d1933;
+    border-radius: 0 0 9px 9px;
+    flex: 1 1 auto;
+    border: none;
+}
+.box,
+.splash .splash-header .box {
+    display: flex;
+    flex-flow: column;
+    border: none;
+    border-radius: 10px;
+}
+a:link,
+a:visited,
+a:active,
+.news li h4 {
+    color: #4081ff;
+}
+.button.small[data-control="post"] {
+    background: none;
+    background-color: #4081ff;
+    border-color: #4081ff;
+}
+.button.small[data-control="post"] a {
+    color: #ffffff;
+}
+.button[data-control="load-more"] {
+    background: none;
+    background-color: #4081ff;
+    border-color: #4081ff;
+}
+.button.small[data-control="load-more"] a {
+    color: #ffffff;
+}
+.arrow-left, .arrow-right {
+    background: none;
+}
+#comments .more-replies {
+    box-shadow: 0 -25px 20px -10px #0d1933;
+    background-color: #0d1933;
+}
+.project.thumb img, .gallery.thumb span.image img, .gallery.thumb span.image {
+    border-radius: 10px;
+    border: none;
+    margin: 0;
+}
+/* .follow-button.button>.follow {
+    background-color: #4081ff;
+} */
