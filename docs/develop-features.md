@@ -16,10 +16,10 @@ In Aioewa, description is based of an array with either strings to create text, 
 
 The addon settings are decided if you use specific type of element in the description.
 
-| Element type    | Type name  | Description                                                                                              | Other Options in it |
-| --------------- | ---------- | -------------------------------------------------------------------------------------------------------- | ------------------- |
-| Text            | `text`     | Just adds text                                                                                           | the text itself, after the type |
-| Number          | `number`   | Creates an input box for only numbers                                                                    | | 
-| Text field      | `field`    | Creates an input box for technically anything, basically text/string                                     ||
-| Dropdown/Select | `dropdown` | Creates an select box where you can add options in info.json so the user can choose only specific values ||
-| Link            | `link`     | Creates an select box where you can add options in info.json so the user can choose only specific values ||
+| Element type    | Type name  | Description                                                                                              | Other Options in it             | Used for addon settings |
+| --------------- | ---------- | -------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------------------- |
+| Text            | `text`     | Just adds text                                                                                           | The text itself, after the type | No |
+| Number          | `number`   | Creates an input box for only numbers                                                                    | After the type provide `id` inside an object, it will be used as variable name inside the addon's code | Yes | 
+| Text field      | `field`    | Creates an input box for technically anything, basically text/string                                     | After the type provide `id` inside an object, it will be used as variable name inside the addon's code | Yes |
+| Dropdown/Select | `dropdown` | Creates an select box where you can add options in info.json so the user can choose only specific values | After the type provide `id` inside an object, it will be used as variable name inside the addon's code. Provide also `options` array in the object, which will be used to show those options for the select element | Yes |
+| Link            | `link`     | Creates an select box where you can add options in info.json so the user can choose only specific values | After the type provide `text` which will be used as the text for the link and provide `url` for the link itself. | No |
