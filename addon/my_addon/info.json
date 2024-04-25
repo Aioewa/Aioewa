@@ -5,6 +5,7 @@
     "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
-        "css": "style.css"
+        "css": "style.css",
+        "IF_onTab": "if.js"
     }
 }

@@ -1,7 +1,5 @@
 [
     "scratch 4.0",
-    "storage editor",
-    "user tab",
     "addons tab",
     "chat tab",
     "inputFocus",
@@ -18,6 +16,5 @@
     "test4",
     "test5",
     "test6",
-    "test7",
-    "my_addon"
+    "test7"
 ]
