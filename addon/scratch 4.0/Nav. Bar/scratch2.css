@@ -2,69 +2,105 @@
     background-image: url(https://scratch.mit.edu/images/logo_sm.png);
     background-size: contain;
 }
-#topnav>.innerwrap {
-    padding-top: 5px;
-    padding-bottom: 5px;
+#topnav > .innerwrap {
+    height: 42px;
     background-color: #4081ff;
 }
-#topnav>.innerwrap .link a {
+#topnav ul.site-nav {
+    height: 42px;
+}
+#topnav ul.account-nav.logged-in li:hover,
+#topnav ul.site-nav li:hover {
+    background-color: #00000030;
+}
+#topnav > .innerwrap > .container > ul > li {
     border-radius: 100vh;
-}
-.site-nav>li>a {
-    padding: 13px 10px 4px 10px;
-}
-#topnav ul.site-nav li, #topnav > div > div > form, #topnav ul.site-nav li.last, #topnav > div > div > ul.account-nav.logged-in > li {
     border: none;
 }
-ul.site-nav>li>a#project-create {
-    content: "";
-    background-image: url(./Create.svg);
-    background-position: left;
+#topnav > .innerwrap {
+    padding: 10px;
+}
+#topnav > div > div > ul.site-nav > li > a {
+    height: 35px;
+    /* padding-top: 50%;
+    padding-bottom: 50%; */
+    /* content: ""; */
+    /* background-position: left center; */
     background-repeat: no-repeat;
     background-size: 33px;
     padding-left: 33px;
+}
+ul.site-nav > li > a#project-create {
+    background-image: url(./Create.svg);
 }
 #topnav > div > div > ul.site-nav > li:nth-child(2) > a {
-    content: "";
     background-image: url(./Ideas.svg);
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 33px;
-    padding-left: 33px;
 }
 #topnav > div > div > ul.site-nav > li:nth-child(3) > a {
-    content: "";
     background-image: url(./Explore.svg);
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 33px;
-    padding-left: 33px;
 }
 #topnav > div > div > ul.site-nav > li.last > a {
-    content: "";
     background-image: url(./About.svg);
-    background-position: left;
-    background-repeat: no-repeat;
-    background-size: 33px;
-    padding-left: 33px;
 }
-#topnav>.innerwrap .messages > a {
+
+#topnav > div > div > ul.account-nav.logged-in > li.messages > a {
     background-image: url(./Messages.svg);
     background-position: 10px center;
     background-repeat: no-repeat;
     background-size: 40px;
     padding-left: 15px;
-    background-color: #00000030;
+    border-radius: 100vh;
+    background-color: #00000040;
 }
-#topnav>.innerwrap .messages > a:has(.message-count.show) {
+/* #topnav>.innerwrap .messages > a:has(.message-count.show) {
     padding-left: 40px;
-}
-#topnav>.innerwrap .mystuff > a {
+} */
+#topnav > div > div > ul.account-nav.logged-in > li.my-stuff > a {
     background-image: url(./MyStuff.svg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: 40px;
 }
+#topnav
+    > div
+    > div
+    > ul.account-nav.logged-in
+    > li.logged-in-user.dropdown
+    > span
+    > span {
+    display: none;
+}
+#topnav
+    > div
+    > div
+    > ul.account-nav.logged-in
+    > li.logged-in-user.dropdown
+    > span
+    > img,
+#topnav ul.account-nav ul.user-nav li.logout.divider,
+.dropdown .dropdown-menu {
+    border: none;
+}
+#topnav ul.account-nav .logged-in-user .dropdown-menu,
+#topnav li.logout.divider input {
+    background-color: #4081ff;
+}
+#topnav li.logout.divider input:hover {
+    background-color: transparent;
+}
+#topnav form.search .glass {
+    background-image: url(./Search.svg);
+    background-size: 80%;
+    border: none;
+    box-shadow: none;
+}
+#topnav form.search input#search-input {
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: none;
+    height: auto;
+    border-radius: 100vh;
+}
+/* 
 #topnav>.innerwrap .inner > ul > li.right.messages a:hover {
     background-position: 5px center;
     background-size: 45px;
@@ -90,12 +126,8 @@ ul.site-nav>li>a#project-create {
     font-size: inherit;
     font-weight: bold;
 }
-#topnav>.innerwrap .inner > ul > li.search .btn-search {
-    background-image: url(./Search.svg);
-    background-size: 80%;
-}
 .dropdown,
 #topnav>.innerwrap>div>ul>li.link.right.login-item>div>div>form>div.flex-row.submit-row>button>span,
 #topnav>.innerwrap > div > ul > li.link.right.login-item > div::before {
     background-color: #4081ff;
-}
+} */

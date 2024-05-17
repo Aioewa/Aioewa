@@ -1,0 +1,9 @@
+{
+    "AV": "1",
+    "name": "Reading mode",
+    "description": "Sets the website to reading mode. This helps with reading content undisturbed and fast.",
+    "code": {
+        "onTab": "addon.js",
+        "css": "style.css"
+    }
+}

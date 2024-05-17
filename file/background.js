@@ -37,9 +37,9 @@ function enabledByDefaultCheck() {
         storage.getAddonsSettings(),
         get.info()
     ]).then(async ([addonsEnabled, addonsSettings, info]) => {
-        if(addonsEnabled == undefined) addonsEnabled = {}
+        if (addonsEnabled == undefined) addonsEnabled = {}
         info.forEach((e) => {
-            if(addonsEnabled?.[e.id] == undefined && e?.enabledByDefault != undefined) {
+            if (addonsEnabled?.[e.id] == undefined && e?.enabledByDefault != undefined) {
                 addonsEnabled[e.id] = true
             }
         })
@@ -49,12 +49,11 @@ function enabledByDefaultCheck() {
 
 enabledByDefaultCheck()
 
-storage.onChanged.addListener((e)=>{
+storage.onChanged.addListener((e) => {
     if (e?.addonsEnabled?.newValue == undefined) {
         enabledByDefaultCheck()
     }
 })
-
 
 // console.log(chrome)
 // function injectCSS(tabId, cssFile) {

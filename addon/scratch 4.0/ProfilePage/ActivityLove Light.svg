@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 30 30" height="30" width="30">
+<rect fill="white" rx="15" height="30" width="30"></rect>
+<rect fill-opacity="0.5" fill="#FF6680" rx="15" height="30" width="30"></rect>
+<path stroke-width="2" stroke="#FF6680" fill="#FF6680" d="M11.5 10C13.5 9.99995 15 12 15 12C15 12 16.5 10 18.5 10C20.5 10 22 11.5001 22 13.5C22 16.5662 17.8869 19.6323 15.9664 20.8969C15.375 21.2863 14.625 21.2863 14.0336 20.8969C12.1131 19.6323 7.99995 16.5662 8 13.5C8.00003 11.5001 9.5 10.0001 11.5 10Z"></path>
+</svg>

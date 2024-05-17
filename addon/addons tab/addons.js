@@ -39,7 +39,8 @@ let elements = {}
 // console.log(enabled)
 
 info.forEach(async (e) => {
-    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])
+    if (e.hide) return
+    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])    
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")

@@ -6,6 +6,7 @@
 <!-- - [x] [storage](../api/module.js) -->
 - [ ] [DAOE](../api/module.js)
 - [ ] [msg](../_locales/)
+- [ ] https://developer.chrome.com/docs/extensions/reference/api/contextMenus
 
 ## DevTools
 - [ ] Website that gives you the json file for `info.json` files and `user.json` files. Just like in [stio.studio meta](https://project.stio.studio/meta/)
@@ -21,6 +22,7 @@
 - [ ] Addon that adds a option to right click on webpages (or makes a new options popup) where you can use many different options. 
 - [x] Let's you add places where you can shift+7 to go to the search
 - [ ] Scratch 4.0
+- [ ] Addon that adds the ability to add css to the website. You write it in the extension and it automatically gets changed, and added to the website.
 
 ## Community
 <!-- - [x] [Organize the discord server better](https://aioewa.stio.studio/discord) -->
