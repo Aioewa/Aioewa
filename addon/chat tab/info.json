@@ -23,5 +23,6 @@
             "title": "Chat",
             "html": "chat.html"
         }
-    ]
+    ],
+    "type": "tab"
 }

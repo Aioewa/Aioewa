@@ -14,5 +14,6 @@
     "versionAdded": "1.0.0",
     "code": {
         "css": "newStyle.css"
-    }
+    },
+    "type": "theme"
 }

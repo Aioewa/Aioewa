@@ -191,9 +191,9 @@ footer {
 
     display: grid;
     grid-template-areas:
-        "arrow type h3 switch"
-        "content content content content";
-    grid-template-columns: 40px 20px auto 40px;
+        "arrow type h3 settings switch"
+        "content content content content content";
+    grid-template-columns: 40px 20px auto 40px 40px;
     grid-template-rows: 40px 0px 0px;
     column-gap: 5px;
     row-gap: 0px;
@@ -262,6 +262,48 @@ footer {
     grid-area: h3;
     margin: auto 0;
 }
+
+.addon .type {
+    grid-area: type;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    border-radius: 100vh;
+    transition: all var(--transition) ease;
+    filter: brightness(100);
+    background-image: var(--type-icon-url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: white;
+}
+
+.addon .settings input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.addon .settings {
+    grid-area: settings;
+    background-color: transparent;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    border-radius: 100vh;
+    transition: all var(--transition) ease;
+    background-image: url(../icons/setting.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.addon:has(.settings input:checked) .settings {
+    transition: all var(--transition) ease;
+    rotate: 130deg;
+}
+
 
 .addon .switch input {
     opacity: 0;

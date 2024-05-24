@@ -10,11 +10,11 @@
             }
         }
     ],
-    "tags": ["community"],
     "versionAdded": "1.0.0",
     "code": {
         "DAO": "DAO.js",
         "css": "__DAO_css__",
         "onTab": "__DAO_js__"
-    }
+    },
+    "type": "theme"
 }

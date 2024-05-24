@@ -18,9 +18,9 @@
             }
         }
     ],
-    "tags": ["community", "FPS", "stats"],
     "versionAdded": "1.0.0",
     "code": {
         "onTab": "index.js"
-    }
+    },
+    "type": "toy"
 }

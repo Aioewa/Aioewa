@@ -18,9 +18,11 @@ async function createElement(_name, _description, _id, _storage) {
     rem.insertAdjacentHTML("beforeend", `
 <div class="addon addon-${_id}">
     <label tabindex="0"  class="arrow"><input tabindex="-1" type="checkbox"></label>
+    <label tabindex="0"  class="type"></label>
     <h3 class="title">${_name}</h3>
     <div class="content">
     </div>
+    <label tabindex="0"  class="settings"><input tabindex="-1" type="checkbox"></label>
     <label tabindex="0"  class="switch"><input tabindex="-1" type="checkbox"></label>
 </div>
     `)
@@ -38,9 +40,38 @@ let elements = {}
 // console.log(aw)
 // console.log(enabled)
 
+function returnIconUrl(iconName) {
+    switch (iconName) {
+        case "tab":
+            return "../icons/popup.svg"
+            break;
+
+        case "theme":
+            return "../icons/brush.svg"
+            break;
+            
+        case "toy":
+            return "../icons/puzzle.svg"
+            break;
+            
+        case "web":
+            return "../icons/web.svg"
+            break;
+            
+        case "tool":
+            return "../icons/wrench.svg"
+            break;
+            
+        default:
+            return "../icons/question-mark.svg"
+            break;
+    }
+}
+
 info.forEach(async (e) => {
     if (e.hide) return
     const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])    
+    rem.style.setProperty("--type-icon-url", `url(${returnIconUrl(e.type)}`)
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")
