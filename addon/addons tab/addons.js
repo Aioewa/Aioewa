@@ -35,10 +35,31 @@ async function createElement(_name, _description, _id, _storage) {
     // rem = rem.querySelector(".addon")
     _elements.className = "content"
     rem.querySelector(".content").append(_elements)
-    rem.querySelector(".settingsPopup .close").addEventListener("pointerup", (e) => {
-        rem.querySelector(".addon .settings input").checked = false
-    })
-    return rem
+
+    const settingsInput = rem.querySelector(".settings input");
+    const closeBtn = rem.querySelector(".settingsPopup .close");
+
+    // Close settingsPopup when the close button is clicked
+    closeBtn.addEventListener("click", () => {
+        settingsInput.checked = false;
+        hideAllSettingsPopups();
+    });
+
+    // Manage state of all settings popups
+    settingsInput.addEventListener("change", () => {
+        if (settingsInput.checked) {
+            hideAllSettingsPopups();
+            settingsInput.checked = true; // Keep the current one open
+        }
+    });
+
+    return rem;
+}
+
+function hideAllSettingsPopups() {
+    document.querySelectorAll('.addon .settings input').forEach(input => {
+        input.checked = false;
+    });
 }
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
 const info = await aw.get.info()
