@@ -1,0 +1,35 @@
+.settingsPopup {
+    z-index: 1;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+}
+.settingsPopup h3{
+    font-size: 30px;
+    margin: 0;
+    width: 80%;
+    padding: 0 10%;
+    text-align: center;
+}
+.settingsPopup .close {
+    font-size: 30px;
+    position: fixed;
+    top: calc(10% + 20px);
+    left: calc(10% + 80%);
+}
+
+/* Initially hide the settingsPopup */
+.settingsPopup {
+    display: none;
+}
+
+/* Show the settingsPopup when the associated settings checkbox is checked */
+.addon:has(.settings input:checked) ~ .settingsPopup {
+    display: block;
+}

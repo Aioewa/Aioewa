@@ -127,8 +127,8 @@ nav .settings {
     height: 40px;
     aspect-ratio: 1 / 1;
     background-color: transparent;
-    border-radius: 100vw;
-    background-image: url(../icons/setting.svg);
+    background-image: url(../icons/popout.svg);
+    filter: brightness(100);
     background-repeat: no-repeat;
     background-size: cover;
 }

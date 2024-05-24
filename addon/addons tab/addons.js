@@ -13,6 +13,7 @@ async function createElement(_name, _description, _id, _storage) {
     let _elements = aw.fullParserCreator(_description, _storage, _id)
 
     let rem = document.createElement("div");
+    rem.style.display = "content"
 
 
     rem.insertAdjacentHTML("beforeend", `
@@ -25,10 +26,18 @@ async function createElement(_name, _description, _id, _storage) {
     <label tabindex="0"  class="settings"><input tabindex="-1" type="checkbox"></label>
     <label tabindex="0"  class="switch"><input tabindex="-1" type="checkbox"></label>
 </div>
+<div class="settingsPopup">
+    <h3>${_name}</h3>
+    <div class="close">X</div>
+</div>
+
     `)
-    rem = rem.querySelector(".addon")
+    // rem = rem.querySelector(".addon")
     _elements.className = "content"
     rem.querySelector(".content").append(_elements)
+    rem.querySelector(".settingsPopup .close").addEventListener("pointerup", (e) => {
+        rem.querySelector(".addon .settings input").checked = false
+    })
     return rem
 }
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
