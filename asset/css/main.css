@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: "Recursive";
-    src: local("Recursive"), url("https://asset.stio.studio/font.ttf");
+    src: local("Recursive"), url("../others/font.ttf");
 }
 
 * {
