@@ -29,6 +29,7 @@ async function createElement(_name, _description, _id, _storage) {
 <div class="settingsPopup">
     <h3>${_name}</h3>
     <div class="close">X</div>
+    <iframe addon-id="${_id}" src="./settings.html"></iframe>
 </div>
 
     `)

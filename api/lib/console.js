@@ -15,6 +15,7 @@ const rem = {
     create: {
         log: (e) => _realConsole.log.bind(_realConsole, ...rem.output(e)),
         error: (e) => _realConsole.error.bind(_realConsole, ...rem.output(e)),
+        warn: (e) => _realConsole.warn.bind(_realConsole, ...rem.output(e)),
         _realConsole: console,
     },
     /**
@@ -32,6 +33,7 @@ const rem = {
         return {
             log: this.create.log(rem),
             error: this.create.error(rem),
+            warn: this.create.warn(rem),
             _realConsole,
         }
     }

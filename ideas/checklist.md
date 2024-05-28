@@ -10,7 +10,7 @@
 
 ## DevTools
 - [ ] Website that gives you the json file for `info.json` files and `user.json` files. Just like in [stio.studio meta](https://project.stio.studio/meta/)
-- [ ] error and warn on costume console 
+- [x] error and warn on costume console 
 
 ## Addons
 <!-- - [x] enable and disable -->
@@ -40,4 +40,5 @@
 - [ ] Asynchronously place elements in the right order. [module.js](../api/module.js)
 - [ ] Reading mode
 - [ ] Writing/drawing board. Lets you write and draw on any website.
-- [ ] Set the search in to the addon.html. Then it will not be shown in the other sites.
+- [x] Set the search in to the addon.html. Then it will not be shown in the other sites.
+- [ ] Needed property in `info.json`. This would enable the needed system addon. This is so that different addons can work easier together. Example if you want 2 addons to use a toy box. Then the toy box system addon needs to be enabled. The "needed

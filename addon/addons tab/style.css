@@ -24,6 +24,11 @@
     left: calc(10% + 80%);
     cursor: pointer;
 }
+.settingsPopup iframe {
+    height: auto;
+    width: 100%;
+    border: none;
+}
 
 /* Initially hide the settingsPopup */
 .settingsPopup {
