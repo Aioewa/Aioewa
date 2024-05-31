@@ -9,7 +9,7 @@
           }
         }
       ],
-      "tags": ["community"],
+      "type": "tool",
       "versionAdded": "1.0.0",
       "code": {
         "onTab": "code.js",
