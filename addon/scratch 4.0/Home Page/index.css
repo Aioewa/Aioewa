@@ -14,6 +14,19 @@
 /* .box .box-header.Dashboard h4 {
     background-image: url(./Dashboard.svg);
 } */
+.box>.box-header > p {
+    /* aspect-ratio: 1/1; */
+    background-image: url(../ProfilePage/ViewAll.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    max-height: 100%;
+    min-height: 100%;
+}
+.box>.box-header > p>a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
 .splash > div:nth-child(1) > div:nth-child(2) > div.box-header > h4 {
     background-image: url(./FeaturedProjects.svg);
 }

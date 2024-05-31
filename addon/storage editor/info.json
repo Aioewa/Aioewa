@@ -10,12 +10,12 @@
             }
         }
     ],
-    "tags": ["community"],
     "versionAdded": "1.0.0",
     "tabs": [
         {
             "title": "Storage Editor",
             "html": "addon.html"
         }
-    ]
+    ],
+    "type": "tool"
 }

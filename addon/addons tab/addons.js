@@ -13,21 +13,54 @@ async function createElement(_name, _description, _id, _storage) {
     let _elements = aw.fullParserCreator(_description, _storage, _id)
 
     let rem = document.createElement("div");
+    rem.style.display = "content"
 
 
     rem.insertAdjacentHTML("beforeend", `
 <div class="addon addon-${_id}">
     <label tabindex="0"  class="arrow"><input tabindex="-1" type="checkbox"></label>
+    <label tabindex="0"  class="type"></label>
     <h3 class="title">${_name}</h3>
     <div class="content">
     </div>
+    <label tabindex="0"  class="settings"><input tabindex="-1" type="checkbox"></label>
     <label tabindex="0"  class="switch"><input tabindex="-1" type="checkbox"></label>
 </div>
+<div class="settingsPopup">
+    <h3>${_name}</h3>
+    <div class="close">X</div>
+    <iframe addon-id="${_id}" src="./settings.html"></iframe>
+</div>
+
     `)
-    rem = rem.querySelector(".addon")
+    // rem = rem.querySelector(".addon")
     _elements.className = "content"
     rem.querySelector(".content").append(_elements)
-    return rem
+
+    const settingsInput = rem.querySelector(".settings input");
+    const closeBtn = rem.querySelector(".settingsPopup .close");
+
+    // Close settingsPopup when the close button is clicked
+    closeBtn.addEventListener("click", () => {
+        settingsInput.checked = false;
+        hideAllSettingsPopups();
+    });
+
+    // Manage state of all settings popups
+    settingsInput.addEventListener("change", () => {
+        if (settingsInput.checked) {
+            hideAllSettingsPopups();
+            settingsInput.checked = true; // Keep the current one open
+        }
+    });
+
+    return rem;
+}
+
+function hideAllSettingsPopups() {
+    document.querySelectorAll('.addon .settings input').forEach(input => {
+        input.checked = false;
+    });
 }
 // console.log(createAddonsSettings("a", {_name: "hello there"}))
 const info = await aw.get.info()
@@ -38,8 +71,38 @@ let elements = {}
 // console.log(aw)
 // console.log(enabled)
 
+function returnIconUrl(iconName) {
+    switch (iconName) {
+        case "tab":
+            return "../icons/popup.svg"
+            break;
+
+        case "theme":
+            return "../icons/brush.svg"
+            break;
+            
+        case "toy":
+            return "../icons/puzzle.svg"
+            break;
+            
+        case "web":
+            return "../icons/web.svg"
+            break;
+            
+        case "tool":
+            return "../icons/wrench.svg"
+            break;
+            
+        default:
+            return "../icons/question-mark.svg"
+            break;
+    }
+}
+
 info.forEach(async (e) => {
-    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])
+    if (e.hide) return
+    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])    
+    rem.style.setProperty("--type-icon-url", `url(${returnIconUrl(e.type)}`)
     document.body.append(rem)
 
     const label = rem.querySelector(".switch")

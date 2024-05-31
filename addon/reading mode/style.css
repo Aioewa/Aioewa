@@ -1,0 +1,16 @@
+#aioewa-reading-mode {
+    background-color: black;
+    font-size: 25px;
+    color: white;
+    padding: 100px 125px;
+    width: calc(100vw - 250px);
+    line-break: anywhere;
+    scrollbar-gutter: stable;
+}
+body {
+    display: none;
+}
+html {
+    width: 100vw;
+    display: contents;
+}

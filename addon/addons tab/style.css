@@ -1,0 +1,73 @@
+.settingsPopup {
+    z-index: 1;
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+}
+.settingsPopup h3{
+    font-size: 30px;
+    margin: 0;
+    width: 80%;
+    padding: 0 10%;
+    text-align: center;
+}
+.settingsPopup .close {
+    font-size: 30px;
+    position: fixed;
+    top: calc(10% + 20px);
+    left: calc(10% + 80%);
+    cursor: pointer;
+}
+.settingsPopup iframe {
+    height: auto;
+    width: 100%;
+    border: none;
+}
+
+/* Initially hide the settingsPopup */
+.settingsPopup {
+    display: none;
+}
+
+/* Show the settingsPopup when the associated settings checkbox is checked */
+.addon:has(.settings input:checked) ~ .settingsPopup {
+    display: block;
+}
+
+.search input:focus {
+    border: solid 3px rgb(32, 178, 144);
+}
+
+.search input {
+    border: none;
+    border-radius: 10px;
+    width: calc(100% - 32px - 6px);
+    height: calc(100% - 12px - 6px);
+    padding: 2px 10px;
+    margin: 4px;
+    left: 4px;
+    position: relative;
+    background-color: white;
+    transition: all var(--transition) ease;
+    outline: none; /* Removed the ugly default outline */
+    border: solid 3px rgba(32, 178, 144, 0); /* Added border instead */
+}
+
+.search {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--search);
+    background-color: var(--secondary);
+}
+
+body {
+    padding-top: var(--search);
+}

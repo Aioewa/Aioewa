@@ -6,10 +6,11 @@
 <!-- - [x] [storage](../api/module.js) -->
 - [ ] [DAOE](../api/module.js)
 - [ ] [msg](../_locales/)
+- [ ] https://developer.chrome.com/docs/extensions/reference/api/contextMenus
 
 ## DevTools
 - [ ] Website that gives you the json file for `info.json` files and `user.json` files. Just like in [stio.studio meta](https://project.stio.studio/meta/)
-- [ ] error and warn on costume console 
+- [x] error and warn on costume console 
 
 ## Addons
 <!-- - [x] enable and disable -->
@@ -21,6 +22,7 @@
 - [ ] Addon that adds a option to right click on webpages (or makes a new options popup) where you can use many different options. 
 - [x] Let's you add places where you can shift+7 to go to the search
 - [ ] Scratch 4.0
+- [ ] Addon that adds the ability to add css to the website. You write it in the extension and it automatically gets changed, and added to the website.
 
 ## Community
 <!-- - [x] [Organize the discord server better](https://aioewa.stio.studio/discord) -->
@@ -38,4 +40,5 @@
 - [ ] Asynchronously place elements in the right order. [module.js](../api/module.js)
 - [ ] Reading mode
 - [ ] Writing/drawing board. Lets you write and draw on any website.
-- [ ] Set the search in to the addon.html. Then it will not be shown in the other sites.
+- [x] Set the search in to the addon.html. Then it will not be shown in the other sites.
+- [ ] Needed property in `info.json`. This would enable the needed system addon. This is so that different addons can work easier together. Example if you want 2 addons to use a toy box. Then the toy box system addon needs to be enabled. The "needed

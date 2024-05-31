@@ -1,0 +1,10 @@
+{
+    "AV": "1",
+    "name": "Draw ✏️",
+    "description": "Adds a draw tab to the settings page.",
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "addon.js"
+    },
+    "type": "toy"
+}

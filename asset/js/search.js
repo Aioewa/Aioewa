@@ -3,7 +3,8 @@ let addons = null;
 function listAddons() {
     if (addons === null) {
         let _addons = []
-        addons = document.querySelector('#addons-iframe').contentWindow.document.body.querySelectorAll('.addon');
+        addons = document.body.querySelectorAll('.addon');
+        // addons = document.querySelector('#addons-iframe').contentWindow.document.body.querySelectorAll('.addon');
         addons.forEach(e => {
             let content = e.querySelector('.content').querySelectorAll('span')
             content = Array.from(content)//.join(' ');

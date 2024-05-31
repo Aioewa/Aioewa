@@ -1,13 +1,22 @@
 const mutationObserver = new MutationObserver((mutRecs) => {
+    _mutationCallbacks.forEach((callback) => {
+        callback(document.documentElement)
+    })
     mutRecs.forEach(mutRec => {
         mutRec.addedNodes.forEach((addedNode) => {
-            _mutationCallbacks.forEach((callback) => {
-                callback(addedNode)
-            })
+            _mutationWeakSet.add(addedNode)
         })
     });
+    // mutRecs.forEach(mutRec => {
+    //     mutRec.addedNodes.forEach((addedNode) => {
+    //         _mutationCallbacks.forEach((callback) => {
+    //             callback(addedNode)
+    //         })
+    //     })
+    // });
 })
 const _mutationCallbacks = []
+const _mutationWeakSet = new WeakSet()
 
 export const tab = {
     /**
@@ -17,7 +26,7 @@ export const tab = {
      * @returns The element when found.
      */
     waitForElement(selector) {
-        const foundElement = document.documentElement.querySelector(selector)
+        const foundElement = document.querySelector(selector)
         if (foundElement) {
             return new Promise((resolve, reject) => {
                 resolve(foundElement)
@@ -41,7 +50,7 @@ export const tab = {
     * @param callback The callback to execute when the element has been found.
     */
     listenForElements(selector, callback) {
-        const foundElement = document.documentElement.querySelectorAll(selector)
+        const foundElement = document.querySelectorAll(selector)
         foundElement.forEach(callback)
         mutationObserver.observe(document.documentElement, { childList: true, subtree: true })
         _mutationCallbacks.push((element) => {

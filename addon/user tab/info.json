@@ -18,5 +18,6 @@
             "title": "Users",
             "html": "user.html"
         }
-    ]
+    ],
+    "type": "tab"
 }

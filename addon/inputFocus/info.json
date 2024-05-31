@@ -11,5 +11,6 @@
     ],
     "code": {
         "onTab": "code.js"
-    }
+    },
+    "type": "tool"
 }

@@ -19,5 +19,6 @@
             "html": "addons.html"
         }
     ],
-    "enabledByDefault": true
+    "enabledByDefault": true,
+    "hide": true
 }
