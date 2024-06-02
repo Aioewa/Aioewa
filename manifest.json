@@ -8,14 +8,15 @@
   "description": "__MSG_extDescription__",
   "author": "STIO",
   "background": {
-    "service_worker": "/file/background.js",
-    "type": "module"
+    "service_worker": "/file/bg.js"
   },
   "minimum_chrome_version": "92",
   "permissions": [
     "storage",
     "activeTab",
-    "scripting"
+    "scripting",
+    "contextMenus",
+    "clipboardWrite"
   ],
   "action": {
     "default_icon": "/asset/icon/icon48.png",

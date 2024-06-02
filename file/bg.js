@@ -1,6 +1,33 @@
-import { get } from "../api/lib/get.js";
-import { storage } from "../api/lib/storage.js";
+// let addonsURL = null
+// fetch("/addon/addon.json").then(async (addonJsonFile) => {
+//     const addonJson = await addonJsonFile.json()
+//     const addons = await Promise.all(addonJson.map(async (e) => {
+//         const info = await (await fetch(`/addon/${e}/info.json`)).json()
+//         info.id = e
+//         return info
+//     }))
+//     addonsURL = addons.map((e) => {
+//         if (e?.code?.bg == undefined) return
+//         const bgArray = Array.isArray(e?.code?.bg) ? e?.code?.bg : [e?.code?.bg]
+//         return bgArray.map((bg) => {
+//             return `/addon/${e.id}/${bg}`
+//         })
+//     })
+// })
+// setTimeout(() => {
+//     console.log(addonsURL)
+//     addonsURL.forEach(a => {
+//         a.forEach((e) => {
+//             importScripts(e)
+//         })
+//     });
+// }, 1000)
 
+
+
+importScripts("/addon/goto/goto-bg.js")
+
+/*
 console.log("Background is up and running!")
 chrome.runtime.setUninstallURL('https://aioewa.stio.studio/uninstall');
 
@@ -67,3 +94,5 @@ storage.onChanged.addListener((e) => {
 // chrome.action.onClicked.addListener((tab) => {
 //     injectCSS(tab.id, { file: "extension/addon/test6/a.css" }); // Replace "styles.css" with your CSS file path
 // });
+
+*/

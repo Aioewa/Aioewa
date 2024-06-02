@@ -1,0 +1,9 @@
+{
+    "AV": "1",
+    "name": "Background test",
+    "description": "A test addon. Not recommended to use.",
+    "code": {
+        "bg": "my bg.js"
+    },
+    "type": "toy"
+}

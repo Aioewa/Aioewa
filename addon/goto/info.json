@@ -1,0 +1,10 @@
+{
+    "AV": "1",
+    "name": "Goto",
+    "description": "Let's you make an URL for a specific part of the website page.",
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "goto.js"
+    },
+    "type": "tool"
+}
