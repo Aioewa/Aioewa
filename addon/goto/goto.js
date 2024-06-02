@@ -8,6 +8,6 @@ export async function onTab({ addon, console }) {
             });
         }
     });
-    const awGoto = location.search.split("aw-goto=")[1]
+    const awGoto = decodeURIComponent(location.search.split("aw-goto=")[1])
     await (await addon.tab.waitForElement(awGoto)).scrollIntoView({ behavior: "smooth" })
 }

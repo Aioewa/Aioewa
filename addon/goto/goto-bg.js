@@ -16,9 +16,40 @@ async function onClickHandler(info, tab) {
 
 // Function to get the URL
 function getURL() {
+    // Function to generate a CSS selector for an element
+    function getElementSelector(element) {
+        if (element.id) {
+            return `#${element.id}`;
+        }
+        const path = [];
+        while (element.nodeType === Node.ELEMENT_NODE) {
+            let selector = element.nodeName.toLowerCase();
+            if (element.id) {
+                selector += `#${element.id}`;
+                path.unshift(selector);
+                break;
+            } else {
+                let sibling = element;
+                let nth = 1;
+                while (sibling = sibling.previousElementSibling) {
+                    if (sibling.nodeName.toLowerCase() === selector) {
+                        nth++;
+                    }
+                }
+                if (nth !== 1) {
+                    selector += `:nth-of-type(${nth})`;
+                }
+            }
+            path.unshift(selector);
+            element = element.parentNode;
+        }
+        return path.join(" > ");
+    }
+
     if (document.activeElement) {
         const e = document.activeElement;
-        var url = `${location.origin}${location.pathname}?aw-goto=${e.tagName}.${e.className.split(' ').join('.')}`;
+        e.getElementSelector
+        var url = `${location.origin}${location.pathname}?aw-goto=${encodeURIComponent(getElementSelector(e))}`;
         return url;
     }
     return '';
