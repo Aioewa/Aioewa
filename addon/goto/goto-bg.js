@@ -66,7 +66,7 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: "delete-element",
         parentId: "Aioewa",
-        title: "Create Link",
+        title: "Copy Element Link",
         contexts: ["all"]
     });
 
