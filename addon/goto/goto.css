@@ -1,0 +1,17 @@
+@keyframes redToTransparent {
+    0% {
+        border-radius: 10px;
+        background-color: rgba(255, 0, 0, 0.7);
+    }
+    40% {
+        border-radius: 10px;
+        background-color: rgba(255, 0, 0, 0.7);
+    }
+    100% {
+
+    }
+}
+
+.aw-goto-selected {
+    animation: redToTransparent 2s forwards;
+}

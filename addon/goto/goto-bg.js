@@ -18,6 +18,9 @@ async function onClickHandler(info, tab) {
 function getURL() {
     // Function to generate a CSS selector for an element
     function getElementSelector(element) {
+        if (element.nodeType === Node.TEXT_NODE) {
+            element = element.parentNode;
+        }
         if (element.id) {
             return `#${element.id}`;
         }
@@ -43,12 +46,12 @@ function getURL() {
             path.unshift(selector);
             element = element.parentNode;
         }
-        return path.join(" > ");
+        return path.join(">");
     }
 
-    if (document.activeElement) {
-        const e = document.activeElement;
-        e.getElementSelector
+    const e = window.getSelection().baseNode;
+    console.log(e, window.getSelection())
+    if (e) {
         var url = `${location.origin}${location.pathname}?aw-goto=${encodeURIComponent(getElementSelector(e))}`;
         return url;
     }
