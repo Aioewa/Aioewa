@@ -9,5 +9,9 @@ export async function onTab({ addon, console }) {
         }
     });
     const awGoto = decodeURIComponent(location.search.split("aw-goto=")[1])
-    await (await addon.tab.waitForElement(awGoto)).scrollIntoView({ behavior: "smooth" })
+    const element = await addon.tab.waitForElement(awGoto)
+    element.scrollIntoView({ behavior: "smooth" })
+    setTimeout(()=>{
+        element.focus()
+    }, 1000)
 }
