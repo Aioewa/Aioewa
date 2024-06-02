@@ -2,24 +2,18 @@
     "displayName": "nikeedev",
     "profilePicture": "https://raw.githubusercontent.com/nikeedev/nikeedev.github.io/main/assets/nikee_256.png",
     "about": [
-        ["text", "I'm a web, game, rust, c++ developer. Helping with developing Aioewa :D"],
-        ["br"],
-        ["text", "By the way, check out "],
-        ["link", {
-            "url": "https://stio.studio"
-        },
-        "StioStudio's website"
-    ]
+        ["text", "I'm a web, game, Rust, C++ developer. One of the creator developers of Aioewa :D"],
+        ["br"]
     ],
     "links": [
         {
             "text": "My website!",
-            "url": "https://nikeedev.stio.studio",
-            "img": "https://nikeedev.stio.studio/assets/nikee_256.png"
+            "url": "https://nikee.dev",
+            "img": "https://nikee.dev/assets/nikee_256.png"
         },
         {
             "text": "Mail",
-            "url": "mailto:nikita@nikeedev.stio.studio"
+            "url": "mailto:hello@nikee.dev"
         },
         {
             "url": "https://youtube.com/@nikeedev",
@@ -28,7 +22,7 @@
         {
             "url": "https://github.com/nikeedev",
             "text": "GitHub",
-            "img": "https://nikeedev.stio.studio/assets/nikee_256.png"
+            "img": "https://nikee.dev/assets/nikee_256.png"
         }
     ]
 }
