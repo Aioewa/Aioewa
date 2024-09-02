@@ -75,33 +75,27 @@ function returnIconUrl(iconName) {
     switch (iconName) {
         case "tab":
             return "../icons/popup.svg"
-            break;
 
         case "theme":
             return "../icons/brush.svg"
-            break;
-            
+
         case "toy":
             return "../icons/puzzle.svg"
-            break;
-            
+
         case "web":
             return "../icons/web.svg"
-            break;
-            
+
         case "tool":
             return "../icons/wrench.svg"
-            break;
-            
+
         default:
             return "../icons/question-mark.svg"
-            break;
     }
 }
 
 info.forEach(async (e) => {
     if (e.hide) return
-    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])    
+    const rem = await createElement(await aw.DAO(e.name, e), await aw.DAO(e.description, e), e.id, addonsSettings?.[e.id])
     rem.style.setProperty("--type-icon-url", `url(${returnIconUrl(e.type)}`)
     document.body.append(rem)
 
@@ -142,8 +136,8 @@ info.forEach(async (e) => {
 chrome.storage.sync.onChanged.addListener((e) => {
     const rem = Object.values(e)[0]
     console.log(e)
-    if(rem.newValue == undefined) {
-        Object.keys(elements).forEach((a)=>{
+    if (rem.newValue == undefined) {
+        Object.keys(elements).forEach((a) => {
             elements[a].input.checked = false
         })
     }
@@ -160,7 +154,7 @@ chrome.storage.sync.onChanged.addListener((e) => {
                     aw.settingElements[rem.newValue._addonChanged.change.value[0]].value = rem.newValue._addonChanged.change.value[1]
                 }
                 break;
-            
+
             default:
                 break;
         }
