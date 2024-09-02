@@ -1,4 +1,6 @@
 [
+    "get-APA-info",
+    "inject-code",
     "goto",
     "bg test",
     "draw",

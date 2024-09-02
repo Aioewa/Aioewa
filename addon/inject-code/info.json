@@ -1,0 +1,10 @@
+{
+    "AV": "1",
+    "name": "My Addon",
+    "description": "My Addon made by me :D",
+    "tags": ["community"],
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "onTab.js"
+    }
+}

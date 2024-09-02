@@ -1,0 +1,10 @@
+{
+    "AV": "1",
+    "name": "Get APA info",
+    "description": "Get APA info",
+    "versionAdded": "1.0.0",
+    "code": {
+        "onTab": "addon.js"
+    },
+    "type": "tool"
+}
